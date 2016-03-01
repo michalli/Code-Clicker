@@ -5,7 +5,7 @@ http://rogerdudler.github.io/git-guide/index.pl.html         //przy uzywaniu Git
 https://guides.github.com/activities/hello-world/<br />
   
 **UWAGA**  
-Mozna wszystko dodawac i pobierac bez uzycia Git Basha - wylacznie za posrednictwem strony github.com.  
+Pliki mozna dodawac i pobierac bez uzycia Git Basha - wylacznie za posrednictwem strony github.com.  
 Jest to raczej latwiejsze i przyjemniejsze, a do tego juz to przetestowalem, wiec nie powinno byc problemow.  
   
 W razie jakichkolwiek problemów lub watpliwosci zwiazanych z gitem chetnie pomoge,  
