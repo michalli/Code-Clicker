@@ -4,9 +4,16 @@ W razie jakby ktos potrzebowal przypomniec sobie nieco gita:<br />
 http://rogerdudler.github.io/git-guide/index.pl.html         //przy uzywaniu Git Basha<br />
 https://guides.github.com/activities/hello-world/<br />
   
+**UWAGA**  
+Mozna wszystko dodawac i pobierac bez uzycia Git Basha - wylacznie za posrednictwem strony github.com.  
+Jest to raczej latwiejsze i przyjemniejsze, a do tego juz to przetestowalem, wiec nie powinno byc problemow.  
+  
+W razie jakichkolwiek problemów lub watpliwosci zwiazanych z gitem chetnie pomoge,  
+wystarczy dodac watek w Issues badz napisac na maila *michal.li@poczta.fm*  
+  
 --------------------------------------------------  
   
-Uwaga!  
+"Uwaga!  
 Założyłam nam folder na trello..  
 Zarejestrujcie się i zapraszam pod https://trello.com/…/codec…/5add080bc457f050adbfdc3925f264fc  
 Proszę o uzupełnianie zadań zgodnie z założeniami i wrzucenie tego na repo.  
@@ -29,4 +36,4 @@ Ogólnie chciałabym żeby zostało w takiej podstawowej wersji jak wypisałam,
 a wasze uwagi były wpisywane bezpośrednio w komentarzach na trello.  
 Dziękuję za uwagę. Rozpis aplikacji wygląda mniej więcej tak: http://1drv.ms/1L28uSa  
 I w tym folderze będą wszystkie rzeczy koncepcyjne. Jak działa funkcja taka i taka.. Fabuła itd..   
-Dodawane aż do niedzieli. Jednakże na razie skupiamy się na rzeczach na trello.  
+Dodawane aż do niedzieli. Jednakże na razie skupiamy się na rzeczach na trello."  
