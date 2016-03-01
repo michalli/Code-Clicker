@@ -1,0 +1,16 @@
+﻿Build started 2016-03-01 17:04:14.
+     1>Project "F:\NAUKA\git\Code-Clicker\Aplikacja\Code-Clicker\Code-Clicker\Code-Clicker.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         F:\NAUKA\PROGRAMY\Visual Studio Professional 2013\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+     1>MyForm.cpp(6): warning C4829: Możliwe niepoprawne parametry funkcji main. Rozważ użycie "int main(Platform::Array<Platform::String^>^ argv)"
+     1>MyForm.cpp(9): error C2653: "Project1" : nie jest nazwą klasa lub nazwą przestrzeni nazw
+     1>MyForm.cpp(9): error C2065: "MyForm" : niezadeklarowany identyfikator
+     1>MyForm.cpp(9): error C2146: błąd składniowy : brakuje ";" przed identyfikatorem "form"
+     1>MyForm.cpp(9): error C2065: "form" : niezadeklarowany identyfikator
+     1>MyForm.cpp(10): error C2065: "form" : niezadeklarowany identyfikator
+     1>Done Building Project "F:\NAUKA\git\Code-Clicker\Aplikacja\Code-Clicker\Code-Clicker\Code-Clicker.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.37
