@@ -11,7 +11,7 @@ Założyłam nam folder na trello..
 Zarejestrujcie się i zapraszam pod https://trello.com/…/codec…/5add080bc457f050adbfdc3925f264fc  
 Proszę o uzupełnianie zadań zgodnie z założeniami i wrzucenie tego na repo.  
   
-Harmonogram oddania:  
+**Harmonogram oddania:**  
 czwartek godz 00:00 - graficy  
 niedziela godz 18:00 - programiści  
 poniedziałek godz 20.00 - zespół testerów  
