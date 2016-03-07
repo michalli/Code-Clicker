@@ -1,0 +1,10 @@
+﻿Build started 2016-03-05 22:32:57.
+     1>Project "C:\Users\Michał\Desktop\Code-Clicker\Code-Clicker\Code-Clicker.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1185,5): warning MSB8012: TargetPath(C:\Users\Michał\Desktop\Code-Clicker\Release\Code-Clicker.exe) does not match the Linker's OutputFile property value (). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>Link:
+         Code-Clicker.vcxproj -> C:\Users\Michał\Desktop\Code-Clicker\Release\Code-Clicker.exe
+     1>Done Building Project "C:\Users\Michał\Desktop\Code-Clicker\Code-Clicker\Code-Clicker.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.08
