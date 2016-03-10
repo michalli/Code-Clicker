@@ -18,10 +18,70 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="hire.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="hire.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <Filter>Pliki zasobów</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hire.resx">
+      <Filter>Pliki zasobów</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Code-Clicker.rc">
+      <Filter>Pliki zasobów</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\grafika\0.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\1.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\2.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\3.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\4.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\5.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\6.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\7.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\8.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\9.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\kropka.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
+    <Image Include="..\..\grafika\przecinek.png">
+      <Filter>Pliki zasobów</Filter>
+    </Image>
   </ItemGroup>
 </Project>
