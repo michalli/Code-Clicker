@@ -1,5 +1,6 @@
 #pragma once
 #include "hire.h"//po³¹czenie z hire.h
+#include <cmath>
 using namespace System::IO;//biblioteka zwi¹zana z zapisywaniem do plików
 namespace CodeClicker {
 
@@ -22,9 +23,24 @@ namespace CodeClicker {
 			code = 0;
 			cash = 0;
 			codefactor = 1;
-			cashfactor = 25;
-			counter = 0;
+			cashfactor = 2;
 			employee1 = false;
+			employee1factor = 1;
+			employee1progress = 0;
+			employee1speed = 7;
+			employee2 = false;
+			employee2factor = 2;
+			employee2progress = 0;
+			employee2speed = 10;
+			employee2premium = 0;
+		}
+
+		void passdata(int paid,bool e1, bool e2){
+			//przekazywanie
+			cash -= paid;
+			refresh();
+			if (e1 != employee1 && e1){ employee1 = e1; Phired1->Visible = true; }
+			if (e2 != employee2 && e2){ employee2 = e2; Phired2->Visible = true; }
 		}
 	protected:
 		/// <summary>
@@ -45,17 +61,27 @@ namespace CodeClicker {
 	protected:
 
 	private:
-		/// <summary>
+
 		int code;//iloœæ kodu
 		int	cash;//iloœæ pieniêdzy
 		int	codefactor;//wspó³czynnik: ile kodu za jedno klikniêcie
 		int	cashfactor;//wspó³czynnik: ile kasy za liniê kodu
-		int	counter;//zmienna pomocnicza(pasek postêpu)
+				
 		bool employee1;//czy pomocnik nr 1 jest wynajêty?
+		int employee1factor;//wydajnosc pomocnika nr 1
+		int employee1progress;//progres pomocnika nr 1
+		int employee1speed;//szybkoœæ pomocnika nr 1
 
-	private: System::Windows::Forms::Timer^  Tcoding;
+		bool employee2;//czy pomocnik nr 2 jest wynajêty?
+		int employee2factor;//wydajnosc pomocnika nr 2
+		int employee2progress;//progres pomocnika nr 2
+		int employee2speed;//szybkoœæ pomocnika nr 2
+		int employee2premium;//czêstotliwoœæ ¿¹dania premii przez pomocnika nr 2
+
+
 	private: System::Windows::Forms::PictureBox^  Pzl;
-	private: System::Windows::Forms::Button^  Bsave;
+
+
 	private: System::Windows::Forms::Button^  Bload;
 	private: System::Windows::Forms::PictureBox^  Icode0;
 	private: System::Windows::Forms::PictureBox^  Icode1;
@@ -80,16 +106,12 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Bcode;
 	private: System::Windows::Forms::PictureBox^  Lcode;
 	private: System::Windows::Forms::PictureBox^  Lcash;
-private: System::Windows::Forms::Button^  Bhireh;
-	private: System::Windows::Forms::PictureBox^  B1;
-	private: System::Windows::Forms::PictureBox^  B2;
-	private: System::Windows::Forms::PictureBox^  B3;
-	private: System::Windows::Forms::PictureBox^  B4;
-
-
-
-
-
+	private: System::Windows::Forms::PictureBox^  Bhire;
+	private: System::Windows::Forms::Timer^  Temployees;
+	private: System::Windows::Forms::PictureBox^  Bsave;
+	private: System::Windows::Forms::PictureBox^  Phired1;
+	private: System::Windows::Forms::PictureBox^  Phired2;
+	private: System::Windows::Forms::Label^  Lpremium1;
 
 	private: System::ComponentModel::IContainer^  components;
 
@@ -127,17 +149,16 @@ private: System::Windows::Forms::Button^  Bhireh;
 			this->Icash1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Pzl = (gcnew System::Windows::Forms::PictureBox());
 			this->Iavatar = (gcnew System::Windows::Forms::PictureBox());
-			this->Tcoding = (gcnew System::Windows::Forms::Timer(this->components));
-			this->Bsave = (gcnew System::Windows::Forms::Button());
 			this->Bload = (gcnew System::Windows::Forms::Button());
 			this->Bcode = (gcnew System::Windows::Forms::PictureBox());
 			this->Lcode = (gcnew System::Windows::Forms::PictureBox());
 			this->Lcash = (gcnew System::Windows::Forms::PictureBox());
-			this->Bhireh = (gcnew System::Windows::Forms::Button());
-			this->B1 = (gcnew System::Windows::Forms::PictureBox());
-			this->B2 = (gcnew System::Windows::Forms::PictureBox());
-			this->B3 = (gcnew System::Windows::Forms::PictureBox());
-			this->B4 = (gcnew System::Windows::Forms::PictureBox());
+			this->Bhire = (gcnew System::Windows::Forms::PictureBox());
+			this->Temployees = (gcnew System::Windows::Forms::Timer(this->components));
+			this->Bsave = (gcnew System::Windows::Forms::PictureBox());
+			this->Phired1 = (gcnew System::Windows::Forms::PictureBox());
+			this->Phired2 = (gcnew System::Windows::Forms::PictureBox());
+			this->Lpremium1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->BeginInit();
@@ -163,10 +184,10 @@ private: System::Windows::Forms::Button^  Bhireh;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bcode))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Lcode))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Lcash))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Icode9
@@ -365,46 +386,29 @@ private: System::Windows::Forms::Button^  Bhireh;
 			// 
 			this->Iavatar->BackColor = System::Drawing::SystemColors::Control;
 			this->Iavatar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Iavatar.Image")));
-			this->Iavatar->Location = System::Drawing::Point(12, 12);
+			this->Iavatar->Location = System::Drawing::Point(12, 34);
 			this->Iavatar->Name = L"Iavatar";
 			this->Iavatar->Size = System::Drawing::Size(200, 135);
 			this->Iavatar->TabIndex = 3;
 			this->Iavatar->TabStop = false;
 			// 
-			// Tcoding
-			// 
-			this->Tcoding->Interval = 70;
-			this->Tcoding->Tick += gcnew System::EventHandler(this, &MyForm::Tcoding_Tick);
-			// 
-			// Bsave
-			// 
-			this->Bsave->Location = System::Drawing::Point(634, 494);
-			this->Bsave->Name = L"Bsave";
-			this->Bsave->Size = System::Drawing::Size(112, 28);
-			this->Bsave->TabIndex = 2;
-			this->Bsave->Text = L"Zapisz";
-			this->Bsave->UseVisualStyleBackColor = true;
-			this->Bsave->Click += gcnew System::EventHandler(this, &MyForm::Bsave_Click_1);
-			// 
 			// Bload
 			// 
-			this->Bload->Enabled = false;
-			this->Bload->Location = System::Drawing::Point(513, 494);
+			this->Bload->Location = System::Drawing::Point(595, 104);
 			this->Bload->Name = L"Bload";
-			this->Bload->Size = System::Drawing::Size(112, 28);
+			this->Bload->Size = System::Drawing::Size(70, 65);
 			this->Bload->TabIndex = 3;
 			this->Bload->Text = L"Wczytaj";
 			this->Bload->UseVisualStyleBackColor = true;
-			this->Bload->Visible = false;
-			this->Bload->Click += gcnew System::EventHandler(this, &MyForm::Bload_Click_1);
+			this->Bload->Click += gcnew System::EventHandler(this, &MyForm::Bload_Click);
 			// 
 			// Bcode
 			// 
 			this->Bcode->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bcode.BackgroundImage")));
 			this->Bcode->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bcode.Image")));
-			this->Bcode->Location = System::Drawing::Point(70, 164);
+			this->Bcode->Location = System::Drawing::Point(58, 175);
 			this->Bcode->Name = L"Bcode";
-			this->Bcode->Size = System::Drawing::Size(154, 84);
+			this->Bcode->Size = System::Drawing::Size(145, 125);
 			this->Bcode->TabIndex = 4;
 			this->Bcode->TabStop = false;
 			this->Bcode->Click += gcnew System::EventHandler(this, &MyForm::Bcode_Click);
@@ -429,57 +433,67 @@ private: System::Windows::Forms::Button^  Bhireh;
 			this->Lcash->TabIndex = 45;
 			this->Lcash->TabStop = false;
 			// 
-			// Bhireh
+			// Bhire
 			// 
-			this->Bhireh->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhireh.BackgroundImage")));
-			this->Bhireh->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Bhire->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhire.BackgroundImage")));
+			this->Bhire->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhire.Image")));
+			this->Bhire->Location = System::Drawing::Point(218, 195);
+			this->Bhire->Name = L"Bhire";
+			this->Bhire->Size = System::Drawing::Size(154, 84);
+			this->Bhire->TabIndex = 51;
+			this->Bhire->TabStop = false;
+			this->Bhire->Click += gcnew System::EventHandler(this, &MyForm::Bhire_Click);
+			// 
+			// Temployees
+			// 
+			this->Temployees->Enabled = true;
+			this->Temployees->Interval = 400;
+			this->Temployees->Tick += gcnew System::EventHandler(this, &MyForm::Temployees_Tick);
+			// 
+			// Bsave
+			// 
+			this->Bsave->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bsave.BackgroundImage")));
+			this->Bsave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bsave.Image")));
+			this->Bsave->Location = System::Drawing::Point(676, 104);
+			this->Bsave->Name = L"Bsave";
+			this->Bsave->Size = System::Drawing::Size(70, 65);
+			this->Bsave->TabIndex = 52;
+			this->Bsave->TabStop = false;
+			this->Bsave->Click += gcnew System::EventHandler(this, &MyForm::Bsave_Click);
+			// 
+			// Phired1
+			// 
+			this->Phired1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired1.Image")));
+			this->Phired1->Location = System::Drawing::Point(422, 195);
+			this->Phired1->Name = L"Phired1";
+			this->Phired1->Size = System::Drawing::Size(84, 84);
+			this->Phired1->TabIndex = 53;
+			this->Phired1->TabStop = false;
+			this->Phired1->Visible = false;
+			// 
+			// Phired2
+			// 
+			this->Phired2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired2.Image")));
+			this->Phired2->Location = System::Drawing::Point(547, 195);
+			this->Phired2->Name = L"Phired2";
+			this->Phired2->Size = System::Drawing::Size(84, 84);
+			this->Phired2->TabIndex = 54;
+			this->Phired2->TabStop = false;
+			this->Phired2->Visible = false;
+			// 
+			// Lpremium1
+			// 
+			this->Lpremium1->AutoSize = true;
+			this->Lpremium1->BackColor = System::Drawing::Color::Transparent;
+			this->Lpremium1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Bhireh->Location = System::Drawing::Point(593, 85);
-			this->Bhireh->Name = L"Bhireh";
-			this->Bhireh->Size = System::Drawing::Size(153, 84);
-			this->Bhireh->TabIndex = 0;
-			this->Bhireh->UseVisualStyleBackColor = true;
-			this->Bhireh->Click += gcnew System::EventHandler(this, &MyForm::Bhire_Click);
-			// 
-			// B1
-			// 
-			this->B1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.BackgroundImage")));
-			this->B1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->B1->Location = System::Drawing::Point(239, 190);
-			this->B1->Name = L"B1";
-			this->B1->Size = System::Drawing::Size(28, 30);
-			this->B1->TabIndex = 48;
-			this->B1->TabStop = false;
-			// 
-			// B2
-			// 
-			this->B2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.BackgroundImage")));
-			this->B2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->B2->Location = System::Drawing::Point(273, 190);
-			this->B2->Name = L"B2";
-			this->B2->Size = System::Drawing::Size(28, 30);
-			this->B2->TabIndex = 47;
-			this->B2->TabStop = false;
-			// 
-			// B3
-			// 
-			this->B3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.BackgroundImage")));
-			this->B3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->B3->Location = System::Drawing::Point(307, 190);
-			this->B3->Name = L"B3";
-			this->B3->Size = System::Drawing::Size(28, 30);
-			this->B3->TabIndex = 46;
-			this->B3->TabStop = false;
-			// 
-			// B4
-			// 
-			this->B4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B4.BackgroundImage")));
-			this->B4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->B4->Location = System::Drawing::Point(341, 190);
-			this->B4->Name = L"B4";
-			this->B4->Size = System::Drawing::Size(28, 30);
-			this->B4->TabIndex = 50;
-			this->B4->TabStop = false;
+			this->Lpremium1->ForeColor = System::Drawing::Color::Red;
+			this->Lpremium1->Location = System::Drawing::Point(556, 282);
+			this->Lpremium1->Name = L"Lpremium1";
+			this->Lpremium1->Size = System::Drawing::Size(66, 14);
+			this->Lpremium1->TabIndex = 55;
+			this->Lpremium1->Text = L"premia 10z³!";
+			this->Lpremium1->Visible = false;
 			// 
 			// MyForm
 			// 
@@ -490,10 +504,11 @@ private: System::Windows::Forms::Button^  Bhireh;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(794, 572);
-			this->Controls->Add(this->B4);
-			this->Controls->Add(this->B1);
-			this->Controls->Add(this->B2);
-			this->Controls->Add(this->B3);
+			this->Controls->Add(this->Lpremium1);
+			this->Controls->Add(this->Phired2);
+			this->Controls->Add(this->Phired1);
+			this->Controls->Add(this->Bsave);
+			this->Controls->Add(this->Bhire);
 			this->Controls->Add(this->Lcash);
 			this->Controls->Add(this->Lcode);
 			this->Controls->Add(this->Iavatar);
@@ -502,11 +517,9 @@ private: System::Windows::Forms::Button^  Bhireh;
 			this->Controls->Add(this->Icode8);
 			this->Controls->Add(this->Bload);
 			this->Controls->Add(this->Icode7);
-			this->Controls->Add(this->Bsave);
 			this->Controls->Add(this->Icode6);
 			this->Controls->Add(this->Icode5);
 			this->Controls->Add(this->Icode4);
-			this->Controls->Add(this->Bhireh);
 			this->Controls->Add(this->Icode3);
 			this->Controls->Add(this->Icode2);
 			this->Controls->Add(this->Pzl);
@@ -556,18 +569,20 @@ private: System::Windows::Forms::Button^  Bhireh;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bcode))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Lcode))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Lcash))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired2))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e) {
 				 //przycisk kodowania
-				 Tcoding->Enabled = true;
-				 Bcode->Enabled = false;
+				 code += codefactor;
+				 cash = (codefactor*cashfactor) + cash;
+				 refresh();
 	}
 			 void refresh(){
 				 //odœwie¿anie wartoœci kasy i kodu
@@ -584,7 +599,9 @@ private: System::Windows::Forms::Button^  Bhireh;
 					 cashtab[i] = help % 10;
 					 help /= 10;
 				 }
-				 if (cashindex>0)Icash0->Load("grafika\\" + cashtab[0] + ".png"); else Icash0->Visible = false;
+				 if (cashindex>0)
+					 Icash0->Load("grafika\\" + cashtab[0] + ".png"); 
+				 else Icash0->Visible = false;
 				 if (cashindex > 1){
 					 Icash1->Load("grafika\\" + cashtab[1] + ".png"); 
 					 Icash1->Visible = true;
@@ -692,71 +709,91 @@ private: System::Windows::Forms::Button^  Bhireh;
 				 }
 				 else Icode9->Visible = false;
 			 }
-private: System::Void Tcoding_Tick(System::Object^  sender, System::EventArgs^  e) {
-			 //pasek postêpu kodowania
-			 if (counter>1)B1->Load("grafika\\mini.png");
-			 if (counter>3)B2->Load("grafika\\mini.png");
-			 if (counter>5)B3->Load("grafika\\mini.png");
-			 if (counter>7)B4->Load("grafika\\mini.png");
-			 if (counter < 10)
-				 counter++;
-				if (counter == 10){
-					code+=codefactor;
-					cash=(codefactor*cashfactor)+cash;
-					counter = 0;
-					Tcoding->Enabled = false;
-					Bcode->Enabled = true;
-					B1->Load("grafika\\minit³o.png");
-					B2->Load("grafika\\minit³o.png");
-					B3->Load("grafika\\minit³o.png");
-					B4->Load("grafika\\minit³o.png");
-					refresh();
-				}
-}
-private: System::Void Bload_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 /*
-			 // Adres pliku
-			 String^ fileName = "F:\\NAUKA\\git\\Code-Clicker\\Code-Clicker\\data.txt";
-			 //Tworzenie pliku do odczytu
-			 StreamReader^ sw = gcnew StreamReader(fileName);
-			 //Wczytawanie danych z pliku
-			 String^ X;
-			 String^ Y;
-			 int i = 0;
-			 //Zak³adam ¿e ka¿da dana kolejna zmienna jest umieszczana w kolejnej linijce
-			 while (!sw->EndOfStream)
-			 {
-				 if (i = 0)
-				 X = (sw->ReadLine());
-				 else
-				 if (i = 1)
-				 Y = (sw->ReadLine());
-				 i++;
+private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //wczytanie gry
+			 try{
+				 String^ fileName = "data.ccr";
+				 FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
+				 StreamReader^ sw = gcnew StreamReader(fs);
+				 int boolean;
+				 while (sw->Peek() >= 0)
+				 {
+					 Int32::TryParse(sw->ReadLine(), code);
+					 Int32::TryParse(sw->ReadLine(), cash);
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean==1)
+					 {
+						 employee1 = true;
+						 Phired1->Visible = true;
+					 }
+					 else{
+						 employee1 = false;
+						 Phired1->Visible = false;
+					 }			 
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean==1)
+					 {
+						 employee2 = true;
+						 Phired2->Visible = true;
+					 }
+					 else{
+						 employee2 = false;
+						 Phired2->Visible = false;
+					 }
+				 }
+				 refresh();
+				 sw->Close();
 			 }
-			 LTcash->Text = Y->ToString();
-			 //code = X;
-			 //cash = Y;
-			 refresh();
-			 //Zamykamy plik
-			 sw->Close();
-			 */
+			 catch (const FileNotFoundException^ e){
+				 MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
+			 }			 
 }
-private: System::Void Bsave_Click_1(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //zapis gry
-			 String^ fileName = "data.txt";
+			 String^ fileName = "data.ccr";
 			 StreamWriter^ sw = gcnew StreamWriter(fileName);
 			 sw->WriteLine(code);
 			 sw->WriteLine(cash);
-			 sw->WriteLine(codefactor);
-			 sw->WriteLine(cashfactor);
 			 if (employee1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (employee2) sw->WriteLine(1); else sw->WriteLine(0);
 			 sw->Close();
 }
-
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie nowej formatki
 			 hire^ hiredialog = gcnew hire;
+			 hiredialog->passedcash = cash;
+			 hiredialog->check(employee1, employee2);
 			 hiredialog->ShowDialog();
+			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(),hiredialog->getemployee2());
+			 hiredialog->passedcash = 0;
+			 refresh();
+}
+private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
+			 //praca pomocników
+			 if (employee1progress == employee1speed){				
+				 code += employee1factor;
+				 cash += ((employee1factor*cashfactor) / 2);
+				 refresh();
+				 employee1progress = 0;		 
+			 }
+			 if (employee1)employee1progress++;
+			 if (employee2progress == employee2speed){
+				 code += employee2factor;
+				 cash += ((employee2factor*cashfactor) / 2);
+				 refresh();
+				 employee2progress = 0;
+				 if (employee2premium >= 15 && cash>=10){
+					 cash -= 10;
+					 Lpremium1->Visible = true;
+					 employee2premium = 0;
+					 refresh();
+				 }
+				 else{
+					 employee2premium++;
+					 Lpremium1->Visible = false;
+				 } 
+			 }
+			 if (employee2)employee2progress++;
 }
 };
 }
