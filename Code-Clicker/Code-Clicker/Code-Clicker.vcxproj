@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="hire.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hire.h">
@@ -92,6 +93,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="upgradefirm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="hire.resx">
@@ -99,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradefirm.resx">
+      <DependentUpon>upgradefirm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
