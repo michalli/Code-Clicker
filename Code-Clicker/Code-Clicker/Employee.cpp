@@ -1,7 +1,5 @@
 #include "Employee.h"
 
-//TODO do jednego pliku
-
 namespace CodeClicker {
 
 	Employee::Employee(MyForm^ _form, int _number, int _factor, int _speed, int _pay, System::Drawing::Image^ _image, System::String^ _nameFontFamilyName, System::Drawing::Size _nameSize, System::String^ _name, System::Drawing::Size _roleSize, System::String^ _role, System::Drawing::Size _costSize, System::Drawing::Size _upKeepSize, System::String^ _upKeepText)
@@ -82,24 +80,21 @@ namespace CodeClicker {
 
 	System::Void Employee::Bhire_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		form->hiredialog->paid += pay;
-		form->hiredialog->cash -= form->hiredialog->paid; //TODO cash jest w myForm i hire
+		form->cash -= pay;
 		
 		isHired = true;
 
-		form->hiredialog->refreshEmployeesPictures();
+		form->refreshEmployeesPictures();
+		form->refreshEmployeesHireButton();
 	}
 
-	void Employee::refreshPictureBox()
+	void Employee::refreshPictureBox() //TODO nazwa
 	{
-		if (form->hiredialog->cash < pay)
-			Bhire->Visible = false;
-		//Bhire1->Visible = false; ??? zawsze??? [ tak by³o wczeœniej ]
+		form->Phireds[number]->Visible = isHired;
+	}
+	void Employee::refreshHireButton()
+	{
+			Bhire->Visible = (form->cash >= pay); //TODO Ile razy pracownik mo¿e byæ wynajêty? [KSZ]
 	}
 
-	void Employee::check()
-	{
-		if (form->hiredialog->cash >= pay && !isHired)
-			Bhire->Visible = true;
-	}
 }

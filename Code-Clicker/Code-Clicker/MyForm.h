@@ -7,13 +7,14 @@
 
 namespace CodeClicker {
 
-ref class Employee;
-ref class EmployeePremium;
-ref class EmployeeCycle;
-ref class EmployeePoor;
-ref class hire;
+	ref class Employee;
+	ref class EmployeePremium;
+	ref class EmployeeCycle;
+	ref class EmployeePoor;
+	ref class hire;
 
-	//TODO blokada klawiszy, np. enter otwiera okno
+	//TODO blokada klawiszy, teraz np. enter otwiera okno
+	//TODO klawisz esc - zamykanie okna
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -33,7 +34,7 @@ ref class hire;
 		static const int employeesCount = 4;
 		static System::ComponentModel::ComponentResourceManager^  resources;
 
-		array<Employee^>^  employees; //TODO ³adniejszy sposób?
+		array<Employee^>^ employees; //TODO ³adniejszy sposób? [KSZ]
 
 		hire^ hiredialog;
 
@@ -52,9 +53,9 @@ ref class hire;
 	public:
 		MyForm(void);//konstruktor
 
-		void check(int _cash); //TODO nazwa
+		void refreshEmployeesPictures();
+		void refreshEmployeesHireButton();
 
-		void passdata(int paid);
 	protected:
 		/// <summary>
 		/// Wyczyœæ wszystkie u¿ywane zasoby.
@@ -68,13 +69,7 @@ ref class hire;
 		}
 
 	private: System::Windows::Forms::PictureBox^  Iavatar;
-
-	protected:
-
-	protected:
-
-	
-
+			 //TODO do tablicy
 	private: System::Windows::Forms::PictureBox^  Pzl;
 	private: System::Windows::Forms::PictureBox^  Icode0;
 	private: System::Windows::Forms::PictureBox^  Icode1;
@@ -102,10 +97,8 @@ ref class hire;
 	private: System::Windows::Forms::PictureBox^  Bhire;
 	private: System::Windows::Forms::Timer^  Temployees;
 	private: System::Windows::Forms::PictureBox^  Bsave;
-	private: array<System::Windows::Forms::PictureBox^>^  Phireds; //TODO dokoñcz przed wrzuceniem Krzychu
-	private: System::Windows::Forms::PictureBox^  Phired2;
-	private: System::Windows::Forms::PictureBox^  Phired3;
-	private: System::Windows::Forms::PictureBox^  Phired4;
+			 //TODO do Employee
+	public: array<System::Windows::Forms::PictureBox^>^  Phireds;
 	private: System::Windows::Forms::Label^  Lpremium;
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
 	private: System::Windows::Forms::Panel^  Plogo;
@@ -1085,7 +1078,6 @@ ref class hire;
 
 			 void InitializeManualComponent(void)
 			 {
-				 //TODO Krzychu przed wrzuceniem czy dzia³a
 				 this->Phireds = gcnew array<System::Windows::Forms::PictureBox^>(employeesCount);
 
 				 for (int i = 0; i < employeesCount; i++)

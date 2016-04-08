@@ -1,11 +1,6 @@
 #pragma once
 
-#include "Employee.h"
-#include "MyForm.h"
-
 namespace CodeClicker {
-
-	ref class Employee;
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -14,23 +9,17 @@ namespace CodeClicker {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-
 	/// <summary>
 	/// Podsumowanie informacji o hire
 	/// </summary>
 	public ref class hire : public System::Windows::Forms::Form
 	{
-		//TODO do shared
-		static const int employeesCount = 4;
+
 	public:
-		hire(void);
-		hire(array<Employee^>^);
-
-		int getpaid() {
-			return paid;
+		hire(void)
+		{
+			InitializeComponent();
 		}
-
-		void refreshEmployeesPictures();
 
 	protected:
 		/// <summary>
@@ -54,13 +43,6 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  L4laziness;
 	private: System::Windows::Forms::Label^  L4rebel;
 
-	private:
-		array<Employee^>^  employees;
-	public:
-		int paid;
-		int cash;
-
-
 	private: System::Windows::Forms::PictureBox^  Bback;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
 
@@ -76,7 +58,8 @@ namespace CodeClicker {
 			 {
 				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(hire::typeid));
 
-				 //TODO do klasy
+				 //TODO do employee
+				 //TODO do tablicy
 
 				 this->P1 = (gcnew System::Windows::Forms::PictureBox());
 				 this->P2 = (gcnew System::Windows::Forms::PictureBox());
@@ -259,10 +242,11 @@ namespace CodeClicker {
 
 			 }
 #pragma endregion
+
 	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
 		//przycisk wstecz
 		this->Hide();
 	}
-	};
 
+	};
 }

@@ -1,19 +1,17 @@
 #pragma once
 
 #include "MyForm.h"
-#include "hire.h"//po³¹czenie z hire.h
-
 
 namespace CodeClicker {
 
-ref class MyForm;
-ref class hire;
+	ref class MyForm;
 
-	ref class Employee
+	public ref class Employee
 	{
 	public:
-		//TODO operator bool - zwracana wartoœæ isHired
-		MyForm^ form; //TODO!!! referencja
+		//TODO operator bool - zwracana wartoœæ isHired [KSZ]
+
+		MyForm^ form;
 		int number;
 
 		int pay;
@@ -31,8 +29,7 @@ ref class hire;
 	public:
 		Employee(MyForm^ form, int number, int factor, int speed, int pay, System::Drawing::Image^ image, System::String^ nameFontFamilyName, System::Drawing::Size nameSize, System::String^ name, System::Drawing::Size roleSize, System::String^ role, System::Drawing::Size costSize, System::Drawing::Size upKeepSize, System::String^ upKeepText);
 
-		void check();
-
+		void refreshHireButton();
 		void refreshPictureBox();
 
 	protected:
@@ -40,8 +37,7 @@ ref class hire;
 	};
 
 
-	ref class EmployeeCycle :
-		public Employee
+	ref class EmployeeCycle : public Employee
 	{
 	public:
 		int cycle; //modyfikator zdarzeñ
@@ -51,8 +47,7 @@ ref class hire;
 	};
 
 
-	ref class EmployeePoor :
-		public Employee
+	ref class EmployeePoor : public Employee
 	{
 	public:
 		bool poor; //czy staæ na wyp³atê
@@ -62,8 +57,7 @@ ref class hire;
 	};
 
 
-	ref class EmployeePremium :
-		public Employee
+	ref class EmployeePremium : public Employee
 	{
 	public:
 		int premium; //czêstotliwoœæ ¿¹dania premii

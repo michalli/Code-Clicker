@@ -21,7 +21,7 @@ namespace CodeClicker {
 		InitializeComponent();
 		InitializeManualComponent();
 
-		hiredialog = gcnew hire(employees);
+		hiredialog = gcnew hire();
 
 		employees = gcnew array<Employee^>(employeesCount);
 		employees[0] = gcnew Employee(this, 0, 1, 7, 100, safe_cast<Image^>(resources->GetObject(L"Bhire0.Image")), L"Buxton Sketch", System::Drawing::Size(196, 39), L"Zosia Samosia", System::Drawing::Size(172, 19), L"pocz¹tkuj¹ca programistka", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
@@ -40,29 +40,18 @@ namespace CodeClicker {
 		cycle = 0;
 	}
 
-	void MyForm::check(int _cash) {
-		cash = _cash;
+	void MyForm::refreshEmployeesHireButton()
+	{
 		for (int i = 0; i < employeesCount; i++)
-			employees[i]->check(); //TODO nazwa
+			employees[i]->refreshHireButton();
 	}
-
-	void MyForm::passdata(int paid) {
-		//przekazywanie
-		cash -= paid;
-		refresh();
+	void MyForm::refreshEmployeesPictures()
+	{
 		for (int i = 0; i < employeesCount; i++)
-			if (employees[i]->isHired)
-				Phireds[i]->Visible = true;
+			employees[i]->refreshPictureBox();
 	}
 
-	System::Void MyForm::Bcode_Click(System::Object^  sender, System::EventArgs^  e) {
-		//przycisk kodowania
-		code += codefactor;
-		cash = (codefactor*cashfactor) + cash;
-		refresh();
-	}
-
-	void MyForm::refresh() {
+	void MyForm::refresh() { //TODO nazwa co refresh
 		//odœwie¿anie wartoœci kasy i kodu
 		int cashtab[10], codetab[10];
 		int cashindex, codeindex, help;
@@ -77,6 +66,7 @@ namespace CodeClicker {
 			cashtab[i] = help % 10;
 			help /= 10;
 		}
+		//TODO mapowanie [KSZ]
 		if (cashindex > 0)
 			Icash0->Load("grafika\\" + cashtab[0] + ".png");
 		else Icash0->Visible = false;
@@ -188,6 +178,13 @@ namespace CodeClicker {
 		else Icode9->Visible = false;
 	}
 
+	System::Void MyForm::Bcode_Click(System::Object^  sender, System::EventArgs^  e) {
+		//przycisk kodowania
+		code += codefactor;
+		cash = (codefactor*cashfactor) + cash;
+		refresh();
+	}
+
 	System::Void MyForm::Bload_Click(System::Object^  sender, System::EventArgs^  e) {
 		//wczytanie gry
 		try {
@@ -243,13 +240,14 @@ namespace CodeClicker {
 			refreshtested();
 			sw->Close();
 		}
-		catch (const FileNotFoundException^ e) {
+		catch (const FileNotFoundException^) {
 			MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
 		}
 	}
 
 	System::Void MyForm::Bsave_Click(System::Object^  sender, System::EventArgs^  e) {
 		//zapis gry
+		//TODO xml [KSZ]
 		String^ fileName = "data.ccr";
 		StreamWriter^ sw = gcnew StreamWriter(fileName);
 		sw->WriteLine(code);
@@ -264,21 +262,14 @@ namespace CodeClicker {
 
 	System::Void MyForm::Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 		//otwarcie formatki z najemnikami
-		//TODO formatka jako pole klasy, tutaj tylko otwarcie
+		
+		refreshEmployeesHireButton();
 		hiredialog->ShowDialog();
-		/*bool* employeesHired = new bool[employeesCount];
-		for (int i = 0; i < employeesCount; i++)
-		employeesHired[i] = employees[0]->isHired;*/
-		check(cash);
-
-		passdata(hiredialog->getpaid()); //TODO refresh w œrodku
-
-		refresh();
 	}
 
 	void MyForm::refreshtested() {
-		//TODO mapowanie
 		//odœwie¿anie wartoœci przetestowanych linii
+		//TODO mapowanie [KSZ]
 		int testtab[10];
 		int testindex, help;
 		testindex = 1;
@@ -383,14 +374,14 @@ namespace CodeClicker {
 				if (cash - employees[3]->factor * 5 > 0) {
 					cash -= employees[3]->factor * 5;
 					Lpoor->Visible = false;
-					Phired4->Load("grafika\\testermini.png");
+					Phireds[3]->Load("grafika\\testermini.png");
 					Ldeterminated->Visible = false;
 					Llazy->Visible = false;
 				}
 				else {
 					((EmployeePoor^)(employees[3]))->poor = true;
 					Lpoor->Visible = true;
-					Phired4->Load("grafika\\testerminipoor.png");
+					Phireds[3]->Load("grafika\\testerminipoor.png");
 					Ldeterminated->Visible = false;
 					Llazy->Visible = false;
 				}
@@ -416,7 +407,7 @@ namespace CodeClicker {
 		{
 			if (employees[i]->progress == employees[i]->speed)
 			{
-				if (i != 3 || !((EmployeePoor^)(employees[3]))->poor) //TODO razem z tym wy¿ej metoda, dla employeePoor bêdzie nadpisana. Tak samo dla tych ni¿ej zrobiæ metody ró¿ne nadpisane dla ró¿nej klasy
+				if (i != 3 || !((EmployeePoor^)(employees[3]))->poor) //TODO razem z tym wy¿ej metoda, dla employeePoor bêdzie nadpisana. Tak samo dla tych ni¿ej zrobiæ metody ró¿ne nadpisane dla ró¿nej klasy [KSZ]
 				{
 					employees[i]->progress = 0;
 
@@ -430,7 +421,7 @@ namespace CodeClicker {
 					{
 						Labsent->Visible = false;
 						Ltrans->Visible = false;
-						Phired3->Load("grafika\\programista4mini.png");
+						Phireds[2]->Load("grafika\\programista4mini.png");
 					}
 
 					if (i == 1)
@@ -438,26 +429,26 @@ namespace CodeClicker {
 						if (((EmployeePremium^)(employees[1]))->premium >= 15 && cash >= 10) {
 							cash -= 10;
 							Lpremium->Visible = true;
-							Phired2->Load("grafika\\programista3minipremium.png");
+							Phireds[1]->Load("grafika\\programista3minipremium.png");
 							((EmployeePremium^)(employees[1]))->premium = 0;
 							refresh();
 						}
 						else {
 							((EmployeePremium^)(employees[1]))->premium++;
 							Lpremium->Visible = false;
-							Phired2->Load("grafika\\programista3mini.png");
+							Phireds[1]->Load("grafika\\programista3mini.png");
 						}
 					}
 					else if (i == 2)
 					{
 						if (((EmployeeCycle^)(employees[2]))->cycle % 3 == 0) {
 							Labsent->Visible = true;
-							Phired3->Load("grafika\\programista4miniabsent.png");
+							Phireds[2]->Load("grafika\\programista4miniabsent.png");
 						}
 						else {
 							if (((EmployeeCycle^)(employees[2]))->cycle % 5 == 0) {
 								Ltrans->Visible = true;
-								Phired3->Load("grafika\\programista4minitrans.png");
+								Phireds[2]->Load("grafika\\programista4minitrans.png");
 								code += employees[2]->factor * 2;
 								cash += (employees[2]->factor*cashfactor);
 							}
@@ -476,18 +467,18 @@ namespace CodeClicker {
 						if (cycle < 100) {
 							test += employees[3]->factor / 2;
 							Llazy->Visible = true;
-							Phired4->Load("grafika\\testerminilazy.png");
+							Phireds[3]->Load("grafika\\testerminilazy.png");
 						}
 						else if (cycle < 250) {
 							test += employees[3]->factor;
 							Llazy->Visible = false;
 							Ldeterminated->Visible = false;
-							Phired4->Load("grafika\\testermini.png");
+							Phireds[3]->Load("grafika\\testermini.png");
 						}
 						else {
 							test += employees[3]->factor * 10;
 							Ldeterminated->Visible = true;
-							Phired4->Load("grafika\\testerminidetermined.png");
+							Phireds[3]->Load("grafika\\testerminidetermined.png");
 						}
 					}
 
