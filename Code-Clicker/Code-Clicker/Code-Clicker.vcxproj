@@ -81,11 +81,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EmployeeControl.cpp" />
+    <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="EmployeeCycle.cpp" />
+    <ClCompile Include="EmployeePoor.cpp" />
+    <ClCompile Include="EmployeePremium.cpp" />
     <ClCompile Include="hire.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EmployeeControl.h" />
+    <ClInclude Include="Employee.h" />
+    <ClInclude Include="EmployeeCycle.h" />
+    <ClInclude Include="EmployeePoor.h" />
+    <ClInclude Include="EmployeePremium.h" />
     <ClInclude Include="hire.h">
       <FileType>CppForm</FileType>
     </ClInclude>
