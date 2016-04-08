@@ -22,12 +22,19 @@ namespace CodeClicker {
 		InitializeManualComponent();
 
 		hiredialog = gcnew hire();
+		upgradefirmDialog = gcnew upgradefirm();
 
 		employees = gcnew array<Employee^>(employeesCount);
 		employees[0] = gcnew Employee(this, 0, 1, 7, 100, safe_cast<Image^>(resources->GetObject(L"Bhire0.Image")), L"Buxton Sketch", System::Drawing::Size(196, 39), L"Zosia Samosia", System::Drawing::Size(172, 19), L"pocz¹tkuj¹ca programistka", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
 		employees[1] = gcnew EmployeePremium(this, 1, 2, 10, 400, safe_cast<Image^>(resources->GetObject(L"Bhire1.Image")), L"SketchFlow Print", System::Drawing::Size(264, 34), L"Mariusz Denko", System::Drawing::Size(80, 19), L"programista", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
 		employees[2] = gcnew EmployeeCycle(this, 2, 4, 15, 1000, safe_cast<Image^>(resources->GetObject(L"Bhire2.Image")), L"Segoe Print", System::Drawing::Size(277, 57), L"Alfred Kofeinka", System::Drawing::Size(170, 19), L"doœwiadczony programista", System::Drawing::Size(85, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
 		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, safe_cast<Image^>(resources->GetObject(L"Bhire3.Image")), L"Gabriola", System::Drawing::Size(169, 59), L"Janusz Apacz", System::Drawing::Size(42, 19), L"tester", System::Drawing::Size(85, 15), System::Drawing::Size(246, 15), L"wyp³ata po cyklu zale¿na od produktywnoœci");
+
+		firms = gcnew array<Firm^>(employeesCount);
+		firms[0] = gcnew Firm(this, 0, System::Drawing::Size(246, 13), L"Profesjonalne œrodowisko programistyczne", System::Drawing::Size(389, 13), L"programowanie w profesjonalnym œrodowisku zwiêksza presti¿ w oczach klientów", System::Drawing::Size(82, 13));
+		firms[1] = gcnew Firm(this, 1, System::Drawing::Size(101, 13), L"Nowe komputery", System::Drawing::Size(200, 13), L"nowy sprzêt zwiêksza szacunek klientów", System::Drawing::Size(91, 13));
+		firms[2] = gcnew Firm(this, 2, System::Drawing::Size(56, 13), L"Reklama", System::Drawing::Size(268, 13), L"dziêki rozg³osowi Twoja firma przyci¹ga wiêcej klientów", System::Drawing::Size(91, 13));
+		firms[3] = gcnew Firm(this, 3, System::Drawing::Size(99, 13), L"Remont siedziby", System::Drawing::Size(242, 13), L"profesjonalna siedziba zwiêksza zaufanie klientów", System::Drawing::Size(97, 13));
 
 		code = 0;
 		cash = 0;

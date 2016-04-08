@@ -2,16 +2,19 @@
 
 #include "hire.h"//po³¹czenie z hire.h
 #include "upgradefirm.h"//po³¹czenie z upgradefirm.h
-#include <cmath>
 #include "Employee.h"
+#include "Firm.h"
+#include <cmath>
 
 namespace CodeClicker {
 
+	ref class hire;
+	ref class upgradefirm;
 	ref class Employee;
 	ref class EmployeePremium;
 	ref class EmployeeCycle;
 	ref class EmployeePoor;
-	ref class hire;
+	ref class Firm;
 
 	//TODO blokada klawiszy, teraz np. enter otwiera okno
 	//TODO klawisz esc - zamykanie okna
@@ -35,8 +38,10 @@ namespace CodeClicker {
 		static System::ComponentModel::ComponentResourceManager^  resources;
 
 		array<Employee^>^ employees; //TODO ³adniejszy sposób? [KSZ]
+		array<Firm^>^ firms; //TODO ³adniejszy sposób? [KSZ]
 
 		hire^ hiredialog;
+		upgradefirm^ upgradefirmDialog;
 
 		int code;//iloœæ kodu
 		int	cash;//iloœæ pieniêdzy
