@@ -1,9 +1,11 @@
 #pragma once
 
-#include "EmployeeControl.h"
 #include "Employee.h"
+#include "MyForm.h"
 
 namespace CodeClicker {
+
+	ref class Employee;
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -12,7 +14,6 @@ namespace CodeClicker {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	ref class EmployeeControl;
 
 	/// <summary>
 	/// Podsumowanie informacji o hire
@@ -23,10 +24,8 @@ namespace CodeClicker {
 		static const int employeesCount = 4;
 	public:
 		hire(void);
+		hire(array<Employee^>^);
 
-		void check(int _cash, bool* e); //TODO nazwa
-
-		bool* getemployees(); //TODO nazwa
 		int getpaid() {
 			return paid;
 		}
@@ -56,8 +55,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  L4rebel;
 
 	private:
-		array<EmployeeControl^>^  employees;
-		array<Employee^>^  employees2;
+		array<Employee^>^  employees;
 	public:
 		int paid;
 		int cash;
@@ -263,7 +261,7 @@ namespace CodeClicker {
 #pragma endregion
 	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
 		//przycisk wstecz
-		this->Close();
+		this->Hide();
 	}
 	};
 

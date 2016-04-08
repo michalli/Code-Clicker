@@ -4,11 +4,16 @@
 #include "upgradefirm.h"//po³¹czenie z upgradefirm.h
 #include <cmath>
 #include "Employee.h"
-#include "EmployeePremium.h"
-#include "EmployeeCycle.h"
-#include "EmployeePoor.h"
 
 namespace CodeClicker {
+
+ref class Employee;
+ref class EmployeePremium;
+ref class EmployeeCycle;
+ref class EmployeePoor;
+ref class hire;
+
+	//TODO blokada klawiszy, np. enter otwiera okno
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -24,38 +29,32 @@ namespace CodeClicker {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)//konstruktor
-		{
-			InitializeComponent();
-			InitializeManualComponent();
 
-			code = 0;
-			cash = 0;
-			test = 0;
-			codefactor = 1;
-			cashfactor = 2;
-			testfactor = 5;
-			testing = false;
-			testprogress = 0;
-			cycle = 0;
-			employees = gcnew array<Employee^>(employeesCount);
-			employees[0] = gcnew Employee(1, 7);
-			employees[1] = gcnew EmployeePremium(2, 10);
-			employees[2] = gcnew EmployeeCycle(4, 15);
-			employees[3] = gcnew EmployeePoor(5, 25);
-		}
+		static const int employeesCount = 4;
+		static System::ComponentModel::ComponentResourceManager^  resources;
 
-		void passdata(int paid, bool e[]) {
-			//przekazywanie
-			cash -= paid;
-			refresh();
-			for (int i = 0; i < employeesCount; i++)
-				if (e[i] && !employees[i]->isHired)
-				{
-					employees[i]->isHired = true;
-					Phireds[i]->Visible = true;
-				}
-		}
+		array<Employee^>^  employees; //TODO ³adniejszy sposób?
+
+		hire^ hiredialog;
+
+		int code;//iloœæ kodu
+		int	cash;//iloœæ pieniêdzy
+		int test;//iloœæ przetestowanych linii
+		int	codefactor;//wspó³czynnik: ile kodu za jedno klikniêcie
+		int	cashfactor;//wspó³czynnik: ile kasy za liniê kodu
+		int testfactor;//wspó³czynnik: ile linii kodu za jedno klikniêcie testu
+
+		int testprogress;//pasek postêpu testowania
+		bool testing;//czy w trakcie testów?
+		int cycle;//progras cyklu
+
+
+	public:
+		MyForm(void);//konstruktor
+
+		void check(int _cash); //TODO nazwa
+
+		void passdata(int paid);
 	protected:
 		/// <summary>
 		/// Wyczyœæ wszystkie u¿ywane zasoby.
@@ -74,22 +73,7 @@ namespace CodeClicker {
 
 	protected:
 
-	private:
-
-		static const int employeesCount = 4;
-
-		int code;//iloœæ kodu
-		int	cash;//iloœæ pieniêdzy
-		int test;//iloœæ przetestowanych linii
-		int	codefactor;//wspó³czynnik: ile kodu za jedno klikniêcie
-		int	cashfactor;//wspó³czynnik: ile kasy za liniê kodu
-		int testfactor;//wspó³czynnik: ile linii kodu za jedno klikniêcie testu
-
-		int testprogress;//pasek postêpu testowania
-		bool testing;//czy w trakcie testów?
-		int cycle;//progras cyklu
-
-		array<Employee^>^  employees; //TODO ³adniejszy sposób?
+	
 
 	private: System::Windows::Forms::PictureBox^  Pzl;
 	private: System::Windows::Forms::PictureBox^  Icode0;
@@ -172,7 +156,6 @@ namespace CodeClicker {
 			 void InitializeComponent(void)
 			 {
 				 this->components = (gcnew System::ComponentModel::Container());
-				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 				 this->Icode9 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Icode8 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Icode7 = (gcnew System::Windows::Forms::PictureBox());
@@ -1102,8 +1085,6 @@ namespace CodeClicker {
 
 			 void InitializeManualComponent(void)
 			 {
-				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
-
 				 //TODO Krzychu przed wrzuceniem czy dzia³a
 				 this->Phireds = gcnew array<System::Windows::Forms::PictureBox^>(employeesCount);
 
@@ -1158,468 +1139,23 @@ namespace CodeClicker {
 				 this->Phireds[2]->Visible = false;
 			 }
 
-	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e) {
-		//przycisk kodowania
-		code += codefactor;
-		cash = (codefactor*cashfactor) + cash;
-		refresh();
-	}
-			 void refresh() {
-				 //odœwie¿anie wartoœci kasy i kodu
-				 int cashtab[10], codetab[10];
-				 int cashindex, codeindex, help;
-				 cashindex = 1;
-				 help = cash;
-				 while (help / 10 != 0) {
-					 cashindex++;
-					 help /= 10;
-				 }
-				 help = cash;
-				 for (int i = 0; i < cashindex; i++) {
-					 cashtab[i] = help % 10;
-					 help /= 10;
-				 }
-				 if (cashindex > 0)
-					 Icash0->Load("grafika\\" + cashtab[0] + ".png");
-				 else Icash0->Visible = false;
-				 if (cashindex > 1) {
-					 Icash1->Load("grafika\\" + cashtab[1] + ".png");
-					 Icash1->Visible = true;
-				 }
-				 else Icash1->Visible = false;
-				 if (cashindex > 2) {
-					 Icash2->Load("grafika\\" + cashtab[2] + ".png");
-					 Icash2->Visible = true;
-				 }
-				 else Icash2->Visible = false;
-				 if (cashindex > 3) {
-					 Icash3->Load("grafika\\" + cashtab[3] + ".png");
-					 Icash3->Visible = true;
-				 }
-				 else Icash3->Visible = false;
-				 if (cashindex > 4) {
-					 Icash4->Load("grafika\\" + cashtab[4] + ".png");
-					 Icash4->Visible = true;
-				 }
-				 else Icash4->Visible = false;
-				 if (cashindex > 5) {
-					 Icash5->Load("grafika\\" + cashtab[5] + ".png");
-					 Icash5->Visible = true;
-				 }
-				 else Icash5->Visible = false;
-				 if (cashindex > 6) {
-					 Icash6->Load("grafika\\" + cashtab[6] + ".png");
-					 Icash6->Visible = true;
-				 }
-				 else Icash6->Visible = false;
-				 if (cashindex > 7) {
-					 Icash7->Load("grafika\\" + cashtab[7] + ".png");
-					 Icash7->Visible = true;
-				 }
-				 else Icash7->Visible = false;
-				 if (cashindex > 8) {
-					 Icash8->Load("grafika\\" + cashtab[8] + ".png");
-					 Icash8->Visible = true;
-				 }
-				 else Icash8->Visible = false;
-				 if (cashindex > 9) {
-					 Icash9->Load("grafika\\" + cashtab[9] + ".png");
-					 Icash9->Visible = true;
-				 }
-				 else Icash9->Visible = false;
-				 codeindex = 1;
-				 help = code;
-				 while (help / 10 != 0) {
-					 codeindex++;
-					 help /= 10;
-				 }
-				 help = code;
-				 for (int i = 0; i < codeindex; i++) {
-					 codetab[i] = help % 10;
-					 help /= 10;
-				 }
-				 if (codeindex > 0) {
-					 Icode0->Load("grafika\\" + codetab[0] + ".png");
-					 Icode0->Visible = true;
-				 }
-				 else Icode0->Visible = false;
-				 if (codeindex > 1) {
-					 Icode1->Load("grafika\\" + codetab[1] + ".png");
-					 Icode1->Visible = true;
-				 }
-				 else Icode1->Visible = false;
-				 if (codeindex > 2) {
-					 Icode2->Load("grafika\\" + codetab[2] + ".png");
-					 Icode2->Visible = true;
-				 }
-				 else Icode2->Visible = false;
-				 if (codeindex > 3) {
-					 Icode3->Load("grafika\\" + codetab[3] + ".png");
-					 Icode3->Visible = true;
-				 }
-				 else Icode3->Visible = false;
-				 if (codeindex > 4) {
-					 Icode4->Load("grafika\\" + codetab[4] + ".png");
-					 Icode4->Visible = true;
-				 }
-				 else Icode4->Visible = false;
-				 if (codeindex > 5) {
-					 Icode5->Load("grafika\\" + codetab[5] + ".png");
-					 Icode5->Visible = true;
-				 }
-				 else Icode5->Visible = false;
-				 if (codeindex > 6) {
-					 Icode6->Load("grafika\\" + codetab[6] + ".png");
-					 Icode6->Visible = true;
-				 }
-				 else Icode6->Visible = false;
-				 if (codeindex > 7) {
-					 Icode7->Load("grafika\\" + codetab[7] + ".png");
-					 Icode7->Visible = true;
-				 }
-				 else Icode7->Visible = false;
-				 if (codeindex > 8) {
-					 Icode8->Load("grafika\\" + codetab[8] + ".png");
-					 Icode8->Visible = true;
-				 }
-				 else Icode8->Visible = false;
-				 if (codeindex > 9) {
-					 Icode9->Load("grafika\\" + codetab[9] + ".png");
-					 Icode9->Visible = true;
-				 }
-				 else Icode9->Visible = false;
-			 }
-	private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
-		//wczytanie gry
-		try {
-			String^ fileName = "data.ccr";
-			FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
-			StreamReader^ sw = gcnew StreamReader(fs);
-			int boolean;
-			while (sw->Peek() >= 0)
-			{
-				Int32::TryParse(sw->ReadLine(), code);
-				Int32::TryParse(sw->ReadLine(), cash);
-				Int32::TryParse(sw->ReadLine(), test);
-				Int32::TryParse(sw->ReadLine(), cycle);
-				Icycle9->BackColor = System::Drawing::Color::Transparent;
-				Icycle8->BackColor = System::Drawing::Color::Transparent;
-				Icycle7->BackColor = System::Drawing::Color::Transparent;
-				Icycle6->BackColor = System::Drawing::Color::Transparent;
-				Icycle5->BackColor = System::Drawing::Color::Transparent;
-				Icycle4->BackColor = System::Drawing::Color::Transparent;
-				Icycle3->BackColor = System::Drawing::Color::Transparent;
-				Icycle2->BackColor = System::Drawing::Color::Transparent;
-				Icycle1->BackColor = System::Drawing::Color::Transparent;
-				Icycle0->BackColor = System::Drawing::Color::Transparent;
-				if (cycle >= 30)
-					Icycle9->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 60)
-					Icycle8->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 90)
-					Icycle7->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 120)
-					Icycle6->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 150)
-					Icycle5->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 180)
-					Icycle4->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 210)
-					Icycle3->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 240)
-					Icycle2->BackColor = System::Drawing::Color::Orange;
-				if (cycle >= 270)
-					Icycle1->BackColor = System::Drawing::Color::Orange;
-				for (int i = 0; i < employeesCount; i++)
-				{
-					Int32::TryParse(sw->ReadLine(), boolean);
-					employees[i]->isHired = (boolean == 1);
-					Phireds[i]->Visible = (boolean == 1);
-				}
-				Int32::TryParse(sw->ReadLine(), boolean);
-				((EmployeePoor^)(employees[3]))->poor = (boolean == 1);
-				Lpoor->Visible = (boolean == 1);
-			}
-			refresh();
-			refreshtested();
-			sw->Close();
-		}
-		catch (const FileNotFoundException^ e) {
-			MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
-		}
-	}
-	private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e) {
-		//zapis gry
-		String^ fileName = "data.ccr";
-		StreamWriter^ sw = gcnew StreamWriter(fileName);
-		sw->WriteLine(code);
-		sw->WriteLine(cash);
-		sw->WriteLine(test);
-		sw->WriteLine(cycle);
-		for (int i = 0; i < employeesCount; i++)
-			sw->WriteLine(employees[i]->isHired ? 1 : 0);
-		sw->WriteLine(((EmployeePoor^)(employees[3]))->poor ? 1 : 0);
-		sw->Close();
-	}
-	private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
-		//otwarcie formatki z najemnikami
-		//TODO formatka jako pole klasy, tutaj tylko otwarcie
-		hire^ hiredialog = gcnew hire;
+	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e);
 
-		bool* employeesHired = new bool[employeesCount];
-		for (int i = 0; i < employeesCount; i++)
-			employeesHired[i] = employees[0]->isHired;
+			 void refresh();
 
-		hiredialog->check(cash, employeesHired);
-		hiredialog->ShowDialog();
-		passdata(hiredialog->getpaid(), hiredialog->getemployees());
-		refresh();
-	}
-			 void refreshtested() {
-				 //odœwie¿anie wartoœci przetestowanych linii
-				 int testtab[10];
-				 int testindex, help;
-				 testindex = 1;
-				 help = test;
-				 while (help / 10 != 0) {
-					 testindex++;
-					 help /= 10;
-				 }
-				 help = test;
-				 for (int i = 0; i < testindex; i++) {
-					 testtab[i] = help % 10;
-					 help /= 10;
-				 }
-				 if (testindex > 0)
-					 Itest0->Load("grafika\\" + testtab[0] + ".png");
-				 else Itest0->Visible = false;
-				 if (testindex > 1) {
-					 Itest1->Load("grafika\\" + testtab[1] + ".png");
-					 Itest1->Visible = true;
-				 }
-				 else Itest1->Visible = false;
-				 if (testindex > 2) {
-					 Itest2->Load("grafika\\" + testtab[2] + ".png");
-					 Itest2->Visible = true;
-				 }
-				 else Itest2->Visible = false;
-				 if (testindex > 3) {
-					 Itest3->Load("grafika\\" + testtab[3] + ".png");
-					 Itest3->Visible = true;
-				 }
-				 else Itest3->Visible = false;
-				 if (testindex > 4) {
-					 Itest4->Load("grafika\\" + testtab[4] + ".png");
-					 Itest4->Visible = true;
-				 }
-				 else Itest4->Visible = false;
-				 if (testindex > 5) {
-					 Itest5->Load("grafika\\" + testtab[5] + ".png");
-					 Itest5->Visible = true;
-				 }
-				 else Itest5->Visible = false;
-				 if (testindex > 6) {
-					 Itest6->Load("grafika\\" + testtab[6] + ".png");
-					 Itest6->Visible = true;
-				 }
-				 else Itest6->Visible = false;
-				 if (testindex > 7) {
-					 Itest7->Load("grafika\\" + testtab[7] + ".png");
-					 Itest7->Visible = true;
-				 }
-				 else Itest7->Visible = false;
-				 if (testindex > 8) {
-					 Itest8->Load("grafika\\" + testtab[8] + ".png");
-					 Itest8->Visible = true;
-				 }
-				 else Itest8->Visible = false;
-				 if (testindex > 9) {
-					 Itest9->Load("grafika\\" + testtab[9] + ".png");
-					 Itest9->Visible = true;
-				 }
-				 else Itest9->Visible = false;
-			 }
-	private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
-		//praca pomocników oraz testowanie i cykl
-		if (testprogress == 5) {
-			test += testfactor;
-			if (test > code) test = code;
-			Iprogress0->Visible = false;
-			Iprogress1->Visible = false;
-			Iprogress2->Visible = false;
-			Iprogress3->Visible = false;
-			refreshtested();
-			testprogress = 0;
-			Btest->Enabled = true;
-			testing = false;
-		}
-		if (testing) {
-			testprogress++;
-			if (testprogress == 1)Iprogress0->Visible = true;
-			if (testprogress == 2)Iprogress1->Visible = true;
-			if (testprogress == 3)Iprogress2->Visible = true;
-			if (testprogress == 4)Iprogress3->Visible = true;
-		}
-		if (cycle == 30)Icycle9->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 60)Icycle8->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 90)Icycle7->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 120)Icycle6->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 150)Icycle5->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 180)Icycle4->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 210)Icycle3->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 240)Icycle2->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 270)Icycle1->BackColor = System::Drawing::Color::Orange;
-		if (cycle == 300) {
-			Icycle0->BackColor = System::Drawing::Color::Orange;
-			Lcycle->Visible = true;
-			if (cash - (15 * (code - test)) >= 0)cash -= 15 * (code - test);
-			else cash = 0;
-			refresh();
-			cycle = 0;
-			if (employees[3]->isHired) {
-				if (cash - employees[3]->factor * 5 > 0) {
-					cash -= employees[3]->factor * 5;
-					Lpoor->Visible = false;
-					Phired4->Load("grafika\\testermini.png");
-					Ldeterminated->Visible = false;
-					Llazy->Visible = false;
-				}
-				else {
-					((EmployeePoor^)(employees[3]))->poor = true;
-					Lpoor->Visible = true;
-					Phired4->Load("grafika\\testerminipoor.png");
-					Ldeterminated->Visible = false;
-					Llazy->Visible = false;
-				}
-			}
-		}
-		else cycle++;
-		if (cycle == 5) {
-			Lcycle->Visible = false;
-			Icycle9->BackColor = System::Drawing::Color::Transparent;
-			Icycle8->BackColor = System::Drawing::Color::Transparent;
-			Icycle7->BackColor = System::Drawing::Color::Transparent;
-			Icycle6->BackColor = System::Drawing::Color::Transparent;
-			Icycle5->BackColor = System::Drawing::Color::Transparent;
-			Icycle4->BackColor = System::Drawing::Color::Transparent;
-			Icycle3->BackColor = System::Drawing::Color::Transparent;
-			Icycle2->BackColor = System::Drawing::Color::Transparent;
-			Icycle1->BackColor = System::Drawing::Color::Transparent;
-			Icycle0->BackColor = System::Drawing::Color::Transparent;
-		}
+	private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e);
 
+	private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e);
 
-		for (int i = 0; i < employeesCount; i++)
-		{
-			if (employees[i]->progress == employees[i]->speed)
-			{
-				if (i != 3 || !((EmployeePoor^)(employees[3]))->poor) //TODO razem z tym wy¿ej metoda, dla employeePoor bêdzie nadpisana. Tak samo dla tych ni¿ej zrobiæ metody ró¿ne nadpisane dla ró¿nej klasy
-				{
-					employees[i]->progress = 0;
+	private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e);
 
-					if (i == 0 || i == 1)
-					{
-						code += employees[i]->factor;
-						cash += ((employees[i]->factor *cashfactor) / 2);
-					}
+			 void refreshtested();
 
-					if (i == 2)
-					{
-						Labsent->Visible = false;
-						Ltrans->Visible = false;
-						Phired3->Load("grafika\\programista4mini.png");
-					}
+	private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e);
 
-					if (i == 1)
-					{
-						if (((EmployeePremium^)(employees[1]))->premium >= 15 && cash >= 10) {
-							cash -= 10;
-							Lpremium->Visible = true;
-							Phired2->Load("grafika\\programista3minipremium.png");
-							((EmployeePremium^)(employees[1]))->premium = 0;
-							refresh();
-						}
-						else {
-							((EmployeePremium^)(employees[1]))->premium++;
-							Lpremium->Visible = false;
-							Phired2->Load("grafika\\programista3mini.png");
-						}
-					}
-					else if (i == 2)
-					{
-						if (((EmployeeCycle^)(employees[2]))->cycle % 3 == 0) {
-							Labsent->Visible = true;
-							Phired3->Load("grafika\\programista4miniabsent.png");
-						}
-						else {
-							if (((EmployeeCycle^)(employees[2]))->cycle % 5 == 0) {
-								Ltrans->Visible = true;
-								Phired3->Load("grafika\\programista4minitrans.png");
-								code += employees[2]->factor * 2;
-								cash += (employees[2]->factor*cashfactor);
-							}
-						}
-						if (((EmployeeCycle^)(employees[2]))->cycle == 100)
-							((EmployeeCycle^)(employees[2]))->cycle = 0;
-						else
-							((EmployeeCycle^)(employees[2]))->cycle++;
-						if (((EmployeeCycle^)(employees[2]))->cycle % 5 != 0 && ((EmployeeCycle^)(employees[2]))->cycle % 3 != 0) {
-							code += ((EmployeeCycle^)(employees[2]))->cycle;
-							cash += ((employees[2]->factor*cashfactor) / 2);
-						}
-					}
-					else if (i == 3)
-					{
-						if (cycle < 100) {
-							test += employees[3]->factor / 2;
-							Llazy->Visible = true;
-							Phired4->Load("grafika\\testerminilazy.png");
-						}
-						else if (cycle < 250) {
-							test += employees[3]->factor;
-							Llazy->Visible = false;
-							Ldeterminated->Visible = false;
-							Phired4->Load("grafika\\testermini.png");
-						}
-						else {
-							test += employees[3]->factor * 10;
-							Ldeterminated->Visible = true;
-							Phired4->Load("grafika\\testerminidetermined.png");
-						}
-					}
+	private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e);
 
-					if (i == 3)
-					{
-						if (test > code)
-							test = code;
-					}
+	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e);
 
-					if (i == 0 || i == 1)
-						refresh();
-					if (i == 2)
-						refreshtested();
-				}
-			}
-
-			if (employees[i]->isHired)
-				if (i != 3 || !((EmployeePoor^)(employees[3]))->poor)
-					employees[i]->progress++;
-		}
-
-	}
-	private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e) {
-		//klikniêcie przycisku testowania
-		if (test < code) {
-			Ltest->Visible = false;
-			testing = true;
-			Btest->Enabled = false;
-		}
-		else Ltest->Visible = true;
-	}
-	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
-		//otwarcie formatki z ulepszeniami firmy
-		upgradefirm^ firmdialog = gcnew upgradefirm;
-		firmdialog->ShowDialog();
-	}
 	};
 }
