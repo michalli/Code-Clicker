@@ -17,7 +17,6 @@ namespace CodeClicker {
 
 	MyForm::MyForm(void)
 	{
-		resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 		InitializeComponent();
 		InitializeManualComponent();
 
@@ -25,10 +24,10 @@ namespace CodeClicker {
 		upgradefirmDialog = gcnew upgradefirm();
 
 		employees = gcnew array<Employee^>(employeesCount);
-		employees[0] = gcnew Employee(this, 0, 1, 7, 100, safe_cast<Image^>(resources->GetObject(L"Bhire0.Image")), L"Buxton Sketch", System::Drawing::Size(196, 39), L"Zosia Samosia", System::Drawing::Size(172, 19), L"pocz¹tkuj¹ca programistka", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[1] = gcnew EmployeePremium(this, 1, 2, 10, 400, safe_cast<Image^>(resources->GetObject(L"Bhire1.Image")), L"SketchFlow Print", System::Drawing::Size(264, 34), L"Mariusz Denko", System::Drawing::Size(80, 19), L"programista", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[2] = gcnew EmployeeCycle(this, 2, 4, 15, 1000, safe_cast<Image^>(resources->GetObject(L"Bhire2.Image")), L"Segoe Print", System::Drawing::Size(277, 57), L"Alfred Kofeinka", System::Drawing::Size(170, 19), L"doœwiadczony programista", System::Drawing::Size(85, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, safe_cast<Image^>(resources->GetObject(L"Bhire3.Image")), L"Gabriola", System::Drawing::Size(169, 59), L"Janusz Apacz", System::Drawing::Size(42, 19), L"tester", System::Drawing::Size(85, 15), System::Drawing::Size(246, 15), L"wyp³ata po cyklu zale¿na od produktywnoœci");
+		employees[0] = gcnew Employee(this, 0, 1, 7, 100, L"programista2.png", L"przyciskWynajmij.png", L"Buxton Sketch", 39, L"Zosia Samosia", L"pocz¹tkuj¹ca programistka", L"po³owa generowanych przez siebie zysków", L"");
+		employees[1] = gcnew EmployeePremium(this, 1, 2, 10, 400, L"programista3.png", L"przyciskWynajmij.png", L"SketchFlow Print", 34, L"Mariusz Denko", L"programista", L"po³owa generowanych przez siebie zysków", L"mo¿e ¿¹daæ premii");
+		employees[2] = gcnew EmployeeCycle(this, 2, 4, 15, 1000, L"programista4.png", L"przyciskWynajmij.png", L"Segoe Print", 57, L"Alfred Kofeinka", L"doœwiadczony programista", L"po³owa generowanych przez siebie zysków", L"czasem nie przychodzi do pracy\nmo¿e wpaœæ w trans");
+		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, L"tester.png", L"przyciskWynajmij.png", L"Gabriola", 59, L"Janusz Apacz", L"tester", L"wyp³ata po cyklu zale¿na od produktywnoœci", L"wzrost motywacji pod koniec cyklu\nbrak motywacji na pocz¹tku cyklu\nnie pracuje gdy brak pieniêdzy na wyp³atê");
 
 		firms = gcnew array<Firm^>(employeesCount);
 		firms[0] = gcnew Firm(this, 0, 500, 1, System::Drawing::Size(246, 13), L"Profesjonalne œrodowisko programistyczne", System::Drawing::Size(389, 13), L"programowanie w profesjonalnym œrodowisku zwiêksza presti¿ w oczach klientów", System::Drawing::Size(82, 13), System::Drawing::Size(241, 13));

@@ -10,8 +10,6 @@ namespace CodeClicker {
 		cost = _cost;
 		additionalMoneyPerCodeLine = _additionalMoneyPerCodeLine;
 
-		System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(upgradefirm::typeid));
-
 		B = (gcnew System::Windows::Forms::Button());
 		L = (gcnew System::Windows::Forms::Label());
 		Ldescription = (gcnew System::Windows::Forms::Label());
