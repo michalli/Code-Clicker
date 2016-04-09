@@ -84,9 +84,9 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
 		}
 #pragma endregion
+
 	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
 				 //przycisk wstecz
 				 this->Hide();

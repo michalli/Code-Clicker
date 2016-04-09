@@ -31,10 +31,10 @@ namespace CodeClicker {
 		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, safe_cast<Image^>(resources->GetObject(L"Bhire3.Image")), L"Gabriola", System::Drawing::Size(169, 59), L"Janusz Apacz", System::Drawing::Size(42, 19), L"tester", System::Drawing::Size(85, 15), System::Drawing::Size(246, 15), L"wyp³ata po cyklu zale¿na od produktywnoœci");
 
 		firms = gcnew array<Firm^>(employeesCount);
-		firms[0] = gcnew Firm(this, 0, System::Drawing::Size(246, 13), L"Profesjonalne œrodowisko programistyczne", System::Drawing::Size(389, 13), L"programowanie w profesjonalnym œrodowisku zwiêksza presti¿ w oczach klientów", System::Drawing::Size(82, 13));
-		firms[1] = gcnew Firm(this, 1, System::Drawing::Size(101, 13), L"Nowe komputery", System::Drawing::Size(200, 13), L"nowy sprzêt zwiêksza szacunek klientów", System::Drawing::Size(91, 13));
-		firms[2] = gcnew Firm(this, 2, System::Drawing::Size(56, 13), L"Reklama", System::Drawing::Size(268, 13), L"dziêki rozg³osowi Twoja firma przyci¹ga wiêcej klientów", System::Drawing::Size(91, 13));
-		firms[3] = gcnew Firm(this, 3, System::Drawing::Size(99, 13), L"Remont siedziby", System::Drawing::Size(242, 13), L"profesjonalna siedziba zwiêksza zaufanie klientów", System::Drawing::Size(97, 13));
+		firms[0] = gcnew Firm(this, 0, 500, 1, System::Drawing::Size(246, 13), L"Profesjonalne œrodowisko programistyczne", System::Drawing::Size(389, 13), L"programowanie w profesjonalnym œrodowisku zwiêksza presti¿ w oczach klientów", System::Drawing::Size(82, 13), System::Drawing::Size(241, 13));
+		firms[1] = gcnew Firm(this, 1, 1500, 3, System::Drawing::Size(101, 13), L"Nowe komputery", System::Drawing::Size(200, 13), L"nowy sprzêt zwiêksza szacunek klientów", System::Drawing::Size(91, 13), System::Drawing::Size(240, 13));
+		firms[2] = gcnew Firm(this, 2, 5000, 6, System::Drawing::Size(56, 13), L"Reklama", System::Drawing::Size(268, 13), L"dziêki rozg³osowi Twoja firma przyci¹ga wiêcej klientów", System::Drawing::Size(91, 13), System::Drawing::Size(262, 13));
+		firms[3] = gcnew Firm(this, 3, 20000, 10, System::Drawing::Size(99, 13), L"Remont siedziby", System::Drawing::Size(242, 13), L"profesjonalna siedziba zwiêksza zaufanie klientów", System::Drawing::Size(97, 13), System::Drawing::Size(273, 13));
 
 		code = 0;
 		cash = 0;
@@ -269,7 +269,7 @@ namespace CodeClicker {
 
 	System::Void MyForm::Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 		//otwarcie formatki z najemnikami
-		
+
 		refreshEmployeesHireButton();
 		hiredialog->ShowDialog();
 	}
@@ -524,5 +524,4 @@ namespace CodeClicker {
 		upgradefirm^ firmdialog = gcnew upgradefirm;
 		firmdialog->ShowDialog();
 	}
-
 }

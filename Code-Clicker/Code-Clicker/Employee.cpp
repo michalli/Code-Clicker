@@ -65,6 +65,7 @@ namespace CodeClicker {
 		form->hiredialog->Controls->Add(Lcost);
 		form->hiredialog->Controls->Add(Lupkeep);
 	}
+
 	EmployeePoor::EmployeePoor(MyForm^ _form, int _number, int _factor, int _speed, int _pay, System::Drawing::Image^ _image, System::String^ _nameFontFamilyName, System::Drawing::Size _nameSize, System::String^ _name, System::Drawing::Size _roleSize, System::String^ _role, System::Drawing::Size _costSize, System::Drawing::Size _upKeepSize, System::String^ _upKeepText) : Employee(_form, _number, _factor, _speed, _pay, _image, _nameFontFamilyName, _nameSize, _name, _roleSize, _role, _costSize, _upKeepSize, _upKeepText)
 	{
 		poor = false;
@@ -81,7 +82,7 @@ namespace CodeClicker {
 	System::Void Employee::Bhire_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		form->cash -= pay;
-		
+
 		isHired = true;
 
 		form->refreshEmployeesPictures();
@@ -94,7 +95,6 @@ namespace CodeClicker {
 	}
 	void Employee::refreshHireButton()
 	{
-			Bhire->Visible = (form->cash >= pay); //TODO Ile razy pracownik mo¿e byæ wynajêty? [KSZ]
+		Bhire->Visible = (form->cash >= pay); //TODO Ile razy pracownik mo¿e byæ wynajêty? [KSZ]
 	}
-
 }

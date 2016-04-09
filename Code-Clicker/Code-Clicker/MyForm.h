@@ -33,12 +33,11 @@ namespace CodeClicker {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-
 		static const int employeesCount = 4;
 		static System::ComponentModel::ComponentResourceManager^  resources;
 
 		array<Employee^>^ employees; //TODO ³adniejszy sposób? [KSZ]
-		array<Firm^>^ firms; //TODO ³adniejszy sposób? [KSZ]
+		array<Firm^>^ firms;
 
 		hire^ hiredialog;
 		upgradefirm^ upgradefirmDialog;
@@ -53,7 +52,6 @@ namespace CodeClicker {
 		int testprogress;//pasek postêpu testowania
 		bool testing;//czy w trakcie testów?
 		int cycle;//progras cyklu
-
 
 	public:
 		MyForm(void);//konstruktor
@@ -72,7 +70,6 @@ namespace CodeClicker {
 				delete components;
 			}
 		}
-
 	private: System::Windows::Forms::PictureBox^  Iavatar;
 			 //TODO do tablicy
 	private: System::Windows::Forms::PictureBox^  Pzl;
@@ -142,7 +139,6 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  Llazy;
 	private: System::Windows::Forms::Label^  Lpoor;
 	private: System::ComponentModel::IContainer^  components;
-
 			 /// </summary>
 
 
@@ -1077,7 +1073,6 @@ namespace CodeClicker {
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle0))->EndInit();
 				 this->ResumeLayout(false);
 				 this->PerformLayout();
-
 			 }
 #pragma endregion
 
