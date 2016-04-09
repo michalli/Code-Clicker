@@ -7,3 +7,5 @@
 /Code-Clicker/Code-Clicker/Release
 /Code-Clicker/Debug
 /Code-Clicker/Release
+*.opensdf
+/Code-Clicker/Code-Clicker.VC.db
