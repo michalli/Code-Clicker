@@ -10,10 +10,4 @@ namespace CodeClicker {
 	ref class EmployeePoor;
 	ref class Firm;
 
-	ref class dupa
-	{
-	public:
-		dupa();
-	};
-
 }

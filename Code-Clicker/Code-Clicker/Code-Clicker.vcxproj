@@ -82,7 +82,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dupa.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="Firm.cpp" />
     <ClCompile Include="hire.cpp" />
@@ -90,7 +89,7 @@
     <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dupa.h" />
+    <ClInclude Include="classes.h" />
     <ClInclude Include="Employee.h" />
     <ClInclude Include="Firm.h" />
     <ClInclude Include="hire.h">

@@ -6,7 +6,7 @@
 #include "Firm.h"
 #include <cmath>
 
-#include "dupa.h"
+#include "classes.h"
 
 namespace CodeClicker {
 	
@@ -1124,9 +1124,11 @@ namespace CodeClicker {
 				 this->Phireds[2]->Visible = false;
 			 }
 
-	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e);
-
 			 void refresh();
+
+			 void refreshtested();
+
+	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e);
 
@@ -1134,13 +1136,11 @@ namespace CodeClicker {
 
 	private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e);
 
-			 void refreshtested();
+	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e);
-
-	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e);
 
 	};
 }
