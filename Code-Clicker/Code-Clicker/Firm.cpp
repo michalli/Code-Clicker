@@ -2,6 +2,7 @@
 
 namespace CodeClicker {
 
+	//TODO wywaliæ niepotrzebne parametry
 	Firm::Firm(MyForm^ _form, int _number, int _cost, int _additionalMoneyPerCodeLine, System::Drawing::Size _LSize,
 		System::String^ _LText, System::Drawing::Size _DescriptionSize, System::String^ _DescriptionText,
 		System::Drawing::Size _CostSize, System::Drawing::Size _PerkSize)
