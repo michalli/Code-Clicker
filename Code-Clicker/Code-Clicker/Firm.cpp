@@ -2,15 +2,16 @@
 
 namespace CodeClicker {
 
-	Firm::Firm(MyForm^ _form, int _number, int _cost, int _additionalMoneyPerCodeLine, System::Drawing::Size _LSize, System::String^ _LText, System::Drawing::Size _DescriptionSize, System::String^ _DescriptionText, System::Drawing::Size _CostSize, System::Drawing::Size _PerkSize)
+	//TODO wywaliæ niepotrzebne parametry
+	Firm::Firm(MyForm^ _form, int _number, int _cost, int _additionalMoneyPerCodeLine, System::Drawing::Size _LSize,
+		System::String^ _LText, System::Drawing::Size _DescriptionSize, System::String^ _DescriptionText,
+		System::Drawing::Size _CostSize, System::Drawing::Size _PerkSize)
 	{
 		form = _form;
 		number = _number;
 
 		cost = _cost;
 		additionalMoneyPerCodeLine = _additionalMoneyPerCodeLine;
-
-		System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(upgradefirm::typeid));
 
 		B = (gcnew System::Windows::Forms::Button());
 		L = (gcnew System::Windows::Forms::Label());
