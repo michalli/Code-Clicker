@@ -100,7 +100,7 @@ namespace CodeClicker {
 			this->Bback->BackColor = System::Drawing::Color::Transparent;
 			this->Bback->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bback->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bback.Image")));
-			this->Bback->Location = System::Drawing::Point(244, 281);
+			this->Bback->Location = System::Drawing::Point(234, 279);
 			this->Bback->Name = L"Bback";
 			this->Bback->Size = System::Drawing::Size(143, 67);
 			this->Bback->TabIndex = 27;
