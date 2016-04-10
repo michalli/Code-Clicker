@@ -17,17 +17,23 @@ namespace CodeClicker {
 
 	MyForm::MyForm(void)
 	{
-		resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 		InitializeComponent();
 		InitializeManualComponent();
 
 		hiredialog = gcnew hire();
+		upgradefirmDialog = gcnew upgradefirm();
 
 		employees = gcnew array<Employee^>(employeesCount);
-		employees[0] = gcnew Employee(this, 0, 1, 7, 100, safe_cast<Image^>(resources->GetObject(L"Bhire0.Image")), L"Buxton Sketch", System::Drawing::Size(196, 39), L"Zosia Samosia", System::Drawing::Size(172, 19), L"pocz¹tkuj¹ca programistka", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[1] = gcnew EmployeePremium(this, 1, 2, 10, 400, safe_cast<Image^>(resources->GetObject(L"Bhire1.Image")), L"SketchFlow Print", System::Drawing::Size(264, 34), L"Mariusz Denko", System::Drawing::Size(80, 19), L"programista", System::Drawing::Size(79, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[2] = gcnew EmployeeCycle(this, 2, 4, 15, 1000, safe_cast<Image^>(resources->GetObject(L"Bhire2.Image")), L"Segoe Print", System::Drawing::Size(277, 57), L"Alfred Kofeinka", System::Drawing::Size(170, 19), L"doœwiadczony programista", System::Drawing::Size(85, 15), System::Drawing::Size(235, 15), L"po³owa generowanych przez siebie zysków");
-		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, safe_cast<Image^>(resources->GetObject(L"Bhire3.Image")), L"Gabriola", System::Drawing::Size(169, 59), L"Janusz Apacz", System::Drawing::Size(42, 19), L"tester", System::Drawing::Size(85, 15), System::Drawing::Size(246, 15), L"wyp³ata po cyklu zale¿na od produktywnoœci");
+		employees[0] = gcnew Employee(this, 0, 1, 7, 100, L"programista2.png", L"przyciskWynajmij.png", L"Buxton Sketch", 39, L"Zosia Samosia", L"pocz¹tkuj¹ca programistka", L"po³owa generowanych przez siebie zysków", L"");
+		employees[1] = gcnew EmployeePremium(this, 1, 2, 10, 400, L"programista3.png", L"przyciskWynajmij.png", L"SketchFlow Print", 34, L"Mariusz Denko", L"programista", L"po³owa generowanych przez siebie zysków", L"mo¿e ¿¹daæ premii");
+		employees[2] = gcnew EmployeeCycle(this, 2, 4, 15, 1000, L"programista4.png", L"przyciskWynajmij.png", L"Segoe Print", 57, L"Alfred Kofeinka", L"doœwiadczony programista", L"po³owa generowanych przez siebie zysków", L"czasem nie przychodzi do pracy\nmo¿e wpaœæ w trans");
+		employees[3] = gcnew EmployeePoor(this, 3, 5, 25, 3000, L"tester.png", L"przyciskWynajmij.png", L"Gabriola", 59, L"Janusz Apacz", L"tester", L"wyp³ata po cyklu zale¿na od produktywnoœci", L"wzrost motywacji pod koniec cyklu\nbrak motywacji na pocz¹tku cyklu\nnie pracuje gdy brak pieniêdzy na wyp³atê");
+
+		firms = gcnew array<Firm^>(employeesCount);
+		firms[0] = gcnew Firm(this, 0, 500, 1, System::Drawing::Size(246, 13), L"Profesjonalne œrodowisko programistyczne", System::Drawing::Size(389, 13), L"programowanie w profesjonalnym œrodowisku zwiêksza presti¿ w oczach klientów", System::Drawing::Size(82, 13), System::Drawing::Size(241, 13));
+		firms[1] = gcnew Firm(this, 1, 1500, 3, System::Drawing::Size(101, 13), L"Nowe komputery", System::Drawing::Size(200, 13), L"nowy sprzêt zwiêksza szacunek klientów", System::Drawing::Size(91, 13), System::Drawing::Size(240, 13));
+		firms[2] = gcnew Firm(this, 2, 5000, 6, System::Drawing::Size(56, 13), L"Reklama", System::Drawing::Size(268, 13), L"dziêki rozg³osowi Twoja firma przyci¹ga wiêcej klientów", System::Drawing::Size(91, 13), System::Drawing::Size(262, 13));
+		firms[3] = gcnew Firm(this, 3, 20000, 10, System::Drawing::Size(99, 13), L"Remont siedziby", System::Drawing::Size(242, 13), L"profesjonalna siedziba zwiêksza zaufanie klientów", System::Drawing::Size(97, 13), System::Drawing::Size(273, 13));
 
 		code = 0;
 		cash = 0;
@@ -178,6 +184,72 @@ namespace CodeClicker {
 		else Icode9->Visible = false;
 	}
 
+	void MyForm::refreshtested() {
+		//odœwie¿anie wartoœci przetestowanych linii
+		//TODO mapowanie [KSZ]
+		int testtab[10];
+		int testindex, help;
+		testindex = 1;
+		help = test;
+		while (help / 10 != 0) {
+			testindex++;
+			help /= 10;
+		}
+		help = test;
+		for (int i = 0; i < testindex; i++) {
+			testtab[i] = help % 10;
+			help /= 10;
+		}
+		if (testindex > 0)
+			Itest0->Load("grafika\\" + testtab[0] + ".png");
+		else Itest0->Visible = false;
+		if (testindex > 1) {
+			Itest1->Load("grafika\\" + testtab[1] + ".png");
+			Itest1->Visible = true;
+		}
+		else Itest1->Visible = false;
+		if (testindex > 2) {
+			Itest2->Load("grafika\\" + testtab[2] + ".png");
+			Itest2->Visible = true;
+		}
+		else Itest2->Visible = false;
+		if (testindex > 3) {
+			Itest3->Load("grafika\\" + testtab[3] + ".png");
+			Itest3->Visible = true;
+		}
+		else Itest3->Visible = false;
+		if (testindex > 4) {
+			Itest4->Load("grafika\\" + testtab[4] + ".png");
+			Itest4->Visible = true;
+		}
+		else Itest4->Visible = false;
+		if (testindex > 5) {
+			Itest5->Load("grafika\\" + testtab[5] + ".png");
+			Itest5->Visible = true;
+		}
+		else Itest5->Visible = false;
+		if (testindex > 6) {
+			Itest6->Load("grafika\\" + testtab[6] + ".png");
+			Itest6->Visible = true;
+		}
+		else Itest6->Visible = false;
+		if (testindex > 7) {
+			Itest7->Load("grafika\\" + testtab[7] + ".png");
+			Itest7->Visible = true;
+		}
+		else Itest7->Visible = false;
+		if (testindex > 8) {
+			Itest8->Load("grafika\\" + testtab[8] + ".png");
+			Itest8->Visible = true;
+		}
+		else Itest8->Visible = false;
+		if (testindex > 9) {
+			Itest9->Load("grafika\\" + testtab[9] + ".png");
+			Itest9->Visible = true;
+		}
+		else Itest9->Visible = false;
+	}
+
 	System::Void MyForm::Bcode_Click(System::Object^  sender, System::EventArgs^  e) {
 		//przycisk kodowania
 		code += codefactor;
@@ -262,75 +334,13 @@ namespace CodeClicker {
 
 	System::Void MyForm::Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 		//otwarcie formatki z najemnikami
-		
 		refreshEmployeesHireButton();
 		hiredialog->ShowDialog();
 	}
 
-	void MyForm::refreshtested() {
-		//odœwie¿anie wartoœci przetestowanych linii
-		//TODO mapowanie [KSZ]
-		int testtab[10];
-		int testindex, help;
-		testindex = 1;
-		help = test;
-		while (help / 10 != 0) {
-			testindex++;
-			help /= 10;
-		}
-		help = test;
-		for (int i = 0; i < testindex; i++) {
-			testtab[i] = help % 10;
-			help /= 10;
-		}
-		if (testindex > 0)
-			Itest0->Load("grafika\\" + testtab[0] + ".png");
-		else Itest0->Visible = false;
-		if (testindex > 1) {
-			Itest1->Load("grafika\\" + testtab[1] + ".png");
-			Itest1->Visible = true;
-		}
-		else Itest1->Visible = false;
-		if (testindex > 2) {
-			Itest2->Load("grafika\\" + testtab[2] + ".png");
-			Itest2->Visible = true;
-		}
-		else Itest2->Visible = false;
-		if (testindex > 3) {
-			Itest3->Load("grafika\\" + testtab[3] + ".png");
-			Itest3->Visible = true;
-		}
-		else Itest3->Visible = false;
-		if (testindex > 4) {
-			Itest4->Load("grafika\\" + testtab[4] + ".png");
-			Itest4->Visible = true;
-		}
-		else Itest4->Visible = false;
-		if (testindex > 5) {
-			Itest5->Load("grafika\\" + testtab[5] + ".png");
-			Itest5->Visible = true;
-		}
-		else Itest5->Visible = false;
-		if (testindex > 6) {
-			Itest6->Load("grafika\\" + testtab[6] + ".png");
-			Itest6->Visible = true;
-		}
-		else Itest6->Visible = false;
-		if (testindex > 7) {
-			Itest7->Load("grafika\\" + testtab[7] + ".png");
-			Itest7->Visible = true;
-		}
-		else Itest7->Visible = false;
-		if (testindex > 8) {
-			Itest8->Load("grafika\\" + testtab[8] + ".png");
-			Itest8->Visible = true;
-		}
-		else Itest8->Visible = false;
-		if (testindex > 9) {
-			Itest9->Load("grafika\\" + testtab[9] + ".png");
-			Itest9->Visible = true;
-		}
-		else Itest9->Visible = false;
+	System::Void MyForm::Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
+		//otwarcie formatki z ulepszeniami firmy
+		upgradefirmDialog->ShowDialog();
 	}
 
 	System::Void MyForm::Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
@@ -510,12 +520,6 @@ namespace CodeClicker {
 			Btest->Enabled = false;
 		}
 		else Ltest->Visible = true;
-	}
-
-	System::Void MyForm::Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
-		//otwarcie formatki z ulepszeniami firmy
-		upgradefirm^ firmdialog = gcnew upgradefirm;
-		firmdialog->ShowDialog();
 	}
 
 }

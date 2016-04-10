@@ -27,6 +27,7 @@
     <ClCompile Include="Employee.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="upgradeavatar.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -40,6 +41,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="upgradeemployee4.cpp">
+=======
+    <ClCompile Include="Firm.cpp">
+>>>>>>> f8589bcd3d1eabb94870de17193963dc3e4092e5
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,6 +63,7 @@
     <ClInclude Include="Employee.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="upgradeavatar.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
@@ -72,6 +77,12 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="upgradeemployee4.h">
+=======
+    <ClInclude Include="Firm.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="classes.h">
+>>>>>>> f8589bcd3d1eabb94870de17193963dc3e4092e5
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

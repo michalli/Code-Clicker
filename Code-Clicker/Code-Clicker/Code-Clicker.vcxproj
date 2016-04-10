@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="Firm.cpp" />
     <ClCompile Include="hire.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="upgradeavatar.cpp" />
@@ -92,7 +93,9 @@
     <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classes.h" />
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="Firm.h" />
     <ClInclude Include="hire.h">
       <FileType>CppForm</FileType>
     </ClInclude>

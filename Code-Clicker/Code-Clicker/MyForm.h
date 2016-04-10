@@ -2,17 +2,14 @@
 
 #include "hire.h"//po³¹czenie z hire.h
 #include "upgradefirm.h"//po³¹czenie z upgradefirm.h
-#include <cmath>
 #include "Employee.h"
+#include "Firm.h"
+#include <cmath>
+
+#include "classes.h"
 
 namespace CodeClicker {
-
-	ref class Employee;
-	ref class EmployeePremium;
-	ref class EmployeeCycle;
-	ref class EmployeePoor;
-	ref class hire;
-
+	
 	//TODO blokada klawiszy, teraz np. enter otwiera okno
 	//TODO klawisz esc - zamykanie okna
 
@@ -30,13 +27,13 @@ namespace CodeClicker {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
-
 		static const int employeesCount = 4;
-		static System::ComponentModel::ComponentResourceManager^  resources;
 
 		array<Employee^>^ employees; //TODO ³adniejszy sposób? [KSZ]
+		array<Firm^>^ firms;
 
 		hire^ hiredialog;
+		upgradefirm^ upgradefirmDialog;
 
 		int code;//iloœæ kodu
 		int	cash;//iloœæ pieniêdzy
@@ -47,8 +44,9 @@ namespace CodeClicker {
 
 		int testprogress;//pasek postêpu testowania
 		bool testing;//czy w trakcie testów?
-		int cycle;//progras cyklu
 
+	public:
+		int cycle;//progras cyklu
 
 	public:
 		MyForm(void);//konstruktor
@@ -67,7 +65,6 @@ namespace CodeClicker {
 				delete components;
 			}
 		}
-
 	private: System::Windows::Forms::PictureBox^  Iavatar;
 			 //TODO do tablicy
 	private: System::Windows::Forms::PictureBox^  Pzl;
@@ -137,7 +134,6 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  Llazy;
 	private: System::Windows::Forms::Label^  Lpoor;
 	private: System::ComponentModel::IContainer^  components;
-
 			 /// </summary>
 
 
@@ -149,6 +145,7 @@ namespace CodeClicker {
 			 void InitializeComponent(void)
 			 {
 				 this->components = (gcnew System::ComponentModel::Container());
+				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 				 this->Icode9 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Icode8 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Icode7 = (gcnew System::Windows::Forms::PictureBox());
@@ -180,6 +177,8 @@ namespace CodeClicker {
 				 this->Lpremium = (gcnew System::Windows::Forms::Label());
 				 this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Plogo = (gcnew System::Windows::Forms::Panel());
+				 this->Itest1 = (gcnew System::Windows::Forms::PictureBox());
+				 this->Itest0 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Bupgrade = (gcnew System::Windows::Forms::Button());
 				 this->Btest = (gcnew System::Windows::Forms::PictureBox());
 				 this->Labsent = (gcnew System::Windows::Forms::Label());
@@ -193,8 +192,6 @@ namespace CodeClicker {
 				 this->Itest4 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Itest3 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Itest2 = (gcnew System::Windows::Forms::PictureBox());
-				 this->Itest1 = (gcnew System::Windows::Forms::PictureBox());
-				 this->Itest0 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Iprogress0 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Iprogress1 = (gcnew System::Windows::Forms::PictureBox());
 				 this->Iprogress2 = (gcnew System::Windows::Forms::PictureBox());
@@ -243,6 +240,8 @@ namespace CodeClicker {
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 				 this->Plogo->SuspendLayout();
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->BeginInit();
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btest))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest9))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest8))->BeginInit();
@@ -252,8 +251,6 @@ namespace CodeClicker {
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest4))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest3))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest2))->BeginInit();
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->BeginInit();
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress0))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress1))->BeginInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress2))->BeginInit();
@@ -571,6 +568,25 @@ namespace CodeClicker {
 				 this->Plogo->Size = System::Drawing::Size(300, 300);
 				 this->Plogo->TabIndex = 58;
 				 // 
+				 // Itest1
+				 // 
+				 this->Itest1->BackColor = System::Drawing::Color::Transparent;
+				 this->Itest1->Location = System::Drawing::Point(26, 50);
+				 this->Itest1->Name = L"Itest1";
+				 this->Itest1->Size = System::Drawing::Size(28, 30);
+				 this->Itest1->TabIndex = 66;
+				 this->Itest1->TabStop = false;
+				 // 
+				 // Itest0
+				 // 
+				 this->Itest0->BackColor = System::Drawing::Color::Transparent;
+				 this->Itest0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Itest0.Image")));
+				 this->Itest0->Location = System::Drawing::Point(59, 50);
+				 this->Itest0->Name = L"Itest0";
+				 this->Itest0->Size = System::Drawing::Size(30, 30);
+				 this->Itest0->TabIndex = 67;
+				 this->Itest0->TabStop = false;
+				 // 
 				 // Bupgrade
 				 // 
 				 this->Bupgrade->Cursor = System::Windows::Forms::Cursors::Hand;
@@ -705,25 +721,6 @@ namespace CodeClicker {
 				 this->Itest2->Size = System::Drawing::Size(28, 30);
 				 this->Itest2->TabIndex = 68;
 				 this->Itest2->TabStop = false;
-				 // 
-				 // Itest1
-				 // 
-				 this->Itest1->BackColor = System::Drawing::Color::Transparent;
-				 this->Itest1->Location = System::Drawing::Point(26, 50);
-				 this->Itest1->Name = L"Itest1";
-				 this->Itest1->Size = System::Drawing::Size(28, 30);
-				 this->Itest1->TabIndex = 66;
-				 this->Itest1->TabStop = false;
-				 // 
-				 // Itest0
-				 // 
-				 this->Itest0->BackColor = System::Drawing::Color::Transparent;
-				 this->Itest0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Itest0.Image")));
-				 this->Itest0->Location = System::Drawing::Point(59, 50);
-				 this->Itest0->Name = L"Itest0";
-				 this->Itest0->Size = System::Drawing::Size(30, 30);
-				 this->Itest0->TabIndex = 67;
-				 this->Itest0->TabStop = false;
 				 // 
 				 // Iprogress0
 				 // 
@@ -943,7 +940,6 @@ namespace CodeClicker {
 				 this->Controls->Add(this->Lpoor);
 				 this->Controls->Add(this->Ldeterminated);
 				 this->Controls->Add(this->Llazy);
-				 //TODO do tablicy
 				 this->Controls->Add(this->Icycle4);
 				 this->Controls->Add(this->Icycle3);
 				 this->Controls->Add(this->Icycle2);
@@ -956,12 +952,10 @@ namespace CodeClicker {
 				 this->Controls->Add(this->Icycle5);
 				 this->Controls->Add(this->Lcycle);
 				 this->Controls->Add(this->Ltest);
-				 //TODO do tablicy
 				 this->Controls->Add(this->Iprogress3);
 				 this->Controls->Add(this->Iprogress2);
 				 this->Controls->Add(this->Iprogress1);
 				 this->Controls->Add(this->Iprogress0);
-				 //TODO do tablicy
 				 this->Controls->Add(this->Itest9);
 				 this->Controls->Add(this->Itest8);
 				 this->Controls->Add(this->Itest7);
@@ -985,7 +979,6 @@ namespace CodeClicker {
 				 this->Controls->Add(this->Iavatar);
 				 this->Controls->Add(this->Icode9);
 				 this->Controls->Add(this->Bcode);
-				 //TODO do tablicy
 				 this->Controls->Add(this->Icode8);
 				 this->Controls->Add(this->Icode7);
 				 this->Controls->Add(this->Icode6);
@@ -994,7 +987,6 @@ namespace CodeClicker {
 				 this->Controls->Add(this->Icode3);
 				 this->Controls->Add(this->Icode2);
 				 this->Controls->Add(this->Pzl);
-				 //TODO do tablicy
 				 this->Controls->Add(this->Icash9);
 				 this->Controls->Add(this->Icash1);
 				 this->Controls->Add(this->Icash8);
@@ -1045,6 +1037,8 @@ namespace CodeClicker {
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 				 this->Plogo->ResumeLayout(false);
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->EndInit();
+				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btest))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest9))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest8))->EndInit();
@@ -1054,8 +1048,6 @@ namespace CodeClicker {
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest4))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest3))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest2))->EndInit();
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->EndInit();
-				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress0))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress1))->EndInit();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress2))->EndInit();
@@ -1078,12 +1070,13 @@ namespace CodeClicker {
 
 			 void InitializeManualComponent(void)
 			 {
+				 System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(upgradefirm::typeid));
+				 
 				 this->Phireds = gcnew array<System::Windows::Forms::PictureBox^>(employeesCount);
 
 				 for (int i = 0; i < employeesCount; i++)
 				 {
 					 Phireds[i] = (gcnew System::Windows::Forms::PictureBox());
-
 
 					 this->Controls->Add(Phireds[i]);
 				 }
@@ -1131,9 +1124,11 @@ namespace CodeClicker {
 				 this->Phireds[2]->Visible = false;
 			 }
 
-	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e);
-
 			 void refresh();
+
+			 void refreshtested();
+
+	private: System::Void Bcode_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e);
 
@@ -1141,13 +1136,11 @@ namespace CodeClicker {
 
 	private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e);
 
-			 void refreshtested();
+	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e);
-
-	private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e);
 
 	};
 }
