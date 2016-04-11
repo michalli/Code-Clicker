@@ -119,6 +119,7 @@ namespace CodeClicker {
 			this->Bback->Size = System::Drawing::Size(143, 67);
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
+			this->Bback->Click += gcnew System::EventHandler(this, &upgradeavatar::Bback_Click);
 			// 
 			// B4
 			// 
@@ -405,6 +406,7 @@ namespace CodeClicker {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"upgradeavatar";
 			this->ShowIcon = false;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce umiejêtnoœci Twojego programisty";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
 			this->ResumeLayout(false);
@@ -412,5 +414,9 @@ namespace CodeClicker {
 
 		}
 #pragma endregion
-	};
+	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
+				 //przycisk wstecz
+				 this->Close();
+	}
+};
 }
