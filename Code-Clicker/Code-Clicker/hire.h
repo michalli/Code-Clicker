@@ -479,9 +479,9 @@ namespace CodeClicker {
 				static_cast<System::Byte>(238)));
 			this->L4role->Location = System::Drawing::Point(294, 509);
 			this->L4role->Name = L"L4role";
-			this->L4role->Size = System::Drawing::Size(67, 19);
+			this->L4role->Size = System::Drawing::Size(42, 19);
 			this->L4role->TabIndex = 38;
-			this->L4role->Text = L"tester(ka)";
+			this->L4role->Text = L"tester";
 			// 
 			// L4name
 			// 
@@ -491,9 +491,9 @@ namespace CodeClicker {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->L4name->Location = System::Drawing::Point(292, 462);
 			this->L4name->Name = L"L4name";
-			this->L4name->Size = System::Drawing::Size(180, 59);
+			this->L4name->Size = System::Drawing::Size(169, 59);
 			this->L4name->TabIndex = 37;
-			this->L4name->Text = L"Imiê Nazwisko";
+			this->L4name->Text = L"Janusz Apacz";
 			// 
 			// Bhire4
 			// 
@@ -509,6 +509,7 @@ namespace CodeClicker {
 			// 
 			// pictureBox2
 			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
 			this->pictureBox2->Location = System::Drawing::Point(64, 462);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(200, 135);

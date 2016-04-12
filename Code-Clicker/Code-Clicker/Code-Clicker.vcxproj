@@ -83,6 +83,12 @@
   <ItemGroup>
     <ClCompile Include="hire.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="upgradeavatar.cpp" />
+    <ClCompile Include="upgradeemployee1.cpp" />
+    <ClCompile Include="upgradeemployee2.cpp" />
+    <ClCompile Include="upgradeemployee3.cpp" />
+    <ClCompile Include="upgradeemployee4.cpp" />
+    <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hire.h">
@@ -92,6 +98,24 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="upgradeavatar.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="upgradeemployee1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="upgradeemployee2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="upgradeemployee3.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="upgradeemployee4.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="upgradefirm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="hire.resx">
@@ -99,6 +123,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradeavatar.resx">
+      <DependentUpon>upgradeavatar.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradeemployee1.resx">
+      <DependentUpon>upgradeemployee1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradeemployee2.resx">
+      <DependentUpon>upgradeemployee2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradeemployee3.resx">
+      <DependentUpon>upgradeemployee3.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradeemployee4.resx">
+      <DependentUpon>upgradeemployee4.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="upgradefirm.resx">
+      <DependentUpon>upgradefirm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

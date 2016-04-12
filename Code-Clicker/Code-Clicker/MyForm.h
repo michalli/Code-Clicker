@@ -1,5 +1,7 @@
 #pragma once
 #include "hire.h"//po³¹czenie z hire.h
+#include "upgradefirm.h"//po³¹czenie z upgradefirm.h
+#include "upgradeavatar.h"//po³¹czenie z upgradeavatar.h
 #include <cmath>
 using namespace System::IO;//biblioteka zwi¹zana z zapisywaniem do plików
 namespace CodeClicker {
@@ -25,7 +27,7 @@ namespace CodeClicker {
 			test = 0;
 			codefactor = 1;
 			cashfactor = 2;
-			testfactor = 5;
+			testfactor = cashfactor*cashfactor;
 			testing = false;
 			testprogress = 0;
 			cycle = 0;
@@ -144,7 +146,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Phired1;
 	private: System::Windows::Forms::PictureBox^  Phired2;
 	private: System::Windows::Forms::Label^  Lpremium;
-	private: System::Windows::Forms::PictureBox^  pictureBox1;
+	private: System::Windows::Forms::PictureBox^  Bload;
 	private: System::Windows::Forms::Panel^  Plogo;
 	private: System::Windows::Forms::PictureBox^  Phired4;
 	private: System::Windows::Forms::PictureBox^  Phired3;
@@ -182,6 +184,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  Ldeterminated;
 	private: System::Windows::Forms::Label^  Llazy;
 	private: System::Windows::Forms::Label^  Lpoor;
+	private: System::Windows::Forms::Button^  Btrain;
 	private: System::ComponentModel::IContainer^  components;
 
 		/// </summary>
@@ -227,8 +230,10 @@ namespace CodeClicker {
 			this->Phired1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Phired2 = (gcnew System::Windows::Forms::PictureBox());
 			this->Lpremium = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->Bload = (gcnew System::Windows::Forms::PictureBox());
 			this->Plogo = (gcnew System::Windows::Forms::Panel());
+			this->Itest1 = (gcnew System::Windows::Forms::PictureBox());
+			this->Itest0 = (gcnew System::Windows::Forms::PictureBox());
 			this->Phired4 = (gcnew System::Windows::Forms::PictureBox());
 			this->Phired3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Bupgrade = (gcnew System::Windows::Forms::Button());
@@ -244,8 +249,6 @@ namespace CodeClicker {
 			this->Itest4 = (gcnew System::Windows::Forms::PictureBox());
 			this->Itest3 = (gcnew System::Windows::Forms::PictureBox());
 			this->Itest2 = (gcnew System::Windows::Forms::PictureBox());
-			this->Itest1 = (gcnew System::Windows::Forms::PictureBox());
-			this->Itest0 = (gcnew System::Windows::Forms::PictureBox());
 			this->Iprogress0 = (gcnew System::Windows::Forms::PictureBox());
 			this->Iprogress1 = (gcnew System::Windows::Forms::PictureBox());
 			this->Iprogress2 = (gcnew System::Windows::Forms::PictureBox());
@@ -265,6 +268,7 @@ namespace CodeClicker {
 			this->Ldeterminated = (gcnew System::Windows::Forms::Label());
 			this->Llazy = (gcnew System::Windows::Forms::Label());
 			this->Lpoor = (gcnew System::Windows::Forms::Label());
+			this->Btrain = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->BeginInit();
@@ -294,7 +298,9 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bload))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btest))->BeginInit();
@@ -306,8 +312,6 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress0))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress2))->BeginInit();
@@ -327,7 +331,7 @@ namespace CodeClicker {
 			// Icode9
 			// 
 			this->Icode9->BackColor = System::Drawing::Color::Transparent;
-			this->Icode9->Location = System::Drawing::Point(411, 49);
+			this->Icode9->Location = System::Drawing::Point(500, 60);
 			this->Icode9->Name = L"Icode9";
 			this->Icode9->Size = System::Drawing::Size(28, 30);
 			this->Icode9->TabIndex = 43;
@@ -336,7 +340,7 @@ namespace CodeClicker {
 			// Icode8
 			// 
 			this->Icode8->BackColor = System::Drawing::Color::Transparent;
-			this->Icode8->Location = System::Drawing::Point(445, 49);
+			this->Icode8->Location = System::Drawing::Point(534, 60);
 			this->Icode8->Name = L"Icode8";
 			this->Icode8->Size = System::Drawing::Size(28, 30);
 			this->Icode8->TabIndex = 42;
@@ -345,7 +349,7 @@ namespace CodeClicker {
 			// Icode7
 			// 
 			this->Icode7->BackColor = System::Drawing::Color::Transparent;
-			this->Icode7->Location = System::Drawing::Point(479, 49);
+			this->Icode7->Location = System::Drawing::Point(568, 60);
 			this->Icode7->Name = L"Icode7";
 			this->Icode7->Size = System::Drawing::Size(28, 30);
 			this->Icode7->TabIndex = 41;
@@ -354,7 +358,7 @@ namespace CodeClicker {
 			// Icode6
 			// 
 			this->Icode6->BackColor = System::Drawing::Color::Transparent;
-			this->Icode6->Location = System::Drawing::Point(513, 49);
+			this->Icode6->Location = System::Drawing::Point(602, 60);
 			this->Icode6->Name = L"Icode6";
 			this->Icode6->Size = System::Drawing::Size(28, 30);
 			this->Icode6->TabIndex = 40;
@@ -363,7 +367,7 @@ namespace CodeClicker {
 			// Icode5
 			// 
 			this->Icode5->BackColor = System::Drawing::Color::Transparent;
-			this->Icode5->Location = System::Drawing::Point(547, 49);
+			this->Icode5->Location = System::Drawing::Point(636, 60);
 			this->Icode5->Name = L"Icode5";
 			this->Icode5->Size = System::Drawing::Size(28, 30);
 			this->Icode5->TabIndex = 39;
@@ -372,7 +376,7 @@ namespace CodeClicker {
 			// Icode4
 			// 
 			this->Icode4->BackColor = System::Drawing::Color::Transparent;
-			this->Icode4->Location = System::Drawing::Point(581, 49);
+			this->Icode4->Location = System::Drawing::Point(670, 60);
 			this->Icode4->Name = L"Icode4";
 			this->Icode4->Size = System::Drawing::Size(28, 30);
 			this->Icode4->TabIndex = 38;
@@ -381,7 +385,7 @@ namespace CodeClicker {
 			// Icode3
 			// 
 			this->Icode3->BackColor = System::Drawing::Color::Transparent;
-			this->Icode3->Location = System::Drawing::Point(615, 49);
+			this->Icode3->Location = System::Drawing::Point(704, 60);
 			this->Icode3->Name = L"Icode3";
 			this->Icode3->Size = System::Drawing::Size(28, 30);
 			this->Icode3->TabIndex = 37;
@@ -390,7 +394,7 @@ namespace CodeClicker {
 			// Icode2
 			// 
 			this->Icode2->BackColor = System::Drawing::Color::Transparent;
-			this->Icode2->Location = System::Drawing::Point(649, 49);
+			this->Icode2->Location = System::Drawing::Point(738, 60);
 			this->Icode2->Name = L"Icode2";
 			this->Icode2->Size = System::Drawing::Size(28, 30);
 			this->Icode2->TabIndex = 36;
@@ -399,7 +403,7 @@ namespace CodeClicker {
 			// Icash9
 			// 
 			this->Icash9->BackColor = System::Drawing::Color::Transparent;
-			this->Icash9->Location = System::Drawing::Point(218, 117);
+			this->Icash9->Location = System::Drawing::Point(500, 96);
 			this->Icash9->Name = L"Icash9";
 			this->Icash9->Size = System::Drawing::Size(28, 30);
 			this->Icash9->TabIndex = 35;
@@ -408,7 +412,7 @@ namespace CodeClicker {
 			// Icash8
 			// 
 			this->Icash8->BackColor = System::Drawing::Color::Transparent;
-			this->Icash8->Location = System::Drawing::Point(252, 117);
+			this->Icash8->Location = System::Drawing::Point(534, 96);
 			this->Icash8->Name = L"Icash8";
 			this->Icash8->Size = System::Drawing::Size(28, 30);
 			this->Icash8->TabIndex = 34;
@@ -417,7 +421,7 @@ namespace CodeClicker {
 			// Icash7
 			// 
 			this->Icash7->BackColor = System::Drawing::Color::Transparent;
-			this->Icash7->Location = System::Drawing::Point(286, 117);
+			this->Icash7->Location = System::Drawing::Point(568, 96);
 			this->Icash7->Name = L"Icash7";
 			this->Icash7->Size = System::Drawing::Size(28, 30);
 			this->Icash7->TabIndex = 33;
@@ -426,7 +430,7 @@ namespace CodeClicker {
 			// Icash6
 			// 
 			this->Icash6->BackColor = System::Drawing::Color::Transparent;
-			this->Icash6->Location = System::Drawing::Point(320, 117);
+			this->Icash6->Location = System::Drawing::Point(602, 96);
 			this->Icash6->Name = L"Icash6";
 			this->Icash6->Size = System::Drawing::Size(28, 30);
 			this->Icash6->TabIndex = 32;
@@ -435,7 +439,7 @@ namespace CodeClicker {
 			// Icash5
 			// 
 			this->Icash5->BackColor = System::Drawing::Color::Transparent;
-			this->Icash5->Location = System::Drawing::Point(354, 117);
+			this->Icash5->Location = System::Drawing::Point(636, 96);
 			this->Icash5->Name = L"Icash5";
 			this->Icash5->Size = System::Drawing::Size(28, 30);
 			this->Icash5->TabIndex = 31;
@@ -444,7 +448,7 @@ namespace CodeClicker {
 			// Icash4
 			// 
 			this->Icash4->BackColor = System::Drawing::Color::Transparent;
-			this->Icash4->Location = System::Drawing::Point(388, 117);
+			this->Icash4->Location = System::Drawing::Point(670, 96);
 			this->Icash4->Name = L"Icash4";
 			this->Icash4->Size = System::Drawing::Size(28, 30);
 			this->Icash4->TabIndex = 30;
@@ -453,7 +457,7 @@ namespace CodeClicker {
 			// Icash3
 			// 
 			this->Icash3->BackColor = System::Drawing::Color::Transparent;
-			this->Icash3->Location = System::Drawing::Point(422, 117);
+			this->Icash3->Location = System::Drawing::Point(704, 96);
 			this->Icash3->Name = L"Icash3";
 			this->Icash3->Size = System::Drawing::Size(28, 30);
 			this->Icash3->TabIndex = 29;
@@ -462,7 +466,7 @@ namespace CodeClicker {
 			// Icash2
 			// 
 			this->Icash2->BackColor = System::Drawing::Color::Transparent;
-			this->Icash2->Location = System::Drawing::Point(456, 117);
+			this->Icash2->Location = System::Drawing::Point(738, 96);
 			this->Icash2->Name = L"Icash2";
 			this->Icash2->Size = System::Drawing::Size(28, 30);
 			this->Icash2->TabIndex = 28;
@@ -472,7 +476,7 @@ namespace CodeClicker {
 			// 
 			this->Icode0->BackColor = System::Drawing::Color::Transparent;
 			this->Icode0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Icode0.Image")));
-			this->Icode0->Location = System::Drawing::Point(716, 49);
+			this->Icode0->Location = System::Drawing::Point(805, 60);
 			this->Icode0->Name = L"Icode0";
 			this->Icode0->Size = System::Drawing::Size(30, 30);
 			this->Icode0->TabIndex = 27;
@@ -481,7 +485,7 @@ namespace CodeClicker {
 			// Icode1
 			// 
 			this->Icode1->BackColor = System::Drawing::Color::Transparent;
-			this->Icode1->Location = System::Drawing::Point(683, 49);
+			this->Icode1->Location = System::Drawing::Point(772, 60);
 			this->Icode1->Name = L"Icode1";
 			this->Icode1->Size = System::Drawing::Size(28, 30);
 			this->Icode1->TabIndex = 25;
@@ -491,7 +495,7 @@ namespace CodeClicker {
 			// 
 			this->Icash0->BackColor = System::Drawing::Color::Transparent;
 			this->Icash0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Icash0.Image")));
-			this->Icash0->Location = System::Drawing::Point(523, 117);
+			this->Icash0->Location = System::Drawing::Point(805, 96);
 			this->Icash0->Name = L"Icash0";
 			this->Icash0->Size = System::Drawing::Size(30, 30);
 			this->Icash0->TabIndex = 16;
@@ -500,7 +504,7 @@ namespace CodeClicker {
 			// Icash1
 			// 
 			this->Icash1->BackColor = System::Drawing::Color::Transparent;
-			this->Icash1->Location = System::Drawing::Point(490, 117);
+			this->Icash1->Location = System::Drawing::Point(772, 96);
 			this->Icash1->Name = L"Icash1";
 			this->Icash1->Size = System::Drawing::Size(28, 30);
 			this->Icash1->TabIndex = 14;
@@ -510,7 +514,7 @@ namespace CodeClicker {
 			// 
 			this->Pzl->BackColor = System::Drawing::Color::Transparent;
 			this->Pzl->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Pzl.Image")));
-			this->Pzl->Location = System::Drawing::Point(559, 117);
+			this->Pzl->Location = System::Drawing::Point(841, 96);
 			this->Pzl->Name = L"Pzl";
 			this->Pzl->Size = System::Drawing::Size(30, 30);
 			this->Pzl->TabIndex = 6;
@@ -520,7 +524,7 @@ namespace CodeClicker {
 			// 
 			this->Iavatar->BackColor = System::Drawing::SystemColors::Control;
 			this->Iavatar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Iavatar.Image")));
-			this->Iavatar->Location = System::Drawing::Point(12, 34);
+			this->Iavatar->Location = System::Drawing::Point(34, 27);
 			this->Iavatar->Name = L"Iavatar";
 			this->Iavatar->Size = System::Drawing::Size(200, 135);
 			this->Iavatar->TabIndex = 3;
@@ -531,7 +535,7 @@ namespace CodeClicker {
 			this->Bcode->BackColor = System::Drawing::Color::Transparent;
 			this->Bcode->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bcode->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bcode.Image")));
-			this->Bcode->Location = System::Drawing::Point(58, 175);
+			this->Bcode->Location = System::Drawing::Point(80, 191);
 			this->Bcode->Name = L"Bcode";
 			this->Bcode->Size = System::Drawing::Size(145, 125);
 			this->Bcode->TabIndex = 4;
@@ -542,7 +546,7 @@ namespace CodeClicker {
 			// 
 			this->Lcode->BackColor = System::Drawing::Color::Transparent;
 			this->Lcode->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Lcode.Image")));
-			this->Lcode->Location = System::Drawing::Point(218, 49);
+			this->Lcode->Location = System::Drawing::Point(307, 60);
 			this->Lcode->Name = L"Lcode";
 			this->Lcode->Size = System::Drawing::Size(131, 30);
 			this->Lcode->TabIndex = 44;
@@ -552,7 +556,7 @@ namespace CodeClicker {
 			// 
 			this->Lcash->BackColor = System::Drawing::Color::Transparent;
 			this->Lcash->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Lcash.Image")));
-			this->Lcash->Location = System::Drawing::Point(218, 85);
+			this->Lcash->Location = System::Drawing::Point(258, 96);
 			this->Lcash->Name = L"Lcash";
 			this->Lcash->Size = System::Drawing::Size(180, 26);
 			this->Lcash->TabIndex = 45;
@@ -560,12 +564,12 @@ namespace CodeClicker {
 			// 
 			// Bhire
 			// 
-			this->Bhire->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhire.BackgroundImage")));
+			this->Bhire->BackColor = System::Drawing::Color::Transparent;
 			this->Bhire->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bhire->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhire.Image")));
-			this->Bhire->Location = System::Drawing::Point(58, 439);
+			this->Bhire->Location = System::Drawing::Point(62, 552);
 			this->Bhire->Name = L"Bhire";
-			this->Bhire->Size = System::Drawing::Size(154, 84);
+			this->Bhire->Size = System::Drawing::Size(143, 67);
 			this->Bhire->TabIndex = 51;
 			this->Bhire->TabStop = false;
 			this->Bhire->Click += gcnew System::EventHandler(this, &MyForm::Bhire_Click);
@@ -581,9 +585,9 @@ namespace CodeClicker {
 			this->Bsave->BackColor = System::Drawing::Color::Transparent;
 			this->Bsave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bsave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bsave.Image")));
-			this->Bsave->Location = System::Drawing::Point(676, 104);
+			this->Bsave->Location = System::Drawing::Point(418, 552);
 			this->Bsave->Name = L"Bsave";
-			this->Bsave->Size = System::Drawing::Size(70, 65);
+			this->Bsave->Size = System::Drawing::Size(143, 67);
 			this->Bsave->TabIndex = 52;
 			this->Bsave->TabStop = false;
 			this->Bsave->Click += gcnew System::EventHandler(this, &MyForm::Bsave_Click);
@@ -591,8 +595,9 @@ namespace CodeClicker {
 			// Phired1
 			// 
 			this->Phired1->BackColor = System::Drawing::Color::Transparent;
+			this->Phired1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Phired1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired1.Image")));
-			this->Phired1->Location = System::Drawing::Point(252, 201);
+			this->Phired1->Location = System::Drawing::Point(245, 215);
 			this->Phired1->Name = L"Phired1";
 			this->Phired1->Size = System::Drawing::Size(84, 84);
 			this->Phired1->TabIndex = 53;
@@ -602,8 +607,9 @@ namespace CodeClicker {
 			// Phired2
 			// 
 			this->Phired2->BackColor = System::Drawing::Color::Transparent;
+			this->Phired2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Phired2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired2.Image")));
-			this->Phired2->Location = System::Drawing::Point(377, 201);
+			this->Phired2->Location = System::Drawing::Point(411, 215);
 			this->Phired2->Name = L"Phired2";
 			this->Phired2->Size = System::Drawing::Size(84, 84);
 			this->Phired2->TabIndex = 54;
@@ -617,39 +623,60 @@ namespace CodeClicker {
 			this->Lpremium->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lpremium->ForeColor = System::Drawing::Color::Red;
-			this->Lpremium->Location = System::Drawing::Point(385, 288);
+			this->Lpremium->Location = System::Drawing::Point(419, 302);
 			this->Lpremium->Name = L"Lpremium";
 			this->Lpremium->Size = System::Drawing::Size(66, 14);
 			this->Lpremium->TabIndex = 55;
 			this->Lpremium->Text = L"premia 10z³!";
 			this->Lpremium->Visible = false;
 			// 
-			// pictureBox1
+			// Bload
 			// 
-			this->pictureBox1->BackColor = System::Drawing::Color::Transparent;
-			this->pictureBox1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(607, 104);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(70, 65);
-			this->pictureBox1->TabIndex = 57;
-			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &MyForm::Bload_Click);
+			this->Bload->BackColor = System::Drawing::Color::Transparent;
+			this->Bload->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bload->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bload.Image")));
+			this->Bload->Location = System::Drawing::Point(234, 552);
+			this->Bload->Name = L"Bload";
+			this->Bload->Size = System::Drawing::Size(143, 67);
+			this->Bload->TabIndex = 57;
+			this->Bload->TabStop = false;
+			this->Bload->Click += gcnew System::EventHandler(this, &MyForm::Bload_Click);
 			// 
 			// Plogo
 			// 
 			this->Plogo->BackColor = System::Drawing::Color::Transparent;
 			this->Plogo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Plogo.BackgroundImage")));
-			this->Plogo->Location = System::Drawing::Point(504, 305);
+			this->Plogo->Location = System::Drawing::Point(580, 331);
 			this->Plogo->Name = L"Plogo";
 			this->Plogo->Size = System::Drawing::Size(300, 300);
 			this->Plogo->TabIndex = 58;
+			// 
+			// Itest1
+			// 
+			this->Itest1->BackColor = System::Drawing::Color::Transparent;
+			this->Itest1->Location = System::Drawing::Point(771, 132);
+			this->Itest1->Name = L"Itest1";
+			this->Itest1->Size = System::Drawing::Size(28, 30);
+			this->Itest1->TabIndex = 66;
+			this->Itest1->TabStop = false;
+			// 
+			// Itest0
+			// 
+			this->Itest0->BackColor = System::Drawing::Color::Transparent;
+			this->Itest0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Itest0.Image")));
+			this->Itest0->Location = System::Drawing::Point(804, 132);
+			this->Itest0->Name = L"Itest0";
+			this->Itest0->Size = System::Drawing::Size(30, 30);
+			this->Itest0->TabIndex = 67;
+			this->Itest0->TabStop = false;
 			// 
 			// Phired4
 			// 
 			this->Phired4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->Phired4->Location = System::Drawing::Point(629, 201);
+			this->Phired4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired4.Image")));
+			this->Phired4->Location = System::Drawing::Point(744, 215);
 			this->Phired4->Name = L"Phired4";
 			this->Phired4->Size = System::Drawing::Size(84, 84);
 			this->Phired4->TabIndex = 60;
@@ -659,8 +686,9 @@ namespace CodeClicker {
 			// Phired3
 			// 
 			this->Phired3->BackColor = System::Drawing::Color::Transparent;
+			this->Phired3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Phired3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired3.Image")));
-			this->Phired3->Location = System::Drawing::Point(504, 201);
+			this->Phired3->Location = System::Drawing::Point(573, 215);
 			this->Phired3->Name = L"Phired3";
 			this->Phired3->Size = System::Drawing::Size(84, 84);
 			this->Phired3->TabIndex = 59;
@@ -670,19 +698,20 @@ namespace CodeClicker {
 			// Bupgrade
 			// 
 			this->Bupgrade->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade->Location = System::Drawing::Point(239, 439);
+			this->Bupgrade->Location = System::Drawing::Point(331, 479);
 			this->Bupgrade->Name = L"Bupgrade";
-			this->Bupgrade->Size = System::Drawing::Size(268, 84);
+			this->Bupgrade->Size = System::Drawing::Size(230, 67);
 			this->Bupgrade->TabIndex = 61;
 			this->Bupgrade->Text = L"Zainwestuj w firmê";
 			this->Bupgrade->UseVisualStyleBackColor = true;
+			this->Bupgrade->Click += gcnew System::EventHandler(this, &MyForm::Bupgrade_Click);
 			// 
 			// Btest
 			// 
 			this->Btest->BackColor = System::Drawing::Color::Transparent;
 			this->Btest->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Btest->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Btest.Image")));
-			this->Btest->Location = System::Drawing::Point(58, 333);
+			this->Btest->Location = System::Drawing::Point(80, 368);
 			this->Btest->Name = L"Btest";
 			this->Btest->Size = System::Drawing::Size(160, 74);
 			this->Btest->TabIndex = 62;
@@ -696,7 +725,7 @@ namespace CodeClicker {
 			this->Labsent->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Labsent->ForeColor = System::Drawing::Color::Red;
-			this->Labsent->Location = System::Drawing::Point(517, 288);
+			this->Labsent->Location = System::Drawing::Point(586, 302);
 			this->Labsent->Name = L"Labsent";
 			this->Labsent->Size = System::Drawing::Size(58, 14);
 			this->Labsent->TabIndex = 63;
@@ -710,7 +739,7 @@ namespace CodeClicker {
 			this->Ltrans->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Ltrans->ForeColor = System::Drawing::Color::Lime;
-			this->Ltrans->Location = System::Drawing::Point(516, 184);
+			this->Ltrans->Location = System::Drawing::Point(585, 198);
 			this->Ltrans->Name = L"Ltrans";
 			this->Ltrans->Size = System::Drawing::Size(59, 14);
 			this->Ltrans->TabIndex = 64;
@@ -723,7 +752,7 @@ namespace CodeClicker {
 			this->Ltested->BackColor = System::Drawing::Color::Transparent;
 			this->Ltested->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Ltested->Location = System::Drawing::Point(252, 333);
+			this->Ltested->Location = System::Drawing::Point(240, 141);
 			this->Ltested->Name = L"Ltested";
 			this->Ltested->Size = System::Drawing::Size(198, 21);
 			this->Ltested->TabIndex = 65;
@@ -732,7 +761,7 @@ namespace CodeClicker {
 			// Itest9
 			// 
 			this->Itest9->BackColor = System::Drawing::Color::Transparent;
-			this->Itest9->Location = System::Drawing::Point(256, 368);
+			this->Itest9->Location = System::Drawing::Point(500, 132);
 			this->Itest9->Name = L"Itest9";
 			this->Itest9->Size = System::Drawing::Size(28, 30);
 			this->Itest9->TabIndex = 75;
@@ -741,7 +770,7 @@ namespace CodeClicker {
 			// Itest8
 			// 
 			this->Itest8->BackColor = System::Drawing::Color::Transparent;
-			this->Itest8->Location = System::Drawing::Point(290, 368);
+			this->Itest8->Location = System::Drawing::Point(534, 132);
 			this->Itest8->Name = L"Itest8";
 			this->Itest8->Size = System::Drawing::Size(28, 30);
 			this->Itest8->TabIndex = 74;
@@ -750,7 +779,7 @@ namespace CodeClicker {
 			// Itest7
 			// 
 			this->Itest7->BackColor = System::Drawing::Color::Transparent;
-			this->Itest7->Location = System::Drawing::Point(324, 368);
+			this->Itest7->Location = System::Drawing::Point(568, 132);
 			this->Itest7->Name = L"Itest7";
 			this->Itest7->Size = System::Drawing::Size(28, 30);
 			this->Itest7->TabIndex = 73;
@@ -759,7 +788,7 @@ namespace CodeClicker {
 			// Itest6
 			// 
 			this->Itest6->BackColor = System::Drawing::Color::Transparent;
-			this->Itest6->Location = System::Drawing::Point(358, 368);
+			this->Itest6->Location = System::Drawing::Point(602, 132);
 			this->Itest6->Name = L"Itest6";
 			this->Itest6->Size = System::Drawing::Size(28, 30);
 			this->Itest6->TabIndex = 72;
@@ -768,7 +797,7 @@ namespace CodeClicker {
 			// Itest5
 			// 
 			this->Itest5->BackColor = System::Drawing::Color::Transparent;
-			this->Itest5->Location = System::Drawing::Point(392, 368);
+			this->Itest5->Location = System::Drawing::Point(636, 132);
 			this->Itest5->Name = L"Itest5";
 			this->Itest5->Size = System::Drawing::Size(28, 30);
 			this->Itest5->TabIndex = 71;
@@ -777,7 +806,7 @@ namespace CodeClicker {
 			// Itest4
 			// 
 			this->Itest4->BackColor = System::Drawing::Color::Transparent;
-			this->Itest4->Location = System::Drawing::Point(426, 368);
+			this->Itest4->Location = System::Drawing::Point(670, 132);
 			this->Itest4->Name = L"Itest4";
 			this->Itest4->Size = System::Drawing::Size(28, 30);
 			this->Itest4->TabIndex = 70;
@@ -786,7 +815,7 @@ namespace CodeClicker {
 			// Itest3
 			// 
 			this->Itest3->BackColor = System::Drawing::Color::Transparent;
-			this->Itest3->Location = System::Drawing::Point(460, 368);
+			this->Itest3->Location = System::Drawing::Point(704, 132);
 			this->Itest3->Name = L"Itest3";
 			this->Itest3->Size = System::Drawing::Size(28, 30);
 			this->Itest3->TabIndex = 69;
@@ -795,34 +824,15 @@ namespace CodeClicker {
 			// Itest2
 			// 
 			this->Itest2->BackColor = System::Drawing::Color::Transparent;
-			this->Itest2->Location = System::Drawing::Point(494, 368);
+			this->Itest2->Location = System::Drawing::Point(738, 132);
 			this->Itest2->Name = L"Itest2";
 			this->Itest2->Size = System::Drawing::Size(28, 30);
 			this->Itest2->TabIndex = 68;
 			this->Itest2->TabStop = false;
 			// 
-			// Itest1
-			// 
-			this->Itest1->BackColor = System::Drawing::Color::Transparent;
-			this->Itest1->Location = System::Drawing::Point(528, 368);
-			this->Itest1->Name = L"Itest1";
-			this->Itest1->Size = System::Drawing::Size(28, 30);
-			this->Itest1->TabIndex = 66;
-			this->Itest1->TabStop = false;
-			// 
-			// Itest0
-			// 
-			this->Itest0->BackColor = System::Drawing::Color::Transparent;
-			this->Itest0->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Itest0.Image")));
-			this->Itest0->Location = System::Drawing::Point(561, 368);
-			this->Itest0->Name = L"Itest0";
-			this->Itest0->Size = System::Drawing::Size(30, 30);
-			this->Itest0->TabIndex = 67;
-			this->Itest0->TabStop = false;
-			// 
 			// Iprogress0
 			// 
-			this->Iprogress0->Location = System::Drawing::Point(60, 413);
+			this->Iprogress0->Location = System::Drawing::Point(82, 448);
 			this->Iprogress0->Name = L"Iprogress0";
 			this->Iprogress0->Size = System::Drawing::Size(35, 10);
 			this->Iprogress0->TabIndex = 76;
@@ -831,7 +841,7 @@ namespace CodeClicker {
 			// 
 			// Iprogress1
 			// 
-			this->Iprogress1->Location = System::Drawing::Point(101, 413);
+			this->Iprogress1->Location = System::Drawing::Point(123, 448);
 			this->Iprogress1->Name = L"Iprogress1";
 			this->Iprogress1->Size = System::Drawing::Size(35, 10);
 			this->Iprogress1->TabIndex = 77;
@@ -840,7 +850,7 @@ namespace CodeClicker {
 			// 
 			// Iprogress2
 			// 
-			this->Iprogress2->Location = System::Drawing::Point(142, 413);
+			this->Iprogress2->Location = System::Drawing::Point(164, 448);
 			this->Iprogress2->Name = L"Iprogress2";
 			this->Iprogress2->Size = System::Drawing::Size(35, 10);
 			this->Iprogress2->TabIndex = 78;
@@ -849,7 +859,7 @@ namespace CodeClicker {
 			// 
 			// Iprogress3
 			// 
-			this->Iprogress3->Location = System::Drawing::Point(183, 413);
+			this->Iprogress3->Location = System::Drawing::Point(205, 448);
 			this->Iprogress3->Name = L"Iprogress3";
 			this->Iprogress3->Size = System::Drawing::Size(35, 10);
 			this->Iprogress3->TabIndex = 79;
@@ -863,7 +873,7 @@ namespace CodeClicker {
 			this->Ltest->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Ltest->ForeColor = System::Drawing::Color::Red;
-			this->Ltest->Location = System::Drawing::Point(75, 316);
+			this->Ltest->Location = System::Drawing::Point(97, 351);
 			this->Ltest->Name = L"Ltest";
 			this->Ltest->Size = System::Drawing::Size(128, 14);
 			this->Ltest->TabIndex = 80;
@@ -877,7 +887,7 @@ namespace CodeClicker {
 			this->Lcycle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lcycle->ForeColor = System::Drawing::Color::Orange;
-			this->Lcycle->Location = System::Drawing::Point(312, 408);
+			this->Lcycle->Location = System::Drawing::Point(331, 448);
 			this->Lcycle->Name = L"Lcycle";
 			this->Lcycle->Size = System::Drawing::Size(139, 15);
 			this->Lcycle->TabIndex = 81;
@@ -888,9 +898,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle9->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle9->Location = System::Drawing::Point(60, 540);
+			this->Icycle9->Location = System::Drawing::Point(258, 368);
 			this->Icycle9->Name = L"Icycle9";
-			this->Icycle9->Size = System::Drawing::Size(20, 20);
+			this->Icycle9->Size = System::Drawing::Size(25, 74);
 			this->Icycle9->TabIndex = 91;
 			this->Icycle9->TabStop = false;
 			// 
@@ -898,9 +908,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle8->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle8->Location = System::Drawing::Point(101, 540);
+			this->Icycle8->Location = System::Drawing::Point(289, 368);
 			this->Icycle8->Name = L"Icycle8";
-			this->Icycle8->Size = System::Drawing::Size(20, 20);
+			this->Icycle8->Size = System::Drawing::Size(25, 74);
 			this->Icycle8->TabIndex = 90;
 			this->Icycle8->TabStop = false;
 			// 
@@ -908,9 +918,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle7->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle7->Location = System::Drawing::Point(142, 540);
+			this->Icycle7->Location = System::Drawing::Point(320, 368);
 			this->Icycle7->Name = L"Icycle7";
-			this->Icycle7->Size = System::Drawing::Size(20, 20);
+			this->Icycle7->Size = System::Drawing::Size(25, 74);
 			this->Icycle7->TabIndex = 89;
 			this->Icycle7->TabStop = false;
 			// 
@@ -918,9 +928,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle6->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle6->Location = System::Drawing::Point(183, 540);
+			this->Icycle6->Location = System::Drawing::Point(352, 368);
 			this->Icycle6->Name = L"Icycle6";
-			this->Icycle6->Size = System::Drawing::Size(20, 20);
+			this->Icycle6->Size = System::Drawing::Size(25, 74);
 			this->Icycle6->TabIndex = 88;
 			this->Icycle6->TabStop = false;
 			// 
@@ -928,9 +938,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle5->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle5->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle5->Location = System::Drawing::Point(226, 540);
+			this->Icycle5->Location = System::Drawing::Point(383, 368);
 			this->Icycle5->Name = L"Icycle5";
-			this->Icycle5->Size = System::Drawing::Size(20, 20);
+			this->Icycle5->Size = System::Drawing::Size(25, 74);
 			this->Icycle5->TabIndex = 87;
 			this->Icycle5->TabStop = false;
 			// 
@@ -938,9 +948,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle4->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle4->Location = System::Drawing::Point(266, 540);
+			this->Icycle4->Location = System::Drawing::Point(414, 368);
 			this->Icycle4->Name = L"Icycle4";
-			this->Icycle4->Size = System::Drawing::Size(20, 20);
+			this->Icycle4->Size = System::Drawing::Size(25, 74);
 			this->Icycle4->TabIndex = 96;
 			this->Icycle4->TabStop = false;
 			// 
@@ -948,9 +958,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle3->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle3->Location = System::Drawing::Point(307, 540);
+			this->Icycle3->Location = System::Drawing::Point(445, 368);
 			this->Icycle3->Name = L"Icycle3";
-			this->Icycle3->Size = System::Drawing::Size(20, 20);
+			this->Icycle3->Size = System::Drawing::Size(25, 74);
 			this->Icycle3->TabIndex = 95;
 			this->Icycle3->TabStop = false;
 			// 
@@ -958,9 +968,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle2->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle2->Location = System::Drawing::Point(348, 540);
+			this->Icycle2->Location = System::Drawing::Point(476, 368);
 			this->Icycle2->Name = L"Icycle2";
-			this->Icycle2->Size = System::Drawing::Size(20, 20);
+			this->Icycle2->Size = System::Drawing::Size(25, 74);
 			this->Icycle2->TabIndex = 94;
 			this->Icycle2->TabStop = false;
 			// 
@@ -968,9 +978,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle1->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle1->Location = System::Drawing::Point(389, 540);
+			this->Icycle1->Location = System::Drawing::Point(507, 368);
 			this->Icycle1->Name = L"Icycle1";
-			this->Icycle1->Size = System::Drawing::Size(20, 20);
+			this->Icycle1->Size = System::Drawing::Size(25, 74);
 			this->Icycle1->TabIndex = 93;
 			this->Icycle1->TabStop = false;
 			// 
@@ -978,9 +988,9 @@ namespace CodeClicker {
 			// 
 			this->Icycle0->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle0->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle0->Location = System::Drawing::Point(432, 540);
+			this->Icycle0->Location = System::Drawing::Point(538, 368);
 			this->Icycle0->Name = L"Icycle0";
-			this->Icycle0->Size = System::Drawing::Size(20, 20);
+			this->Icycle0->Size = System::Drawing::Size(25, 74);
 			this->Icycle0->TabIndex = 92;
 			this->Icycle0->TabStop = false;
 			// 
@@ -990,8 +1000,8 @@ namespace CodeClicker {
 			this->Ldeterminated->BackColor = System::Drawing::Color::Transparent;
 			this->Ldeterminated->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Ldeterminated->ForeColor = System::Drawing::Color::Lime;
-			this->Ldeterminated->Location = System::Drawing::Point(626, 184);
+			this->Ldeterminated->ForeColor = System::Drawing::Color::Purple;
+			this->Ldeterminated->Location = System::Drawing::Point(741, 198);
 			this->Ldeterminated->Name = L"Ldeterminated";
 			this->Ldeterminated->Size = System::Drawing::Size(87, 14);
 			this->Ldeterminated->TabIndex = 98;
@@ -1004,8 +1014,8 @@ namespace CodeClicker {
 			this->Llazy->BackColor = System::Drawing::Color::Transparent;
 			this->Llazy->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->Llazy->ForeColor = System::Drawing::Color::Red;
-			this->Llazy->Location = System::Drawing::Point(646, 288);
+			this->Llazy->ForeColor = System::Drawing::Color::Yellow;
+			this->Llazy->Location = System::Drawing::Point(761, 302);
 			this->Llazy->Name = L"Llazy";
 			this->Llazy->Size = System::Drawing::Size(48, 14);
 			this->Llazy->TabIndex = 97;
@@ -1019,12 +1029,23 @@ namespace CodeClicker {
 			this->Lpoor->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lpoor->ForeColor = System::Drawing::Color::Silver;
-			this->Lpoor->Location = System::Drawing::Point(591, 288);
+			this->Lpoor->Location = System::Drawing::Point(706, 302);
 			this->Lpoor->Name = L"Lpoor";
 			this->Lpoor->Size = System::Drawing::Size(155, 14);
 			this->Lpoor->TabIndex = 99;
 			this->Lpoor->Text = L"nie dosta³ wyp³aty - nie pracuje!";
 			this->Lpoor->Visible = false;
+			// 
+			// Btrain
+			// 
+			this->Btrain->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Btrain->Location = System::Drawing::Point(60, 479);
+			this->Btrain->Name = L"Btrain";
+			this->Btrain->Size = System::Drawing::Size(230, 67);
+			this->Btrain->TabIndex = 100;
+			this->Btrain->Text = L"Zainwestuj w siebie";
+			this->Btrain->UseVisualStyleBackColor = true;
+			this->Btrain->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
 			// 
 			// MyForm
 			// 
@@ -1034,9 +1055,14 @@ namespace CodeClicker {
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(794, 572);
+			this->ClientSize = System::Drawing::Size(928, 672);
+			this->Controls->Add(this->Itest1);
+			this->Controls->Add(this->Itest0);
+			this->Controls->Add(this->Btrain);
 			this->Controls->Add(this->Lpoor);
 			this->Controls->Add(this->Ldeterminated);
+			this->Controls->Add(this->Bload);
+			this->Controls->Add(this->Bsave);
 			this->Controls->Add(this->Llazy);
 			this->Controls->Add(this->Icycle4);
 			this->Controls->Add(this->Icycle3);
@@ -1062,8 +1088,6 @@ namespace CodeClicker {
 			this->Controls->Add(this->Itest4);
 			this->Controls->Add(this->Itest3);
 			this->Controls->Add(this->Itest2);
-			this->Controls->Add(this->Itest1);
-			this->Controls->Add(this->Itest0);
 			this->Controls->Add(this->Ltested);
 			this->Controls->Add(this->Ltrans);
 			this->Controls->Add(this->Labsent);
@@ -1072,11 +1096,9 @@ namespace CodeClicker {
 			this->Controls->Add(this->Phired4);
 			this->Controls->Add(this->Phired3);
 			this->Controls->Add(this->Plogo);
-			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->Lpremium);
 			this->Controls->Add(this->Phired2);
 			this->Controls->Add(this->Phired1);
-			this->Controls->Add(this->Bsave);
 			this->Controls->Add(this->Bhire);
 			this->Controls->Add(this->Lcash);
 			this->Controls->Add(this->Lcode);
@@ -1141,7 +1163,9 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bsave))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bload))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Phired3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btest))->EndInit();
@@ -1153,8 +1177,6 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Itest0))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress0))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Iprogress2))->EndInit();
@@ -1390,6 +1412,7 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 				 }
 				 refresh();
 				 refreshtested();
+				 testfactor = cashfactor*cashfactor;
 				 sw->Close();
 			 }
 			 catch (const FileNotFoundException^ e){
@@ -1412,7 +1435,7 @@ private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e
 			 sw->Close();
 }
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
-			 //otwarcie nowej formatki
+			 //otwarcie formatki z najemnikami
 			 hire^ hiredialog = gcnew hire;
 			 hiredialog->check(cash,employee1, employee2, employee3, employee4);
 			 hiredialog->ShowDialog();
@@ -1516,18 +1539,23 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 			 if (cycle == 300){
 				 Icycle0->BackColor = System::Drawing::Color::Orange;
 				 Lcycle->Visible = true;
-				 if (cash-(15*(code-test))>=0)cash -= 15*(code - test);
-				 else cash = 0;
+				 cash += (code - (code - test))*cashfactor;
 				 refresh();
 				 cycle = 0;
 				 if (employee4){
 					 if (cash - employee4factor * 5 > 0){
 						 cash -= employee4factor * 5;
 						 Lpoor->Visible = false;
+						 Phired4->Load("grafika\\testermini.png");
+						 Ldeterminated->Visible = false;
+						 Llazy->Visible = false;
 					 }
 					 else {
 						 poor = true;
 						 Lpoor->Visible = true;
+						 Phired4->Load("grafika\\testerminipoor.png");
+						 Ldeterminated->Visible = false;
+						 Llazy->Visible = false;
 					 }
 				 }
 			 }
@@ -1602,15 +1630,18 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 				 if (cycle < 100){
 					 test += employee4factor / 2;
 					 Llazy->Visible = true;
+					 Phired4->Load("grafika\\testerminilazy.png");
 				 }
 				 else if (cycle <250){
 					 test += employee4factor;
 					 Llazy->Visible = false;
-					 Ldeterminated->Visible = true;
+					 Ldeterminated->Visible = false;
+					 Phired4->Load("grafika\\testermini.png");
 				 }
 				 else{
 					 test += employee4factor * 10;
 					 Ldeterminated->Visible = true;
+					 Phired4->Load("grafika\\testerminidetermined.png");
 				 }
 				 if (test>code)test = code;
 				 refreshtested();
@@ -1618,12 +1649,23 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 			 if (employee4 && !poor)employee4progress++;
 }
 private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //klikniêcie przycisku testowania
 			 if (test < code){
 				 Ltest->Visible = false;
 				 testing = true;
 				 Btest->Enabled = false;
 			 }
 			 else Ltest->Visible = true;
+}
+private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami firmy
+			 upgradefirm^ firmdialog = gcnew upgradefirm;
+			 firmdialog->ShowDialog();
+}
+private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami g³ównego programisty
+			 upgradeavatar^ avatardialog = gcnew upgradeavatar;
+			 avatardialog->ShowDialog();
 }
 };
 }
