@@ -1327,98 +1327,53 @@ namespace CodeClicker {
 				 }
 				 else Icode9->Visible = false;
 			 }
-private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
-			 //wczytanie gry
-			 try{
-				 String^ fileName = "data.ccr";
-				 FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
-				 StreamReader^ sw = gcnew StreamReader(fs);
-				 int boolean;
-				 while (sw->Peek() >= 0)
-				 {
-					 Int32::TryParse(sw->ReadLine(), code);
-					 Int32::TryParse(sw->ReadLine(), cash);
-					 Int32::TryParse(sw->ReadLine(), test);
-					 Int32::TryParse(sw->ReadLine(), cycle);
-					 Icycle9->BackColor = System::Drawing::Color::Transparent;
-					 Icycle8->BackColor = System::Drawing::Color::Transparent;
-					 Icycle7->BackColor = System::Drawing::Color::Transparent;
-					 Icycle6->BackColor = System::Drawing::Color::Transparent;
-					 Icycle5->BackColor = System::Drawing::Color::Transparent;
-					 Icycle4->BackColor = System::Drawing::Color::Transparent;
-					 Icycle3->BackColor = System::Drawing::Color::Transparent;
-					 Icycle2->BackColor = System::Drawing::Color::Transparent;
-					 Icycle1->BackColor = System::Drawing::Color::Transparent;
-					 Icycle0->BackColor = System::Drawing::Color::Transparent;
-					 if (cycle >= 30)Icycle9->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 60)Icycle8->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 90)Icycle7->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 120)Icycle6->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 150)Icycle5->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 180)Icycle4->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 210)Icycle3->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 240)Icycle2->BackColor = System::Drawing::Color::Orange;
-					 if (cycle >= 270)Icycle1->BackColor = System::Drawing::Color::Orange;
-					 Int32::TryParse(sw->ReadLine(), boolean);
-					 if (boolean==1)
-					 {
-						 employee1 = true;
-						 Phired1->Visible = true;
-					 }
-					 else{
-						 employee1 = false;
-						 Phired1->Visible = false;
-					 }			 
-					 Int32::TryParse(sw->ReadLine(), boolean);
-					 if (boolean==1)
-					 {
-						 employee2 = true;
-						 Phired2->Visible = true;
-					 }
-					 else{
-						 employee2 = false;
-						 Phired2->Visible = false;
-					 }
-					 Int32::TryParse(sw->ReadLine(), boolean);
-					 if (boolean == 1)
-					 {
-						 employee3 = true;
-						 Phired3->Visible = true;
-					 }
-					 else{
-						 employee3 = false;
-						 Phired3->Visible = false;
-					 }
-					 Int32::TryParse(sw->ReadLine(), boolean);
-					 if (boolean == 1)
-					 {
-						 employee4 = true;
-						 Phired4->Visible = true;
-					 }
-					 else{
-						 employee4 = false;
-						 Phired4->Visible = false;
-					 }
-					 Int32::TryParse(sw->ReadLine(), boolean);
-					 if (boolean == 1)
-					 {
-						 poor = true;
-						 Lpoor->Visible = true;
-					 }
-					 else{
-						 poor = false;
-						 Lpoor->Visible = false;
-					 }
-				 }
-				 refresh();
-				 refreshtested();
-				 testfactor = cashfactor*cashfactor;
-				 sw->Close();
-			 }
-			 catch (const FileNotFoundException^ e){
-				 MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
-			 }			 
-}
+
+			 /// <summary>Wczytanie gry.</summary> 
+	private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
+
+		array<PictureBox^>^ Icycle = gcnew array<PictureBox^>{
+			Icycle9, Icycle8, Icycle7, Icycle6, Icycle5, Icycle4, Icycle3, Icycle2, Icycle1, Icycle0
+		};
+
+		array<Control^>^ Phired = gcnew array<Control^>{
+			Phired1, Phired2, Phired3, Phired4, Lpoor
+		};
+
+		array<bool>^ employee = gcnew array<bool>{
+			employee1, employee2, employee3, employee4, poor
+		};
+
+		String^ fileName = "data.ccr";
+		try {
+			FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
+			StreamReader^ sr = gcnew StreamReader(fs);
+
+			Int32::TryParse(sr->ReadLine(), code);
+			Int32::TryParse(sr->ReadLine(), cash);
+			Int32::TryParse(sr->ReadLine(), test);
+			Int32::TryParse(sr->ReadLine(), cycle);
+
+			for (int i = 0; i < Icycle->Length; i++)
+				Icycle[i]->BackColor = (cycle >= 30 * i ? System::Drawing::Color::Orange : System::Drawing::Color::Transparent);
+
+			for (int i = 0; i < Phired->Length; i++)
+			{
+				int hired;
+				Int32::TryParse(sr->ReadLine(), hired);
+				employee[i] = hired;
+				Phired[i]->Visible = hired;
+			}
+
+			refresh();
+			refreshtested();
+			testfactor = cashfactor*cashfactor;
+			sr->Close();
+		}
+		catch (const FileNotFoundException^ e) {
+			MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
+		}
+	}
+
 private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //zapis gry
 			 String^ fileName = "data.ccr";
