@@ -1347,23 +1347,70 @@ private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e
 			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4());
 			 refresh();
 }
-
-		 /// <summary>Odœwie¿anie wartoœci przetestowanych linii.</summary> 
-	private: void refreshtested() {
-		array<PictureBox^>^ Itest = gcnew array<PictureBox^>{
-			Itest0, Itest1, Itest2, Itest3, Itest4, Itest5, Itest6, Itest7, Itest8, Itest9
-		};
-
-		String^ testString = test.ToString();
-		int testindex = testString->Length;
-
-		for (int i = 0; i < Itest->Length; i++)
-			Itest[i]->Visible = i < testindex;
-
-		for (int i = 0; i < testindex; i++)
-			Itest[i]->Load(String::Format("grafika\\{0}.png", testString[testindex - i - 1]));
-	}
-
+		 void refreshtested(){
+			 //odœwie¿anie wartoœci przetestowanych linii
+			 int testtab[10];
+			 int testindex, help;
+			 testindex = 1;
+			 help = test;
+			 while (help / 10 != 0){
+				 testindex++;
+				 help /= 10;
+			 }
+			 help = test;
+			 for (int i = 0; i < testindex; i++){
+				 testtab[i] = help % 10;
+				 help /= 10;
+			 }
+			 if (testindex>0)
+				 Itest0->Load("grafika\\" + testtab[0] + ".png");
+			 else Itest0->Visible = false;
+			 if (testindex > 1){
+				 Itest1->Load("grafika\\" + testtab[1] + ".png");
+				 Itest1->Visible = true;
+			 }
+			 else Itest1->Visible = false;
+			 if (testindex > 2){
+				 Itest2->Load("grafika\\" + testtab[2] + ".png");
+				 Itest2->Visible = true;
+			 }
+			 else Itest2->Visible = false;
+			 if (testindex > 3){
+				 Itest3->Load("grafika\\" + testtab[3] + ".png");
+				 Itest3->Visible = true;
+			 }
+			 else Itest3->Visible = false;
+			 if (testindex > 4){
+				 Itest4->Load("grafika\\" + testtab[4] + ".png");
+				 Itest4->Visible = true;
+			 }
+			 else Itest4->Visible = false;
+			 if (testindex > 5){
+				 Itest5->Load("grafika\\" + testtab[5] + ".png");
+				 Itest5->Visible = true;
+			 }
+			 else Itest5->Visible = false;
+			 if (testindex > 6){
+				 Itest6->Load("grafika\\" + testtab[6] + ".png");
+				 Itest6->Visible = true;
+			 }
+			 else Itest6->Visible = false;
+			 if (testindex > 7){
+				 Itest7->Load("grafika\\" + testtab[7] + ".png");
+				 Itest7->Visible = true;
+			 }
+			 else Itest7->Visible = false;
+			 if (testindex > 8){
+				 Itest8->Load("grafika\\" + testtab[8] + ".png");
+				 Itest8->Visible = true;
+			 }
+			 else Itest8->Visible = false;
+			 if (testindex > 9){
+				 Itest9->Load("grafika\\" + testtab[9] + ".png");
+				 Itest9->Visible = true;
+			 }
+			 else Itest9->Visible = false;
+		 }
 private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
 			 //praca pomocników oraz testowanie i cykl
 			 if (testprogress == 5){				 
