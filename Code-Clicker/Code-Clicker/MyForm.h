@@ -1202,131 +1202,36 @@ namespace CodeClicker {
 				 cash = (codefactor*cashfactor) + cash;
 				 refresh();
 	}
-			 void refresh(){
-				 //odœwie¿anie wartoœci kasy i kodu
-				 int cashtab[10], codetab[10];
-				 int cashindex, codeindex, help;
-				 cashindex = 1;
-				 help = cash;
-				 while (help / 10 != 0){
-					 cashindex++;
-					 help /= 10;
-				 }
-				 help = cash;
-				 for (int i = 0; i < cashindex; i++){
-					 cashtab[i] = help % 10;
-					 help /= 10;
-				 }
-				 if (cashindex>0)
-					 Icash0->Load("grafika\\" + cashtab[0] + ".png"); 
-				 else Icash0->Visible = false;
-				 if (cashindex > 1){
-					 Icash1->Load("grafika\\" + cashtab[1] + ".png"); 
-					 Icash1->Visible = true;
-				 }
-				 else Icash1->Visible = false;
-				 if (cashindex > 2){
-					 Icash2->Load("grafika\\" + cashtab[2] + ".png");
-					 Icash2->Visible = true;
-				 }
-				 else Icash2->Visible = false;
-				 if (cashindex > 3){
-					 Icash3->Load("grafika\\" + cashtab[3] + ".png");
-					 Icash3->Visible = true;
-				 }
-				 else Icash3->Visible = false;
-				 if (cashindex > 4){
-					 Icash4->Load("grafika\\" + cashtab[4] + ".png");
-					 Icash4->Visible = true;
-				 }
-				 else Icash4->Visible = false;
-				 if (cashindex > 5){
-					 Icash5->Load("grafika\\" + cashtab[5] + ".png");
-					 Icash5->Visible = true;
-				 }
-				 else Icash5->Visible = false;
-				 if (cashindex > 6){
-					 Icash6->Load("grafika\\" + cashtab[6] + ".png");
-					 Icash6->Visible = true;
-				 }
-				 else Icash6->Visible = false;
-				 if (cashindex > 7){
-					 Icash7->Load("grafika\\" + cashtab[7] + ".png");
-					 Icash7->Visible = true;
-				 }
-				 else Icash7->Visible = false;
-				 if (cashindex > 8){
-					 Icash8->Load("grafika\\" + cashtab[8] + ".png");
-					 Icash8->Visible = true;
-				 }
-				 else Icash8->Visible = false;
-				 if (cashindex > 9){
-					 Icash9->Load("grafika\\" + cashtab[9] + ".png");
-					 Icash9->Visible = true;
-				 }
-				 else Icash9->Visible = false;		
-				 codeindex = 1;
-				 help = code;
-				 while (help / 10 != 0){
-				 codeindex++;
-				 help /= 10;
-				 }
-				 help = code;
-				 for (int i = 0; i < codeindex; i++){
-				 codetab[i] = help % 10;
-				 help /= 10;
-				 }
-				 if (codeindex>0){
-					 Icode0->Load("grafika\\" + codetab[0] + ".png");
-					 Icode0->Visible = true;
-				 }
-				 else Icode0->Visible = false;
-				 if (codeindex > 1){
-					 Icode1->Load("grafika\\" + codetab[1] + ".png");
-					 Icode1->Visible = true;
-				 }
-				 else Icode1->Visible = false;
-				 if (codeindex > 2){
-					 Icode2->Load("grafika\\" + codetab[2] + ".png");
-					 Icode2->Visible = true;
-				 }
-				 else Icode2->Visible = false;
-				 if (codeindex > 3){
-					 Icode3->Load("grafika\\" + codetab[3] + ".png");
-					 Icode3->Visible = true;
-				 }
-				 else Icode3->Visible = false;
-				 if (codeindex > 4){
-					 Icode4->Load("grafika\\" + codetab[4] + ".png");
-					 Icode4->Visible = true;
-				 }
-				 else Icode4->Visible = false;
-				 if (codeindex > 5){
-					 Icode5->Load("grafika\\" + codetab[5] + ".png");
-					 Icode5->Visible = true;
-				 }
-				 else Icode5->Visible = false;
-				 if (codeindex > 6){
-					 Icode6->Load("grafika\\" + codetab[6] + ".png");
-					 Icode6->Visible = true;
-				 }
-				 else Icode6->Visible = false;
-				 if (codeindex > 7){
-					 Icode7->Load("grafika\\" + codetab[7] + ".png");
-					 Icode7->Visible = true;
-				 }
-				 else Icode7->Visible = false;
-				 if (codeindex > 8){
-					 Icode8->Load("grafika\\" + codetab[8] + ".png");
-					 Icode8->Visible = true;
-				 }
-				 else Icode8->Visible = false;
-				 if (codeindex > 9){
-					 Icode9->Load("grafika\\" + codetab[9] + ".png");
-					 Icode9->Visible = true;
-				 }
-				 else Icode9->Visible = false;
+
+			 /// <summary>Odœwie¿anie wartoœci kasy i kodu.</summary>
+			 void refresh() {
+
+				 array<PictureBox^>^ Icash = gcnew array<PictureBox^>{
+					 Icash0, Icash1, Icash2, Icash3, Icash4, Icash5, Icash6, Icash7, Icash8, Icash9
+				 };
+				 array<PictureBox^>^ Icode = gcnew array<PictureBox^>{
+					 Icode0, Icode1, Icode2, Icode3, Icode4, Icode5, Icode6, Icode7, Icode8, Icode9
+				 };
+
+				 String^ cashString = cash.ToString();
+				 int cashindex = cashString->Length;
+
+				 for (int i = 0; i < Icash->Length; i++)
+					 Icash[i]->Visible = i < cashindex;
+
+				 for (int i = 0; i < cashindex; i++)
+					 Icash[i]->Load(String::Format("grafika\\{0}.png", cashString[cashindex - i - 1]));
+
+				 String^ codeString = code.ToString();
+				 int codeindex = codeString->Length;
+
+				 for (int i = 0; i < Icode->Length; i++)
+					 Icode[i]->Visible = i < codeindex;
+
+				 for (int i = 0; i < codeindex; i++)
+					 Icode[i]->Load(String::Format("grafika\\{0}.png", codeString[codeindex - i - 1]));
 			 }
+
 private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wczytanie gry
 			 try{
