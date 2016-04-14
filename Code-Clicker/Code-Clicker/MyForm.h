@@ -1411,148 +1411,151 @@ private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e
 			 }
 			 else Itest9->Visible = false;
 		 }
-private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
-			 //praca pomocników oraz testowanie i cykl
-			 if (testprogress == 5){				 
-				 test += testfactor;
-				 if (test > code) test = code;
-				 Iprogress0->Visible = false;
-				 Iprogress1->Visible = false;
-				 Iprogress2->Visible = false;
-				 Iprogress3->Visible = false;
-				 refreshtested();
-				 testprogress = 0;
-				 Btest->Enabled = true;
-				 testing = false;
-			 }
-			 if (testing){
-				 testprogress++;
-				 if (testprogress == 1)Iprogress0->Visible = true;
-				 if (testprogress == 2)Iprogress1->Visible = true;
-				 if (testprogress == 3)Iprogress2->Visible = true;
-				 if (testprogress == 4)Iprogress3->Visible = true;
-			 }
-			 if (cycle == 30)Icycle9->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 60)Icycle8->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 90)Icycle7->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 120)Icycle6->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 150)Icycle5->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 180)Icycle4->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 210)Icycle3->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 240)Icycle2->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 270)Icycle1->BackColor = System::Drawing::Color::Orange;
-			 if (cycle == 300){
-				 Icycle0->BackColor = System::Drawing::Color::Orange;
-				 Lcycle->Visible = true;
-				 cash += (code - (code - test))*cashfactor;
-				 refresh();
-				 cycle = 0;
-				 if (employee4){
-					 if (cash - employee4factor * 5 > 0){
-						 cash -= employee4factor * 5;
-						 Lpoor->Visible = false;
-						 Phired4->Load("grafika\\testermini.png");
-						 Ldeterminated->Visible = false;
-						 Llazy->Visible = false;
-					 }
-					 else {
-						 poor = true;
-						 Lpoor->Visible = true;
-						 Phired4->Load("grafika\\testerminipoor.png");
-						 Ldeterminated->Visible = false;
-						 Llazy->Visible = false;
-					 }
-				 }
-			 }
-			 else cycle++;
-			 if (cycle == 5){
-				 Lcycle->Visible = false;
-				 Icycle9->BackColor = System::Drawing::Color::Transparent;
-				 Icycle8->BackColor = System::Drawing::Color::Transparent;
-				 Icycle7->BackColor = System::Drawing::Color::Transparent;
-				 Icycle6->BackColor = System::Drawing::Color::Transparent;
-				 Icycle5->BackColor = System::Drawing::Color::Transparent;
-				 Icycle4->BackColor = System::Drawing::Color::Transparent;
-				 Icycle3->BackColor = System::Drawing::Color::Transparent;
-				 Icycle2->BackColor = System::Drawing::Color::Transparent;
-				 Icycle1->BackColor = System::Drawing::Color::Transparent;
-				 Icycle0->BackColor = System::Drawing::Color::Transparent;
-			 }
-			 if (employee1progress == employee1speed){				
-				 code += employee1factor;
-				 cash += ((employee1factor*cashfactor) / 2);
-				 refresh();
-				 employee1progress = 0;		 
-			 }
-			 if (employee1)employee1progress++;
-			 if (employee2progress == employee2speed){
-				 code += employee2factor;
-				 cash += ((employee2factor*cashfactor) / 2);
-				 refresh();
-				 employee2progress = 0;
-				 if (employee2premium >= 15 && cash>=10){
-					 cash -= 10;
-					 Lpremium->Visible = true;
-					 Phired2->Load("grafika\\programista3minipremium.png");
-					 employee2premium = 0;
-					 refresh();
-				 }
-				 else{
-					 employee2premium++;
-					 Lpremium->Visible = false;
-					 Phired2->Load("grafika\\programista3mini.png");
-				 } 
-			 }
-			 if (employee2)employee2progress++;
-			 if (employee3progress == employee3speed){
-				 employee3progress = 0;
-				 Labsent->Visible = false;
-				 Ltrans->Visible = false;
-				 Phired3->Load("grafika\\programista4mini.png");
-				 if (employee3cycle % 3 == 0){
-					 Labsent->Visible = true;
-					 Phired3->Load("grafika\\programista4miniabsent.png");
-				 }
-				 else{
-					 if (employee3cycle % 5 == 0){
-						 Ltrans->Visible = true;
-						 Phired3->Load("grafika\\programista4minitrans.png");
-						 code += employee3factor*2;
-						 cash += (employee3factor*cashfactor);
-					 }
-				 }
-				 if (employee3cycle == 100)employee3cycle = 0;					 				 
-				 else employee3cycle++;
-				 if (employee3cycle % 5 != 0 && employee3cycle % 3 != 0){
-					code += employee3factor;
-					cash += ((employee3factor*cashfactor) / 2);
-				 }		 				 
-				 refresh();
-			 }
-			 if (employee3)employee3progress++;
-			 if (employee4progress == employee4speed && !poor){
-				 employee4progress = 0;
-				 if (cycle < 100){
-					 test += employee4factor / 2;
-					 Llazy->Visible = true;
-					 Phired4->Load("grafika\\testerminilazy.png");
-				 }
-				 else if (cycle <250){
-					 test += employee4factor;
-					 Llazy->Visible = false;
-					 Ldeterminated->Visible = false;
-					 Phired4->Load("grafika\\testermini.png");
-				 }
-				 else{
-					 test += employee4factor * 10;
-					 Ldeterminated->Visible = true;
-					 Phired4->Load("grafika\\testerminidetermined.png");
-				 }
-				 if (test>code)test = code;
-				 refreshtested();
-			 }
-			 if (employee4 && !poor)employee4progress++;
-}
+
+		 /// <summary>Praca pomocników oraz testowanie i cykl.</summary> 
+	private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
+
+		array<PictureBox^>^ Iprogress = gcnew array<PictureBox^>{
+			Iprogress0, Iprogress1, Iprogress2, Iprogress3
+		};
+
+		array<PictureBox^>^ Icycle = gcnew array<PictureBox^>{
+			Icycle9, Icycle8, Icycle7, Icycle6, Icycle5, Icycle4, Icycle3, Icycle2, Icycle1, Icycle0
+		};
+
+		if (testing) {
+			testprogress = (testprogress + 1) % 5;
+			for (int i = 0; i < Iprogress->Length; i++)
+				Iprogress[i]->Visible = i + 1 <= testprogress;
+
+			if (testprogress == 0) {
+				test += testfactor;
+				if (test > code)
+					test = code;
+				Btest->Enabled = true;
+				testing = false;
+			}
+		}
+
+		cycle = (cycle + 1) % 300;
+
+		if (cycle % 30 == 0)
+		{
+			Icycle[(cycle == 0 ? 9 : cycle / 30 - 1)]->BackColor = System::Drawing::Color::Orange;
+
+			if (cycle == 0)
+			{
+				Lcycle->Visible = true;
+				cash += test*cashfactor;
+				if (employee4) {
+					if (cash - employee4factor * 5 > 0) {
+						cash -= employee4factor * 5;
+						Lpoor->Visible = false;
+						Phired4->Load("grafika\\testermini.png");
+						Ldeterminated->Visible = false;
+						Llazy->Visible = false;
+					}
+					else {
+						poor = true;
+						Lpoor->Visible = true;
+						Phired4->Load("grafika\\testerminipoor.png");
+						Ldeterminated->Visible = false;
+						Llazy->Visible = false;
+					}
+				}
+			}
+		}
+
+		if (cycle == 5) {
+			Lcycle->Visible = false;
+			for (int i = 0; i < Icycle->Length; i++)
+				Icycle[i]->BackColor = System::Drawing::Color::Transparent;
+		}
+
+		if (employee1progress == employee1speed) {
+			code += employee1factor;
+			cash += ((employee1factor*cashfactor) / 2);
+			employee1progress = 0;
+		}
+		if (employee1)
+			employee1progress++;
+
+		if (employee2progress == employee2speed) {
+			code += employee2factor;
+			cash += ((employee2factor*cashfactor) / 2);
+			employee2progress = 0;
+			if (employee2premium >= 15 && cash >= 10) {
+				cash -= 10;
+				Lpremium->Visible = true;
+				Phired2->Load("grafika\\programista3minipremium.png");
+				employee2premium = 0;
+			}
+			else {
+				employee2premium++;
+				Lpremium->Visible = false;
+				Phired2->Load("grafika\\programista3mini.png");
+			}
+		}
+		if (employee2)
+			employee2progress++;
+
+		if (employee3progress == employee3speed) {
+			employee3progress = 0;
+			Labsent->Visible = false;
+			Ltrans->Visible = false;
+			Phired3->Load("grafika\\programista4mini.png");
+			if (employee3cycle % 3 == 0) {
+				Labsent->Visible = true;
+				Phired3->Load("grafika\\programista4miniabsent.png");
+			}
+			else {
+				if (employee3cycle % 5 == 0) {
+					Ltrans->Visible = true;
+					Phired3->Load("grafika\\programista4minitrans.png");
+					code += employee3factor * 2;
+					cash += (employee3factor*cashfactor);
+				}
+			}
+			if (employee3cycle == 100)
+				employee3cycle = 0;
+			else
+				employee3cycle++;
+			if (employee3cycle % 5 != 0 && employee3cycle % 3 != 0) {
+				code += employee3factor;
+				cash += ((employee3factor*cashfactor) / 2);
+			}
+		}
+		if (employee3)
+			employee3progress++;
+
+		if (employee4progress == employee4speed && !poor) {
+			employee4progress = 0;
+			if (cycle < 100) {
+				test += employee4factor / 2;
+				Llazy->Visible = true;
+				Phired4->Load("grafika\\testerminilazy.png");
+			}
+			else if (cycle < 250) {
+				test += employee4factor;
+				Llazy->Visible = false;
+				Ldeterminated->Visible = false;
+				Phired4->Load("grafika\\testermini.png");
+			}
+			else {
+				test += employee4factor * 10;
+				Ldeterminated->Visible = true;
+				Phired4->Load("grafika\\testerminidetermined.png");
+			}
+			if (test > code)
+				test = code;
+		}
+		if (employee4 && !poor)
+			employee4progress++;
+
+		refreshtested();
+		refresh();
+	}
+
 private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //klikniêcie przycisku testowania
 			 if (test < code){
