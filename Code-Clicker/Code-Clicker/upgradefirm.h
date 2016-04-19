@@ -18,9 +18,36 @@ namespace CodeClicker {
 		upgradefirm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
+			paid = 0;
+			cash = 0;
+			perk1 = false;
+			perk2 = false;
+			perk3 = false;
+			perk4 = false;
+		}
+
+		void check(int passedcash, bool e1, bool e2, bool e3, bool e4){
+			cash = passedcash;
+			if (passedcash >= 500 && !e1)B1->Visible = true;
+			if (passedcash >= 1500 && !e2)B2->Visible = true;
+			if (passedcash >= 5000 && !e3)B3->Visible = true;
+			if (passedcash >= 20000 && !e4)B4->Visible = true;
+		}
+
+		bool getperk1(){
+			return perk1;
+		}
+		bool getperk2(){
+			return perk2;
+		}
+		bool getperk3(){
+			return perk3;
+		}
+		bool getperk4(){
+			return perk4;
+		}
+		int getpaid(){
+			return paid;
 		}
 
 	protected:
@@ -58,9 +85,14 @@ namespace CodeClicker {
 	protected:
 
 	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
+
+		int cash;
+		bool perk1;
+		bool perk2;
+		bool perk3;
+		bool perk4;
+		int paid;
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -156,6 +188,7 @@ namespace CodeClicker {
 			this->B1->Text = L"Zakup";
 			this->B1->UseVisualStyleBackColor = true;
 			this->B1->Visible = false;
+			this->B1->Click += gcnew System::EventHandler(this, &upgradefirm::B1_Click);
 			// 
 			// B2
 			// 
@@ -166,6 +199,7 @@ namespace CodeClicker {
 			this->B2->Text = L"Zakup";
 			this->B2->UseVisualStyleBackColor = true;
 			this->B2->Visible = false;
+			this->B2->Click += gcnew System::EventHandler(this, &upgradefirm::B2_Click);
 			// 
 			// L2perk
 			// 
@@ -216,6 +250,7 @@ namespace CodeClicker {
 			this->B3->Text = L"Zakup";
 			this->B3->UseVisualStyleBackColor = true;
 			this->B3->Visible = false;
+			this->B3->Click += gcnew System::EventHandler(this, &upgradefirm::B3_Click);
 			// 
 			// L3perk
 			// 
@@ -266,6 +301,7 @@ namespace CodeClicker {
 			this->B4->Text = L"Zakup";
 			this->B4->UseVisualStyleBackColor = true;
 			this->B4->Visible = false;
+			this->B4->Click += gcnew System::EventHandler(this, &upgradefirm::B4_Click);
 			// 
 			// L4perk
 			// 
@@ -349,5 +385,45 @@ namespace CodeClicker {
 				 //przycisk wstecz
 				 this->Close();
 	}
-	};
+	private: System::Void B1_Click(System::Object^  sender, System::EventArgs^  e) {			 //wynajem pomocnika nr 1			 
+				 //zakup perka nr 1
+				 paid += 500;
+				 cash -= 500;
+				 perk1 = true;
+				 B1->Visible = false;
+				 if (cash < 1500)B2->Visible = false;
+				 if (cash < 5000)B3->Visible = false;
+				 if (cash < 20000)B4->Visible = false;
+	}
+private: System::Void B2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 2
+			 paid += 1500;
+			 cash -= 1500;
+			 perk2 = true;
+			 B2->Visible = false;
+			 if (cash < 500)B1->Visible = false;
+			 if (cash < 5000)B3->Visible = false;
+			 if (cash < 20000)B4->Visible = false;
+}
+private: System::Void B3_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 3
+			 paid += 5000;
+			 cash -= 5000;
+			 perk3 = true;
+			 B3->Visible = false;
+			 if (cash < 500)B1->Visible = false;
+			 if (cash < 1500)B2->Visible = false;
+			 if (cash < 20000)B4->Visible = false;
+}
+private: System::Void B4_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 4
+			 paid += 20000;
+			 cash -= 20000;
+			 perk4 = true;
+			 B4->Visible = false;
+			 if (cash < 500)B1->Visible = false;
+			 if (cash < 5000)B3->Visible = false;
+			 if (cash < 1500)B2->Visible = false;
+}
+};
 }

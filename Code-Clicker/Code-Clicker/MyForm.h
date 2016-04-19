@@ -50,16 +50,102 @@ namespace CodeClicker {
 			employee4progress = 0;
 			employee4speed = 25;
 			poor = false;
+			perk1_1 = false;
+			perk1_2 = false;
+			perk1_3 = false;
+			perk1_4 = false;
+			perk2_1 = false;
+			perk2_2 = false;
+			perk2_3 = false;
+			perk2_4 = false;
+			perk2_5 = false;
+			perk3_1 = false;
+			perk3_2 = false;
+			perk3_3 = false;
+			perk4_1 = false;
+			perk4_2 = false;
+			perk4_3 = false;
+			perk5_1 = false;
+			perk5_2 = false;
+			perk5_3 = false;
+			perk6_1 = false;
+			perk6_2 = false;
+			perk6_3 = false;
+		}
+
+		void reset(){
+			codefactor = 1;
+			cashfactor = 2;
+			employee1 = false;
+			employee1factor = 1;
+			employee1progress = 0;
+			employee1speed = 7;
+			employee2 = false;
+			employee2factor = 2;
+			employee2progress = 0;
+			employee2speed = 10;
+			employee2premium = 0;
+			employee3 = false;
+			employee3factor = 4;
+			employee3progress = 0;
+			employee3speed = 15;
+			employee3cycle = 0;
+			employee4 = false;
+			employee4factor = 5;
+			employee4progress = 0;
+			employee4speed = 25;
+			perk1_1 = false;
+			perk1_2 = false;
+			perk1_3 = false;
+			perk1_4 = false;
+			perk2_1 = false;
+			perk2_2 = false;
+			perk2_3 = false;
+			perk2_4 = false;
+			perk2_5 = false;
+			perk3_1 = false;
+			perk3_2 = false;
+			perk3_3 = false;
+			perk4_1 = false;
+			perk4_2 = false;
+			perk4_3 = false;
+			perk5_1 = false;
+			perk5_2 = false;
+			perk5_3 = false;
+			perk6_1 = false;
+			perk6_2 = false;
+			perk6_3 = false;
 		}
 
 		void passdata(int paid,bool e1, bool e2, bool e3, bool e4){
-			//przekazywanie
+			//przekazywanie z formatki hire.h
 			cash -= paid;
 			refresh();
-			if (e1 != employee1 && e1){ employee1 = e1; Phired1->Visible = true; }
-			if (e2 != employee2 && e2){ employee2 = e2; Phired2->Visible = true; }
-			if (e3 != employee3 && e3){ employee3 = e3; Phired3->Visible = true; }
-			if (e4 != employee4 && e4){ employee4 = e4; Phired4->Visible = true; }
+			if (!employee1 && e1){ employee1 = true; Phired1->Visible = true; }
+			if (!employee2 && e2){ employee2 = true; Phired2->Visible = true; }
+			if (!employee3 && e3){ employee3 = true; Phired3->Visible = true; }
+			if (!employee4 && e4){ employee4 = true; Phired4->Visible = true; }
+		}
+
+		void passfirm(int paid, bool e1, bool e2, bool e3, bool e4){
+			//przekazywanie z formatki upgradefirm.h
+			cash -= paid;
+			refresh();
+			if (!perk1_1 && e1){ perk1_1 = true; cashfactor += 1; }
+			if (!perk1_2 && e2){ perk1_2 = true; cashfactor += 3; }
+			if (!perk1_3 && e3){ perk1_3 = true; cashfactor += 6; }
+			if (!perk1_4 && e4){ perk1_4 = true; cashfactor += 10; }
+		}
+
+		void passavatar(int paid, bool e1, bool e2, bool e3, bool e4, bool e5){
+			//przekazywanie z formatki upgradeavatar.h
+			cash -= paid;
+			refresh();
+			if (!perk2_1 && e1){ perk2_1 = true; codefactor += 1; }
+			if (!perk2_2 && e2){ perk2_2 = true; codefactor += 2; }
+			if (!perk2_3 && e3){ perk2_3 = true; codefactor += 3; }
+			if (!perk2_4 && e4){ perk2_4 = true; codefactor += 4; }
+			if (!perk2_5 && e5){ perk2_5 = true; codefactor += 5; }
 		}
 	protected:
 		/// <summary>
@@ -115,6 +201,32 @@ namespace CodeClicker {
 		int employee4speed;//szybkoœæ pomocnika nr 4
 		bool poor;//czy staæ na wyp³atê dla pomocnika nr 4?
 
+		bool perk1_1;
+		bool perk1_2;
+		bool perk1_3;
+		bool perk1_4;
+
+		bool perk2_1;
+		bool perk2_2;
+		bool perk2_3;
+		bool perk2_4;
+		bool perk2_5;
+
+		bool perk3_1;
+		bool perk3_2;
+		bool perk3_3;
+
+		bool perk4_1;
+		bool perk4_2;
+		bool perk4_3;
+
+		bool perk5_1;
+		bool perk5_2;
+		bool perk5_3;
+
+		bool perk6_1;
+		bool perk6_2;
+		bool perk6_3;
 
 	private: System::Windows::Forms::PictureBox^  Pzl;
 	private: System::Windows::Forms::PictureBox^  Icode0;
@@ -595,7 +707,7 @@ namespace CodeClicker {
 			// Phired1
 			// 
 			this->Phired1->BackColor = System::Drawing::Color::Transparent;
-			this->Phired1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired1.Image")));
 			this->Phired1->Location = System::Drawing::Point(245, 215);
 			this->Phired1->Name = L"Phired1";
@@ -607,7 +719,7 @@ namespace CodeClicker {
 			// Phired2
 			// 
 			this->Phired2->BackColor = System::Drawing::Color::Transparent;
-			this->Phired2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired2->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired2.Image")));
 			this->Phired2->Location = System::Drawing::Point(411, 215);
 			this->Phired2->Name = L"Phired2";
@@ -674,7 +786,7 @@ namespace CodeClicker {
 			// 
 			this->Phired4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->Phired4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired4->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired4.Image")));
 			this->Phired4->Location = System::Drawing::Point(744, 215);
 			this->Phired4->Name = L"Phired4";
@@ -686,7 +798,7 @@ namespace CodeClicker {
 			// Phired3
 			// 
 			this->Phired3->BackColor = System::Drawing::Color::Transparent;
-			this->Phired3->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired3->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired3.Image")));
 			this->Phired3->Location = System::Drawing::Point(573, 215);
 			this->Phired3->Name = L"Phired3";
@@ -1029,7 +1141,7 @@ namespace CodeClicker {
 			this->Lpoor->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lpoor->ForeColor = System::Drawing::Color::Silver;
-			this->Lpoor->Location = System::Drawing::Point(706, 302);
+			this->Lpoor->Location = System::Drawing::Point(701, 302);
 			this->Lpoor->Name = L"Lpoor";
 			this->Lpoor->Size = System::Drawing::Size(155, 14);
 			this->Lpoor->TabIndex = 99;
@@ -1202,9 +1314,8 @@ namespace CodeClicker {
 				 cash = (codefactor*cashfactor) + cash;
 				 refresh();
 	}
-
-			 /// <summary>Odœwie¿anie wartoœci kasy i kodu.</summary>
 			 void refresh() {
+				 //odœwie¿anie wartoœci kasy i kodu
 
 				 array<PictureBox^>^ Icash = gcnew array<PictureBox^>{
 					 Icash0, Icash1, Icash2, Icash3, Icash4, Icash5, Icash6, Icash7, Icash8, Icash9
@@ -1239,6 +1350,19 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 				 FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
 				 StreamReader^ sw = gcnew StreamReader(fs);
 				 int boolean;
+				 Phired1->Visible = false;
+				 Phired2->Visible = false;
+				 Phired3->Visible = false;
+				 Phired4->Visible = false;
+				 Lcycle->Visible = false;
+				 Ltest->Visible = false;
+				 Lpremium->Visible = false;
+				 Labsent->Visible = false;
+				 Ltrans->Visible = false;
+				 Llazy->Visible = false;
+				 Ldeterminated->Visible = false;
+				 Lpoor->Visible = false;
+				 reset();
 				 while (sw->Peek() >= 0)
 				 {
 					 Int32::TryParse(sw->ReadLine(), code);
@@ -1269,20 +1393,12 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 					 {
 						 employee1 = true;
 						 Phired1->Visible = true;
-					 }
-					 else{
-						 employee1 = false;
-						 Phired1->Visible = false;
-					 }			 
+					 }		 
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean==1)
 					 {
 						 employee2 = true;
 						 Phired2->Visible = true;
-					 }
-					 else{
-						 employee2 = false;
-						 Phired2->Visible = false;
 					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
@@ -1290,19 +1406,11 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 						 employee3 = true;
 						 Phired3->Visible = true;
 					 }
-					 else{
-						 employee3 = false;
-						 Phired3->Visible = false;
-					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
 					 {
 						 employee4 = true;
 						 Phired4->Visible = true;
-					 }
-					 else{
-						 employee4 = false;
-						 Phired4->Visible = false;
 					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
@@ -1314,6 +1422,133 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 						 poor = false;
 						 Lpoor->Visible = false;
 					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_1 = true;
+						 cashfactor += 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_2 = true;
+						 cashfactor += 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_3 = true;
+						 cashfactor += 6;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_4 = true;
+						 cashfactor += 10;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_1 = true;
+						 codefactor += 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_2 = true;
+						 codefactor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_3 = true;
+						 codefactor += 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_4 = true;
+						 codefactor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_5 = true;
+						 codefactor += 5;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_1 = true;
+						 employee1speed -= 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_2 = true;
+						 employee1factor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_3 = true;
+						 employee1speed -= 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_1 = true;
+						 employee2factor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_2 = true;
+						 employee2factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_3 = true;
+						 employee2speed -= 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_1 = true;
+						 employee3speed -= 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_2 = true;
+						 employee3speed -= 7;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_3 = true;
+						 employee3factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_1 = true;
+						 employee4speed -= 15;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_2 = true;
+						 employee4factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_3 = true;
+						 employee4factor += 6;
+					 }
+
 				 }
 				 refresh();
 				 refreshtested();
@@ -1337,10 +1572,31 @@ private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e
 			 if (employee3) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (employee4) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (poor) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_4) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_4) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_5) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_3) sw->WriteLine(1); else sw->WriteLine(0);
 			 sw->Close();
 }
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
-			 //otwarcie formatki z najemnikami
+			 //otwarcie formatki z pomocnikami
 			 hire^ hiredialog = gcnew hire;
 			 hiredialog->check(cash,employee1, employee2, employee3, employee4);
 			 hiredialog->ShowDialog();
@@ -1348,8 +1604,8 @@ private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e
 			 refresh();
 }
 
-		 /// <summary>Odœwie¿anie wartoœci przetestowanych linii.</summary> 
 	private: void refreshtested() {
+		//odœwie¿anie wartoœci przetestowanych linii
 		array<PictureBox^>^ Itest = gcnew array<PictureBox^>{
 			Itest0, Itest1, Itest2, Itest3, Itest4, Itest5, Itest6, Itest7, Itest8, Itest9
 		};
@@ -1518,12 +1774,18 @@ private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e
 private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami firmy
 			 upgradefirm^ firmdialog = gcnew upgradefirm;
+			 firmdialog->check(cash,perk1_1,perk1_2,perk1_3,perk1_4);
 			 firmdialog->ShowDialog();
+			 passfirm(firmdialog->getpaid(), firmdialog->getperk1(), firmdialog->getperk2(), firmdialog->getperk3(), firmdialog->getperk4());
+			 refresh();
 }
 private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami g³ównego programisty
 			 upgradeavatar^ avatardialog = gcnew upgradeavatar;
+			 avatardialog->check(cash,perk2_1,perk2_2,perk2_3,perk2_4,perk2_5);
 			 avatardialog->ShowDialog();
+			 passavatar(avatardialog->getpaid(), avatardialog->getperk1(), avatardialog->getperk2(), avatardialog->getperk3(), avatardialog->getperk4(), avatardialog->getperk5());
+			 refresh();
 }
 };
 }

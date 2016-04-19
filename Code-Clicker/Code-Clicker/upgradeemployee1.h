@@ -18,9 +18,13 @@ namespace CodeClicker {
 		upgradeemployee1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
+		}
+
+		void check(int passedcash, bool e1, bool e2, bool e3){
+			cash = passedcash;
+			if (passedcash >= 50 && !e1)B1->Visible = true;
+			if (passedcash >= 150 && !e2)B2->Visible = true;
+			if (passedcash >= 500 && !e3)B3->Visible = true;
 		}
 
 	protected:
@@ -53,9 +57,12 @@ namespace CodeClicker {
 	protected:
 
 	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
+
+		int cash;
+		bool perk1;
+		bool perk2;
+		bool perk3;
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -95,6 +102,7 @@ namespace CodeClicker {
 			this->Bback->Size = System::Drawing::Size(143, 67);
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
+			this->Bback->Click += gcnew System::EventHandler(this, &upgradeemployee1::Bback_Click);
 			// 
 			// B3
 			// 
@@ -112,9 +120,9 @@ namespace CodeClicker {
 			this->L3perk->ForeColor = System::Drawing::Color::Lime;
 			this->L3perk->Location = System::Drawing::Point(146, 175);
 			this->L3perk->Name = L"L3perk";
-			this->L3perk->Size = System::Drawing::Size(317, 13);
+			this->L3perk->Size = System::Drawing::Size(272, 13);
 			this->L3perk->TabIndex = 56;
-			this->L3perk->Text = L"ZYSK:   znacznie zwiêksza szybkoœæ programowania Zosi Samosi";
+			this->L3perk->Text = L"ZYSK:   zwiêksza szybkoœæ programowania Zosi Samosi";
 			// 
 			// L3cost
 			// 
@@ -271,6 +279,7 @@ namespace CodeClicker {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"upgradeemployee1";
 			this->ShowIcon = false;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce umiejêtnoœci Zosi Samosi";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
 			this->ResumeLayout(false);
@@ -278,5 +287,9 @@ namespace CodeClicker {
 
 		}
 #pragma endregion
-	};
+	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
+				 //przycisk wstecz
+				 this->Close();
+	}
+};
 }

@@ -1,4 +1,8 @@
 #pragma once
+#include "upgradeemployee1.h"//po³¹czenie z upgradeemployee1.h
+#include "upgradeemployee2.h"//po³¹czenie z upgradeemployee2.h
+#include "upgradeemployee3.h"//po³¹czenie z upgradeemployee3.h
+#include "upgradeemployee4.h"//po³¹czenie z upgradeemployee4.h
 
 namespace CodeClicker {
 
@@ -26,6 +30,10 @@ namespace CodeClicker {
 				
 		void check(int passedcash, bool e1, bool e2, bool e3, bool e4){
 			cash = passedcash;
+			if (e1)Bupgrade1->Visible = true;
+			if (e2)Bupgrade2->Visible = true;
+			if (e3)Bupgrade3->Visible = true;
+			if (e4)Bupgrade4->Visible = true;
 			if (passedcash >= 100 && !e1 )Bhire1->Visible = true;
 			if (passedcash >= 400 && !e2 )Bhire2->Visible = true;
 			if (passedcash >= 1000 && !e3)Bhire3->Visible = true;
@@ -101,6 +109,10 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Bhire4;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
 	private: System::Windows::Forms::Label^  L4rebel;
+	private: System::Windows::Forms::Button^  Bupgrade1;
+	private: System::Windows::Forms::Button^  Bupgrade2;
+	private: System::Windows::Forms::Button^  Bupgrade3;
+	private: System::Windows::Forms::Button^  Bupgrade4;
 
 
 			 System::ComponentModel::Container ^components;
@@ -144,6 +156,10 @@ namespace CodeClicker {
 			this->Bhire4 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->L4rebel = (gcnew System::Windows::Forms::Label());
+			this->Bupgrade1 = (gcnew System::Windows::Forms::Button());
+			this->Bupgrade2 = (gcnew System::Windows::Forms::Button());
+			this->Bupgrade3 = (gcnew System::Windows::Forms::Button());
+			this->Bupgrade4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire1))->BeginInit();
@@ -529,6 +545,54 @@ namespace CodeClicker {
 			this->L4rebel->TabIndex = 43;
 			this->L4rebel->Text = L"nie pracuje gdy brak pieniêdzy na wyp³atê";
 			// 
+			// Bupgrade1
+			// 
+			this->Bupgrade1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bupgrade1->Location = System::Drawing::Point(573, 59);
+			this->Bupgrade1->Name = L"Bupgrade1";
+			this->Bupgrade1->Size = System::Drawing::Size(154, 84);
+			this->Bupgrade1->TabIndex = 44;
+			this->Bupgrade1->Text = L"Ulepsz";
+			this->Bupgrade1->UseVisualStyleBackColor = true;
+			this->Bupgrade1->Visible = false;
+			this->Bupgrade1->Click += gcnew System::EventHandler(this, &hire::Bupgrade1_Click);
+			// 
+			// Bupgrade2
+			// 
+			this->Bupgrade2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bupgrade2->Location = System::Drawing::Point(573, 198);
+			this->Bupgrade2->Name = L"Bupgrade2";
+			this->Bupgrade2->Size = System::Drawing::Size(154, 84);
+			this->Bupgrade2->TabIndex = 45;
+			this->Bupgrade2->Text = L"Ulepsz";
+			this->Bupgrade2->UseVisualStyleBackColor = true;
+			this->Bupgrade2->Visible = false;
+			this->Bupgrade2->Click += gcnew System::EventHandler(this, &hire::Bupgrade2_Click);
+			// 
+			// Bupgrade3
+			// 
+			this->Bupgrade3->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bupgrade3->Location = System::Drawing::Point(573, 339);
+			this->Bupgrade3->Name = L"Bupgrade3";
+			this->Bupgrade3->Size = System::Drawing::Size(154, 84);
+			this->Bupgrade3->TabIndex = 46;
+			this->Bupgrade3->Text = L"Ulepsz";
+			this->Bupgrade3->UseVisualStyleBackColor = true;
+			this->Bupgrade3->Visible = false;
+			this->Bupgrade3->Click += gcnew System::EventHandler(this, &hire::Bupgrade3_Click);
+			// 
+			// Bupgrade4
+			// 
+			this->Bupgrade4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bupgrade4->Location = System::Drawing::Point(573, 480);
+			this->Bupgrade4->Name = L"Bupgrade4";
+			this->Bupgrade4->Size = System::Drawing::Size(154, 84);
+			this->Bupgrade4->TabIndex = 47;
+			this->Bupgrade4->Text = L"Ulepsz";
+			this->Bupgrade4->UseVisualStyleBackColor = true;
+			this->Bupgrade4->Visible = false;
+			this->Bupgrade4->Click += gcnew System::EventHandler(this, &hire::Bupgrade4_Click);
+			// 
 			// hire
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -537,6 +601,10 @@ namespace CodeClicker {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(794, 672);
+			this->Controls->Add(this->Bupgrade4);
+			this->Controls->Add(this->Bupgrade3);
+			this->Controls->Add(this->Bupgrade2);
+			this->Controls->Add(this->Bupgrade1);
 			this->Controls->Add(this->L4rebel);
 			this->Controls->Add(this->L4determination);
 			this->Controls->Add(this->L4laziness);
@@ -592,46 +660,70 @@ namespace CodeClicker {
 protected: System::Void Bhire1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wynajem pomocnika nr 1			 
 				 paid += 100; 
-				 cash -= paid;
+				 cash -= 100;
 				 employee1 = true;
 				 Bhire1->Visible = false;
 				 if (cash < 400)Bhire2->Visible = false;
 				 if (cash < 1000)Bhire3->Visible = false;
 				 if (cash < 3000)Bhire4->Visible = false;
+				 Bupgrade1->Visible = true;
 }
 private: System::Void Bhire2_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wynajem pomocnika nr 2	
 				 paid += 400;
-				 cash -= paid;
+				 cash -= 400;
 				 employee2 = true;
 				 Bhire2->Visible = false;		
 				 if (cash < 100)Bhire1->Visible = false;
 				 if (cash < 1000)Bhire3->Visible = false;
 				 if (cash < 3000)Bhire4->Visible = false;
+				 Bupgrade2->Visible = true;
 }
 private: System::Void Bhire3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wynajem pomocnika nr 3
 				paid += 1000;
-				cash -= paid;
+				cash -= 1000;
 				employee3 = true;
 				Bhire3->Visible = false;
 				if (cash < 100)Bhire1->Visible = false;
 				if (cash < 400)Bhire2->Visible = false;
 				if (cash < 3000)Bhire4->Visible = false;
+				Bupgrade3->Visible = true;
 }
 private: System::Void Bhire4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wynajem pomocnika nr 4
 				paid += 3000;
-				cash -= paid;
+				cash -= 3000;
 				employee4 = true;
 				Bhire4->Visible = false;
 				if (cash < 100)Bhire1->Visible = false;
 				if (cash < 400)Bhire2->Visible = false;
 				if (cash < 1000)Bhire3->Visible = false;
+				Bupgrade4->Visible = true;
 }
 private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //przycisk wstecz
 			 this->Close();
+}
+private: System::Void Bupgrade1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami pomocnika nr 1
+			 upgradeemployee1^ employee1dialog = gcnew upgradeemployee1;
+			 employee1dialog->ShowDialog();
+}
+private: System::Void Bupgrade2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami pomocnika nr 2
+			 upgradeemployee2^ employee2dialog = gcnew upgradeemployee2;
+			 employee2dialog->ShowDialog();
+}
+private: System::Void Bupgrade3_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami pomocnika nr 3
+			 upgradeemployee3^ employee3dialog = gcnew upgradeemployee3;
+			 employee3dialog->ShowDialog();
+}
+private: System::Void Bupgrade4_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //otwarcie formatki z ulepszeniami pomocnika nr 4
+			 upgradeemployee4^ employee4dialog = gcnew upgradeemployee4;
+			 employee4dialog->ShowDialog();
 }
 };
 }

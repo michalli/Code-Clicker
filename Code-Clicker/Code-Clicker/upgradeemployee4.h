@@ -18,9 +18,13 @@ namespace CodeClicker {
 		upgradeemployee4(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
+		}
+
+		void check(int passedcash, bool e1, bool e2, bool e3){
+			cash = passedcash;
+			if (passedcash >= 1000 && !e1)B1->Visible = true;
+			if (passedcash >= 3000 && !e2)B2->Visible = true;
+			if (passedcash >= 5000 && !e3)B3->Visible = true;
 		}
 
 	protected:
@@ -53,9 +57,12 @@ namespace CodeClicker {
 	protected:
 
 	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
+
+		int cash;
+		bool perk1;
+		bool perk2;
+		bool perk3;
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -95,6 +102,7 @@ namespace CodeClicker {
 			this->Bback->Size = System::Drawing::Size(143, 67);
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
+			this->Bback->Click += gcnew System::EventHandler(this, &upgradeemployee4::Bback_Click);
 			// 
 			// B3
 			// 
@@ -112,9 +120,9 @@ namespace CodeClicker {
 			this->L3perk->ForeColor = System::Drawing::Color::Lime;
 			this->L3perk->Location = System::Drawing::Point(146, 175);
 			this->L3perk->Name = L"L3perk";
-			this->L3perk->Size = System::Drawing::Size(47, 13);
+			this->L3perk->Size = System::Drawing::Size(254, 13);
 			this->L3perk->TabIndex = 71;
-			this->L3perk->Text = L"ZYSK:   ";
+			this->L3perk->Text = L"ZYSK:   Janusz Apacz testuje szeœæ linii kodu wiêcej";
 			// 
 			// L3cost
 			// 
@@ -122,18 +130,18 @@ namespace CodeClicker {
 			this->L3cost->ForeColor = System::Drawing::Color::Red;
 			this->L3cost->Location = System::Drawing::Point(30, 175);
 			this->L3cost->Name = L"L3cost";
-			this->L3cost->Size = System::Drawing::Size(64, 13);
+			this->L3cost->Size = System::Drawing::Size(91, 13);
 			this->L3cost->TabIndex = 70;
-			this->L3cost->Text = L"KOSZT:   z³";
+			this->L3cost->Text = L"KOSZT:   5 000z³";
 			// 
 			// L3description
 			// 
 			this->L3description->AutoSize = true;
 			this->L3description->Location = System::Drawing::Point(30, 162);
 			this->L3description->Name = L"L3description";
-			this->L3description->Size = System::Drawing::Size(16, 13);
+			this->L3description->Size = System::Drawing::Size(336, 13);
 			this->L3description->TabIndex = 69;
-			this->L3description->Text = L"...";
+			this->L3description->Text = L"to ubezpieczenie zwiêkszy poczucie bezpieczeñstwa Twojego testera";
 			// 
 			// L3
 			// 
@@ -142,9 +150,9 @@ namespace CodeClicker {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->L3->Location = System::Drawing::Point(30, 149);
 			this->L3->Name = L"L3";
-			this->L3->Size = System::Drawing::Size(19, 13);
+			this->L3->Size = System::Drawing::Size(212, 13);
 			this->L3->TabIndex = 68;
-			this->L3->Text = L"...";
+			this->L3->Text = L"Ubezpieczenie od pora¿enia pr¹dem";
 			// 
 			// B2
 			// 
@@ -162,9 +170,9 @@ namespace CodeClicker {
 			this->L2perk->ForeColor = System::Drawing::Color::Lime;
 			this->L2perk->Location = System::Drawing::Point(146, 110);
 			this->L2perk->Name = L"L2perk";
-			this->L2perk->Size = System::Drawing::Size(47, 13);
+			this->L2perk->Size = System::Drawing::Size(259, 13);
 			this->L2perk->TabIndex = 66;
-			this->L2perk->Text = L"ZYSK:   ";
+			this->L2perk->Text = L"ZYSK:   Janusz Apacz testuje cztery linie kodu wiêcej";
 			// 
 			// L2cost
 			// 
@@ -172,18 +180,19 @@ namespace CodeClicker {
 			this->L2cost->ForeColor = System::Drawing::Color::Red;
 			this->L2cost->Location = System::Drawing::Point(30, 110);
 			this->L2cost->Name = L"L2cost";
-			this->L2cost->Size = System::Drawing::Size(64, 13);
+			this->L2cost->Size = System::Drawing::Size(91, 13);
 			this->L2cost->TabIndex = 65;
-			this->L2cost->Text = L"KOSZT:   z³";
+			this->L2cost->Text = L"KOSZT:   3 000z³";
 			// 
 			// L2description
 			// 
 			this->L2description->AutoSize = true;
 			this->L2description->Location = System::Drawing::Point(30, 97);
 			this->L2description->Name = L"L2description";
-			this->L2description->Size = System::Drawing::Size(16, 13);
+			this->L2description->Size = System::Drawing::Size(411, 13);
 			this->L2description->TabIndex = 64;
-			this->L2description->Text = L"...";
+			this->L2description->Text = L"ten zestaw pozwoli poæwiczyæ Twojemu testerowi, przez co nabierze wiêkszej wprawy"
+				L"";
 			// 
 			// L2
 			// 
@@ -192,9 +201,9 @@ namespace CodeClicker {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->L2->Location = System::Drawing::Point(30, 84);
 			this->L2->Name = L"L2";
-			this->L2->Size = System::Drawing::Size(19, 13);
+			this->L2->Size = System::Drawing::Size(150, 13);
 			this->L2->TabIndex = 63;
-			this->L2->Text = L"...";
+			this->L2->Text = L"Zestaw \"Ma³ego testera\"";
 			// 
 			// B1
 			// 
@@ -212,9 +221,9 @@ namespace CodeClicker {
 			this->L1perk->ForeColor = System::Drawing::Color::Lime;
 			this->L1perk->Location = System::Drawing::Point(146, 49);
 			this->L1perk->Name = L"L1perk";
-			this->L1perk->Size = System::Drawing::Size(47, 13);
+			this->L1perk->Size = System::Drawing::Size(272, 13);
 			this->L1perk->TabIndex = 61;
-			this->L1perk->Text = L"ZYSK:   ";
+			this->L1perk->Text = L"ZYSK:   zwiêksza szybkoœæ testowania Janusza Apacza";
 			// 
 			// L1cost
 			// 
@@ -222,18 +231,18 @@ namespace CodeClicker {
 			this->L1cost->ForeColor = System::Drawing::Color::Red;
 			this->L1cost->Location = System::Drawing::Point(30, 49);
 			this->L1cost->Name = L"L1cost";
-			this->L1cost->Size = System::Drawing::Size(64, 13);
+			this->L1cost->Size = System::Drawing::Size(91, 13);
 			this->L1cost->TabIndex = 60;
-			this->L1cost->Text = L"KOSZT:   z³";
+			this->L1cost->Text = L"KOSZT:   1 000z³";
 			// 
 			// L1description
 			// 
 			this->L1description->AutoSize = true;
 			this->L1description->Location = System::Drawing::Point(30, 36);
 			this->L1description->Name = L"L1description";
-			this->L1description->Size = System::Drawing::Size(16, 13);
+			this->L1description->Size = System::Drawing::Size(306, 13);
 			this->L1description->TabIndex = 59;
-			this->L1description->Text = L"...";
+			this->L1description->Text = L"dziêki temu podrêcznikowi, Twój tester bêdzie wiedzia³ co robiæ";
 			// 
 			// L1
 			// 
@@ -242,9 +251,9 @@ namespace CodeClicker {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
 			this->L1->Location = System::Drawing::Point(30, 23);
 			this->L1->Name = L"L1";
-			this->L1->Size = System::Drawing::Size(19, 13);
+			this->L1->Size = System::Drawing::Size(113, 13);
 			this->L1->TabIndex = 58;
-			this->L1->Text = L"...";
+			this->L1->Text = L"Podrêcznik testera";
 			// 
 			// upgradeemployee4
 			// 
@@ -271,6 +280,7 @@ namespace CodeClicker {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"upgradeemployee4";
 			this->ShowIcon = false;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce umiejêtnoœci Janusza Apacza";
 			this->Load += gcnew System::EventHandler(this, &upgradeemployee4::upgradeemployee4_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
@@ -281,5 +291,9 @@ namespace CodeClicker {
 #pragma endregion
 	private: System::Void upgradeemployee4_Load(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
+				 //przycisk wstecz
+				 this->Close();
+	}
+};
 }
