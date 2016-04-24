@@ -24,11 +24,25 @@ namespace CodeClicker {
 			InitializeComponent();
 			employee1 = false;
 			employee2 = false;
+			employee3 = false;
+			employee4 = false;
+			perk1_1 = false;
+			perk1_2 = false;
+			perk1_3 = false;
+			perk2_1 = false;
+			perk2_2 = false;
+			perk2_3 = false;
+			perk3_1 = false;
+			perk3_2 = false;
+			perk3_3 = false;
+			perk4_1 = false;
+			perk4_2 = false;
+			perk4_3 = false;
 			paid = 0;
 			cash = 0;
 		}
 				
-		void check(int passedcash, bool e1, bool e2, bool e3, bool e4){
+		void check(int passedcash, bool e1, bool e2, bool e3, bool e4, bool e5, bool e6, bool e7, bool e8, bool e9, bool e10, bool e11, bool e12, bool e13, bool e14, bool e15, bool e16){
 			cash = passedcash;
 			if (e1)Bupgrade1->Visible = true;
 			if (e2)Bupgrade2->Visible = true;
@@ -38,6 +52,18 @@ namespace CodeClicker {
 			if (passedcash >= 400 && !e2 )Bhire2->Visible = true;
 			if (passedcash >= 1000 && !e3)Bhire3->Visible = true;
 			if (passedcash >= 3000 && !e4)Bhire4->Visible = true;
+			if (e5)perk1_1 = true;
+			if (e6)perk1_2 = true;
+			if (e7)perk1_3 = true;
+			if (e8)perk2_1 = true;
+			if (e9)perk2_2 = true;
+			if (e10)perk2_3 = true;
+			if (e11)perk3_1 = true;
+			if (e12)perk3_2 = true;
+			if (e13)perk3_3 = true;
+			if (e14)perk4_1 = true;
+			if (e15)perk4_2 = true;
+			if (e16)perk4_3 = true;
 		}
 
 		bool getemployee1(){
@@ -52,8 +78,80 @@ namespace CodeClicker {
 		bool getemployee4(){
 			return employee4;
 		}
+		bool getperk1_1(){
+			return perk1_1;
+		}
+		bool getperk1_2(){
+			return perk1_2;
+		}
+		bool getperk1_3(){
+			return perk1_3;
+		}
+		bool getperk2_1(){
+			return perk2_1;
+		}
+		bool getperk2_2(){
+			return perk2_2;
+		}
+		bool getperk2_3(){
+			return perk2_3;
+		}
+		bool getperk3_1(){
+			return perk3_1;
+		}
+		bool getperk3_2(){
+			return perk3_2;
+		}
+		bool getperk3_3(){
+			return perk3_3;
+		}
+		bool getperk4_1(){
+			return perk4_1;
+		}
+		bool getperk4_2(){
+			return perk4_2;
+		}
+		bool getperk4_3(){
+			return perk4_3;
+		}
 		int getpaid(){
 			return paid;
+		}
+
+		void pass1(int perkpaid, bool e1, bool e2, bool e3){
+			//przekazywanie z formatki upgradeemployee1.h
+			cash -= perkpaid;
+			paid += perkpaid;
+			if (!perk1_1 && e1){ perk1_1 = true; }
+			if (!perk1_2 && e2){ perk1_2 = true; }
+			if (!perk1_3 && e3){ perk1_3 = true; }
+		}
+
+		void pass2(int perkpaid, bool e1, bool e2, bool e3){
+			//przekazywanie z formatki upgradeemployee2.h
+			cash -= perkpaid;
+			paid += perkpaid;
+			if (!perk2_1 && e1){ perk2_1 = true; }
+			if (!perk2_2 && e2){ perk2_2 = true; }
+			if (!perk2_3 && e3){ perk2_3 = true; }
+		}
+
+		void pass3(int perkpaid, bool e1, bool e2, bool e3){
+			//przekazywanie z formatki upgradeemployee3.h
+			cash -= perkpaid;
+			paid += perkpaid;
+			if (!perk3_1 && e1){ perk3_1 = true; }
+			if (!perk3_2 && e2){ perk3_2 = true; }
+			if (!perk3_3 && e3){ perk3_3 = true; }
+		}
+
+		void pass4(int perkpaid, bool e1, bool e2, bool e3){
+			//przekazywanie z formatki upgradeemployee4.h
+			cash -= perkpaid;
+			paid += perkpaid;
+			if (!perk4_1 && e1){ perk4_1 = true; }
+			if (!perk4_2 && e2){ perk4_2 = true; }
+			if (!perk4_3 && e3){ perk4_3 = true; }
 		}
 
 	protected:
@@ -87,6 +185,18 @@ namespace CodeClicker {
 		bool employee2;
 		bool employee3;
 		bool employee4;
+		bool perk1_1;
+		bool perk1_2;
+		bool perk1_3;
+		bool perk2_1;
+		bool perk2_2;
+		bool perk2_3;
+		bool perk3_1;
+		bool perk3_2;
+		bool perk3_3;
+		bool perk4_1;
+		bool perk4_2;
+		bool perk4_3;
 		int paid;
 		int cash;
 
@@ -708,22 +818,30 @@ private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e
 private: System::Void Bupgrade1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami pomocnika nr 1
 			 upgradeemployee1^ employee1dialog = gcnew upgradeemployee1;
+			 employee1dialog->check(cash, perk1_1, perk1_2, perk1_3);
 			 employee1dialog->ShowDialog();
+			 pass1(employee1dialog->getpaid(), employee1dialog->getPerk1(), employee1dialog->getPerk2(), employee1dialog->getPerk3());
 }
 private: System::Void Bupgrade2_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami pomocnika nr 2
 			 upgradeemployee2^ employee2dialog = gcnew upgradeemployee2;
+			 employee2dialog->check(cash, perk2_1, perk2_2, perk2_3);
 			 employee2dialog->ShowDialog();
+			 pass2(employee2dialog->getpaid(), employee2dialog->getPerk1(), employee2dialog->getPerk2(), employee2dialog->getPerk3());
 }
 private: System::Void Bupgrade3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami pomocnika nr 3
 			 upgradeemployee3^ employee3dialog = gcnew upgradeemployee3;
+			 employee3dialog->check(cash, perk3_1, perk3_2, perk3_3);
 			 employee3dialog->ShowDialog();
+			 pass3(employee3dialog->getpaid(), employee3dialog->getPerk1(), employee3dialog->getPerk2(), employee3dialog->getPerk3());
 }
 private: System::Void Bupgrade4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami pomocnika nr 4
 			 upgradeemployee4^ employee4dialog = gcnew upgradeemployee4;
+			 employee4dialog->check(cash, perk4_1, perk4_2, perk4_3);
 			 employee4dialog->ShowDialog();
+			 pass4(employee4dialog->getpaid(), employee4dialog->getPerk1(), employee4dialog->getPerk2(), employee4dialog->getPerk3());
 }
 };
 }

@@ -117,7 +117,7 @@ namespace CodeClicker {
 			perk6_3 = false;
 		}
 
-		void passdata(int paid,bool e1, bool e2, bool e3, bool e4){
+		void passdata(int paid, bool e1, bool e2, bool e3, bool e4, bool e5, bool e6, bool e7, bool e8, bool e9, bool e10, bool e11, bool e12, bool e13, bool e14, bool e15, bool e16){
 			//przekazywanie z formatki hire.h
 			cash -= paid;
 			refresh();
@@ -125,6 +125,18 @@ namespace CodeClicker {
 			if (!employee2 && e2){ employee2 = true; Phired2->Visible = true; }
 			if (!employee3 && e3){ employee3 = true; Phired3->Visible = true; }
 			if (!employee4 && e4){ employee4 = true; Phired4->Visible = true; }
+			if (!perk3_1 && e5){ perk3_1 = true; employee1speed -= 1; }
+			if (!perk3_2 && e6){ perk3_2 = true; employee1factor += 2; }
+			if (!perk3_3 && e7){ perk3_3 = true; employee1speed -= 3; }
+			if (!perk4_1 && e8){ perk4_1 = true; employee2factor += 2; }
+			if (!perk4_2 && e9){ perk4_2 = true; employee2factor += 4; }
+			if (!perk4_3 && e10){ perk4_3 = true; employee2speed -= 2; }
+			if (!perk5_1 && e11){ perk5_1 = true; employee3speed -= 3; }
+			if (!perk5_2 && e12){ perk5_2 = true; employee3speed -= 7; }
+			if (!perk5_3 && e13){ perk5_3 = true; employee3factor += 4; }
+			if (!perk6_1 && e14){ perk6_1 = true; employee4speed -= 15; }
+			if (!perk6_2 && e15){ perk6_2 = true; employee4factor += 4; }
+			if (!perk6_3 && e16){ perk6_3 = true; employee4factor += 6; }
 		}
 
 		void passfirm(int paid, bool e1, bool e2, bool e3, bool e4){
@@ -1598,9 +1610,9 @@ private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z pomocnikami
 			 hire^ hiredialog = gcnew hire;
-			 hiredialog->check(cash,employee1, employee2, employee3, employee4);
+			 hiredialog->check(cash, employee1, employee2, employee3, employee4, perk3_1, perk3_2, perk3_3, perk4_1, perk4_2, perk4_3, perk5_1, perk5_2, perk5_3, perk6_1, perk6_2, perk6_3);
 			 hiredialog->ShowDialog();
-			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4());
+			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4(), hiredialog->getperk1_1(), hiredialog->getperk1_2(), hiredialog->getperk1_3(), hiredialog->getperk2_1(), hiredialog->getperk2_2(), hiredialog->getperk2_3(), hiredialog->getperk3_1(), hiredialog->getperk3_2(), hiredialog->getperk3_3(), hiredialog->getperk4_1(), hiredialog->getperk4_2(), hiredialog->getperk4_3());
 			 refresh();
 }
 

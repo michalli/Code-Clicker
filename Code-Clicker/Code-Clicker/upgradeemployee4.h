@@ -18,6 +18,11 @@ namespace CodeClicker {
 		upgradeemployee4(void)
 		{
 			InitializeComponent();
+			paid = 0;
+			cash = 0;
+			perk1 = false;
+			perk2 = false;
+			perk3 = false;
 		}
 
 		void check(int passedcash, bool e1, bool e2, bool e3){
@@ -25,6 +30,19 @@ namespace CodeClicker {
 			if (passedcash >= 1000 && !e1)B1->Visible = true;
 			if (passedcash >= 3000 && !e2)B2->Visible = true;
 			if (passedcash >= 5000 && !e3)B3->Visible = true;
+		}
+
+		bool getPerk1(){
+			return perk1;
+		}
+		bool getPerk2(){
+			return perk2;
+		}
+		bool getPerk3(){
+			return perk3;
+		}
+		int getpaid(){
+			return paid;
 		}
 
 	protected:
@@ -62,6 +80,7 @@ namespace CodeClicker {
 		bool perk1;
 		bool perk2;
 		bool perk3;
+		int paid;
 
 		System::ComponentModel::Container ^components;
 
@@ -113,6 +132,7 @@ namespace CodeClicker {
 			this->B3->Text = L"Zainwestuj";
 			this->B3->UseVisualStyleBackColor = true;
 			this->B3->Visible = false;
+			this->B3->Click += gcnew System::EventHandler(this, &upgradeemployee4::B3_Click);
 			// 
 			// L3perk
 			// 
@@ -163,6 +183,7 @@ namespace CodeClicker {
 			this->B2->Text = L"Zainwestuj";
 			this->B2->UseVisualStyleBackColor = true;
 			this->B2->Visible = false;
+			this->B2->Click += gcnew System::EventHandler(this, &upgradeemployee4::B2_Click);
 			// 
 			// L2perk
 			// 
@@ -214,6 +235,7 @@ namespace CodeClicker {
 			this->B1->Text = L"Zainwestuj";
 			this->B1->UseVisualStyleBackColor = true;
 			this->B1->Visible = false;
+			this->B1->Click += gcnew System::EventHandler(this, &upgradeemployee4::B1_Click);
 			// 
 			// L1perk
 			// 
@@ -295,5 +317,32 @@ namespace CodeClicker {
 				 //przycisk wstecz
 				 this->Close();
 	}
+private: System::Void B1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 1
+			 paid += 1000;
+			 cash -= 1000;
+			 perk1 = true;
+			 B1->Visible = false;
+			 if (cash < 5000)B3->Visible = false;
+			 if (cash < 3000)B2->Visible = false;
+}
+private: System::Void B2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 2
+			 paid += 3000;
+			 cash -= 3000;
+			 perk2 = true;
+			 B2->Visible = false;
+			 if (cash < 1000)B1->Visible = false;
+			 if (cash < 5000)B3->Visible = false;
+}
+private: System::Void B3_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 3
+			 paid += 5000;
+			 cash -= 5000;
+			 perk3 = true;
+			 B3->Visible = false;
+			 if (cash < 1000)B1->Visible = false;
+			 if (cash < 3000)B2->Visible = false;
+}
 };
 }
