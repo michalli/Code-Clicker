@@ -18,9 +18,31 @@ namespace CodeClicker {
 		upgradeemployee1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: W tym miejscu dodaj kod konstruktora
-			//
+			paid = 0;
+			cash = 0;
+			perk1 = false;
+			perk2 = false;
+			perk3 = false;
+		}
+
+		void check(int passedcash, bool e1, bool e2, bool e3){
+			cash = passedcash;
+			if (passedcash >= 50 && !e1)B1->Visible = true;
+			if (passedcash >= 150 && !e2)B2->Visible = true;
+			if (passedcash >= 500 && !e3)B3->Visible = true;
+		}
+
+		bool getPerk1(){
+			return perk1;
+		}
+		bool getPerk2(){
+			return perk2;
+		}
+		bool getPerk3(){
+			return perk3;
+		}
+		int getpaid(){
+			return paid;
 		}
 
 	protected:
@@ -53,9 +75,13 @@ namespace CodeClicker {
 	protected:
 
 	private:
-		/// <summary>
-		/// Wymagana zmienna projektanta.
-		/// </summary>
+
+		int cash;
+		bool perk1;
+		bool perk2;
+		bool perk3;
+		int paid;
+
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -95,6 +121,7 @@ namespace CodeClicker {
 			this->Bback->Size = System::Drawing::Size(143, 67);
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
+			this->Bback->Click += gcnew System::EventHandler(this, &upgradeemployee1::Bback_Click);
 			// 
 			// B3
 			// 
@@ -105,6 +132,7 @@ namespace CodeClicker {
 			this->B3->Text = L"Zainwestuj";
 			this->B3->UseVisualStyleBackColor = true;
 			this->B3->Visible = false;
+			this->B3->Click += gcnew System::EventHandler(this, &upgradeemployee1::B3_Click);
 			// 
 			// L3perk
 			// 
@@ -112,9 +140,9 @@ namespace CodeClicker {
 			this->L3perk->ForeColor = System::Drawing::Color::Lime;
 			this->L3perk->Location = System::Drawing::Point(146, 175);
 			this->L3perk->Name = L"L3perk";
-			this->L3perk->Size = System::Drawing::Size(317, 13);
+			this->L3perk->Size = System::Drawing::Size(272, 13);
 			this->L3perk->TabIndex = 56;
-			this->L3perk->Text = L"ZYSK:   znacznie zwiêksza szybkoœæ programowania Zosi Samosi";
+			this->L3perk->Text = L"ZYSK:   zwiêksza szybkoœæ programowania Zosi Samosi";
 			// 
 			// L3cost
 			// 
@@ -155,6 +183,7 @@ namespace CodeClicker {
 			this->B2->Text = L"Zainwestuj";
 			this->B2->UseVisualStyleBackColor = true;
 			this->B2->Visible = false;
+			this->B2->Click += gcnew System::EventHandler(this, &upgradeemployee1::B2_Click);
 			// 
 			// L2perk
 			// 
@@ -205,6 +234,7 @@ namespace CodeClicker {
 			this->B1->Text = L"Zainwestuj";
 			this->B1->UseVisualStyleBackColor = true;
 			this->B1->Visible = false;
+			this->B1->Click += gcnew System::EventHandler(this, &upgradeemployee1::B1_Click);
 			// 
 			// L1perk
 			// 
@@ -271,6 +301,7 @@ namespace CodeClicker {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"upgradeemployee1";
 			this->ShowIcon = false;
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce umiejêtnoœci Zosi Samosi";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
 			this->ResumeLayout(false);
@@ -278,5 +309,36 @@ namespace CodeClicker {
 
 		}
 #pragma endregion
-	};
+	private: System::Void Bback_Click(System::Object^  sender, System::EventArgs^  e) {
+				 //przycisk wstecz
+				 this->Close();
+	}
+private: System::Void B1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 1
+			 paid += 50;
+			 cash -= 50;
+			 perk1 = true;
+			 B1->Visible = false;
+			 if (cash < 150)B2->Visible = false;
+			 if (cash < 500)B3->Visible = false;
+}
+private: System::Void B2_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 2
+			 paid += 150;
+			 cash -= 150;
+			 perk2 = true;
+			 B2->Visible = false;
+			 if (cash < 50)B1->Visible = false;
+			 if (cash < 500)B3->Visible = false;
+}
+private: System::Void B3_Click(System::Object^  sender, System::EventArgs^  e) {
+			 //zakup perka nr 3
+			 paid += 500;
+			 cash -= 500;
+			 perk3 = true;
+			 B3->Visible = false;
+			 if (cash < 50)B1->Visible = false;
+			 if (cash < 150)B2->Visible = false;
+}
+};
 }

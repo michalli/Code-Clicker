@@ -50,16 +50,114 @@ namespace CodeClicker {
 			employee4progress = 0;
 			employee4speed = 25;
 			poor = false;
+			perk1_1 = false;
+			perk1_2 = false;
+			perk1_3 = false;
+			perk1_4 = false;
+			perk2_1 = false;
+			perk2_2 = false;
+			perk2_3 = false;
+			perk2_4 = false;
+			perk2_5 = false;
+			perk3_1 = false;
+			perk3_2 = false;
+			perk3_3 = false;
+			perk4_1 = false;
+			perk4_2 = false;
+			perk4_3 = false;
+			perk5_1 = false;
+			perk5_2 = false;
+			perk5_3 = false;
+			perk6_1 = false;
+			perk6_2 = false;
+			perk6_3 = false;
 		}
 
-		void passdata(int paid,bool e1, bool e2, bool e3, bool e4){
-			//przekazywanie
+		void reset(){
+			codefactor = 1;
+			cashfactor = 2;
+			employee1 = false;
+			employee1factor = 1;
+			employee1progress = 0;
+			employee1speed = 7;
+			employee2 = false;
+			employee2factor = 2;
+			employee2progress = 0;
+			employee2speed = 10;
+			employee2premium = 0;
+			employee3 = false;
+			employee3factor = 4;
+			employee3progress = 0;
+			employee3speed = 15;
+			employee3cycle = 0;
+			employee4 = false;
+			employee4factor = 5;
+			employee4progress = 0;
+			employee4speed = 25;
+			perk1_1 = false;
+			perk1_2 = false;
+			perk1_3 = false;
+			perk1_4 = false;
+			perk2_1 = false;
+			perk2_2 = false;
+			perk2_3 = false;
+			perk2_4 = false;
+			perk2_5 = false;
+			perk3_1 = false;
+			perk3_2 = false;
+			perk3_3 = false;
+			perk4_1 = false;
+			perk4_2 = false;
+			perk4_3 = false;
+			perk5_1 = false;
+			perk5_2 = false;
+			perk5_3 = false;
+			perk6_1 = false;
+			perk6_2 = false;
+			perk6_3 = false;
+		}
+
+		void passdata(int paid, bool e1, bool e2, bool e3, bool e4, bool e5, bool e6, bool e7, bool e8, bool e9, bool e10, bool e11, bool e12, bool e13, bool e14, bool e15, bool e16){
+			//przekazywanie z formatki hire.h
 			cash -= paid;
 			refresh();
-			if (e1 != employee1 && e1){ employee1 = e1; Phired1->Visible = true; }
-			if (e2 != employee2 && e2){ employee2 = e2; Phired2->Visible = true; }
-			if (e3 != employee3 && e3){ employee3 = e3; Phired3->Visible = true; }
-			if (e4 != employee4 && e4){ employee4 = e4; Phired4->Visible = true; }
+			if (!employee1 && e1){ employee1 = true; Phired1->Visible = true; }
+			if (!employee2 && e2){ employee2 = true; Phired2->Visible = true; }
+			if (!employee3 && e3){ employee3 = true; Phired3->Visible = true; }
+			if (!employee4 && e4){ employee4 = true; Phired4->Visible = true; }
+			if (!perk3_1 && e5){ perk3_1 = true; employee1speed -= 1; }
+			if (!perk3_2 && e6){ perk3_2 = true; employee1factor += 2; }
+			if (!perk3_3 && e7){ perk3_3 = true; employee1speed -= 3; }
+			if (!perk4_1 && e8){ perk4_1 = true; employee2factor += 2; }
+			if (!perk4_2 && e9){ perk4_2 = true; employee2factor += 4; }
+			if (!perk4_3 && e10){ perk4_3 = true; employee2speed -= 2; }
+			if (!perk5_1 && e11){ perk5_1 = true; employee3speed -= 3; }
+			if (!perk5_2 && e12){ perk5_2 = true; employee3speed -= 7; }
+			if (!perk5_3 && e13){ perk5_3 = true; employee3factor += 4; }
+			if (!perk6_1 && e14){ perk6_1 = true; employee4speed -= 15; }
+			if (!perk6_2 && e15){ perk6_2 = true; employee4factor += 4; }
+			if (!perk6_3 && e16){ perk6_3 = true; employee4factor += 6; }
+		}
+
+		void passfirm(int paid, bool e1, bool e2, bool e3, bool e4){
+			//przekazywanie z formatki upgradefirm.h
+			cash -= paid;
+			refresh();
+			if (!perk1_1 && e1){ perk1_1 = true; cashfactor += 1; }
+			if (!perk1_2 && e2){ perk1_2 = true; cashfactor += 3; }
+			if (!perk1_3 && e3){ perk1_3 = true; cashfactor += 6; }
+			if (!perk1_4 && e4){ perk1_4 = true; cashfactor += 10; }
+		}
+
+		void passavatar(int paid, bool e1, bool e2, bool e3, bool e4, bool e5){
+			//przekazywanie z formatki upgradeavatar.h
+			cash -= paid;
+			refresh();
+			if (!perk2_1 && e1){ perk2_1 = true; codefactor += 1; }
+			if (!perk2_2 && e2){ perk2_2 = true; codefactor += 2; }
+			if (!perk2_3 && e3){ perk2_3 = true; codefactor += 3; }
+			if (!perk2_4 && e4){ perk2_4 = true; codefactor += 4; }
+			if (!perk2_5 && e5){ perk2_5 = true; codefactor += 5; }
 		}
 	protected:
 		/// <summary>
@@ -115,6 +213,32 @@ namespace CodeClicker {
 		int employee4speed;//szybkoœæ pomocnika nr 4
 		bool poor;//czy staæ na wyp³atê dla pomocnika nr 4?
 
+		bool perk1_1;
+		bool perk1_2;
+		bool perk1_3;
+		bool perk1_4;
+
+		bool perk2_1;
+		bool perk2_2;
+		bool perk2_3;
+		bool perk2_4;
+		bool perk2_5;
+
+		bool perk3_1;
+		bool perk3_2;
+		bool perk3_3;
+
+		bool perk4_1;
+		bool perk4_2;
+		bool perk4_3;
+
+		bool perk5_1;
+		bool perk5_2;
+		bool perk5_3;
+
+		bool perk6_1;
+		bool perk6_2;
+		bool perk6_3;
 
 	private: System::Windows::Forms::PictureBox^  Pzl;
 	private: System::Windows::Forms::PictureBox^  Icode0;
@@ -595,7 +719,7 @@ namespace CodeClicker {
 			// Phired1
 			// 
 			this->Phired1->BackColor = System::Drawing::Color::Transparent;
-			this->Phired1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired1.Image")));
 			this->Phired1->Location = System::Drawing::Point(245, 215);
 			this->Phired1->Name = L"Phired1";
@@ -607,7 +731,7 @@ namespace CodeClicker {
 			// Phired2
 			// 
 			this->Phired2->BackColor = System::Drawing::Color::Transparent;
-			this->Phired2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired2->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired2.Image")));
 			this->Phired2->Location = System::Drawing::Point(411, 215);
 			this->Phired2->Name = L"Phired2";
@@ -674,7 +798,7 @@ namespace CodeClicker {
 			// 
 			this->Phired4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->Phired4->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired4->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired4.Image")));
 			this->Phired4->Location = System::Drawing::Point(744, 215);
 			this->Phired4->Name = L"Phired4";
@@ -686,7 +810,7 @@ namespace CodeClicker {
 			// Phired3
 			// 
 			this->Phired3->BackColor = System::Drawing::Color::Transparent;
-			this->Phired3->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Phired3->Cursor = System::Windows::Forms::Cursors::Default;
 			this->Phired3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Phired3.Image")));
 			this->Phired3->Location = System::Drawing::Point(573, 215);
 			this->Phired3->Name = L"Phired3";
@@ -1029,7 +1153,7 @@ namespace CodeClicker {
 			this->Lpoor->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lpoor->ForeColor = System::Drawing::Color::Silver;
-			this->Lpoor->Location = System::Drawing::Point(706, 302);
+			this->Lpoor->Location = System::Drawing::Point(701, 302);
 			this->Lpoor->Name = L"Lpoor";
 			this->Lpoor->Size = System::Drawing::Size(155, 14);
 			this->Lpoor->TabIndex = 99;
@@ -1202,131 +1326,35 @@ namespace CodeClicker {
 				 cash = (codefactor*cashfactor) + cash;
 				 refresh();
 	}
-			 void refresh(){
+			 void refresh() {
 				 //odœwie¿anie wartoœci kasy i kodu
-				 int cashtab[10], codetab[10];
-				 int cashindex, codeindex, help;
-				 cashindex = 1;
-				 help = cash;
-				 while (help / 10 != 0){
-					 cashindex++;
-					 help /= 10;
-				 }
-				 help = cash;
-				 for (int i = 0; i < cashindex; i++){
-					 cashtab[i] = help % 10;
-					 help /= 10;
-				 }
-				 if (cashindex>0)
-					 Icash0->Load("grafika\\" + cashtab[0] + ".png"); 
-				 else Icash0->Visible = false;
-				 if (cashindex > 1){
-					 Icash1->Load("grafika\\" + cashtab[1] + ".png"); 
-					 Icash1->Visible = true;
-				 }
-				 else Icash1->Visible = false;
-				 if (cashindex > 2){
-					 Icash2->Load("grafika\\" + cashtab[2] + ".png");
-					 Icash2->Visible = true;
-				 }
-				 else Icash2->Visible = false;
-				 if (cashindex > 3){
-					 Icash3->Load("grafika\\" + cashtab[3] + ".png");
-					 Icash3->Visible = true;
-				 }
-				 else Icash3->Visible = false;
-				 if (cashindex > 4){
-					 Icash4->Load("grafika\\" + cashtab[4] + ".png");
-					 Icash4->Visible = true;
-				 }
-				 else Icash4->Visible = false;
-				 if (cashindex > 5){
-					 Icash5->Load("grafika\\" + cashtab[5] + ".png");
-					 Icash5->Visible = true;
-				 }
-				 else Icash5->Visible = false;
-				 if (cashindex > 6){
-					 Icash6->Load("grafika\\" + cashtab[6] + ".png");
-					 Icash6->Visible = true;
-				 }
-				 else Icash6->Visible = false;
-				 if (cashindex > 7){
-					 Icash7->Load("grafika\\" + cashtab[7] + ".png");
-					 Icash7->Visible = true;
-				 }
-				 else Icash7->Visible = false;
-				 if (cashindex > 8){
-					 Icash8->Load("grafika\\" + cashtab[8] + ".png");
-					 Icash8->Visible = true;
-				 }
-				 else Icash8->Visible = false;
-				 if (cashindex > 9){
-					 Icash9->Load("grafika\\" + cashtab[9] + ".png");
-					 Icash9->Visible = true;
-				 }
-				 else Icash9->Visible = false;		
-				 codeindex = 1;
-				 help = code;
-				 while (help / 10 != 0){
-				 codeindex++;
-				 help /= 10;
-				 }
-				 help = code;
-				 for (int i = 0; i < codeindex; i++){
-				 codetab[i] = help % 10;
-				 help /= 10;
-				 }
-				 if (codeindex>0){
-					 Icode0->Load("grafika\\" + codetab[0] + ".png");
-					 Icode0->Visible = true;
-				 }
-				 else Icode0->Visible = false;
-				 if (codeindex > 1){
-					 Icode1->Load("grafika\\" + codetab[1] + ".png");
-					 Icode1->Visible = true;
-				 }
-				 else Icode1->Visible = false;
-				 if (codeindex > 2){
-					 Icode2->Load("grafika\\" + codetab[2] + ".png");
-					 Icode2->Visible = true;
-				 }
-				 else Icode2->Visible = false;
-				 if (codeindex > 3){
-					 Icode3->Load("grafika\\" + codetab[3] + ".png");
-					 Icode3->Visible = true;
-				 }
-				 else Icode3->Visible = false;
-				 if (codeindex > 4){
-					 Icode4->Load("grafika\\" + codetab[4] + ".png");
-					 Icode4->Visible = true;
-				 }
-				 else Icode4->Visible = false;
-				 if (codeindex > 5){
-					 Icode5->Load("grafika\\" + codetab[5] + ".png");
-					 Icode5->Visible = true;
-				 }
-				 else Icode5->Visible = false;
-				 if (codeindex > 6){
-					 Icode6->Load("grafika\\" + codetab[6] + ".png");
-					 Icode6->Visible = true;
-				 }
-				 else Icode6->Visible = false;
-				 if (codeindex > 7){
-					 Icode7->Load("grafika\\" + codetab[7] + ".png");
-					 Icode7->Visible = true;
-				 }
-				 else Icode7->Visible = false;
-				 if (codeindex > 8){
-					 Icode8->Load("grafika\\" + codetab[8] + ".png");
-					 Icode8->Visible = true;
-				 }
-				 else Icode8->Visible = false;
-				 if (codeindex > 9){
-					 Icode9->Load("grafika\\" + codetab[9] + ".png");
-					 Icode9->Visible = true;
-				 }
-				 else Icode9->Visible = false;
+
+				 array<PictureBox^>^ Icash = gcnew array<PictureBox^>{
+					 Icash0, Icash1, Icash2, Icash3, Icash4, Icash5, Icash6, Icash7, Icash8, Icash9
+				 };
+				 array<PictureBox^>^ Icode = gcnew array<PictureBox^>{
+					 Icode0, Icode1, Icode2, Icode3, Icode4, Icode5, Icode6, Icode7, Icode8, Icode9
+				 };
+
+				 String^ cashString = cash.ToString();
+				 int cashindex = cashString->Length;
+
+				 for (int i = 0; i < Icash->Length; i++)
+					 Icash[i]->Visible = i < cashindex;
+
+				 for (int i = 0; i < cashindex; i++)
+					 Icash[i]->Load(String::Format("grafika\\{0}.png", cashString[cashindex - i - 1]));
+
+				 String^ codeString = code.ToString();
+				 int codeindex = codeString->Length;
+
+				 for (int i = 0; i < Icode->Length; i++)
+					 Icode[i]->Visible = i < codeindex;
+
+				 for (int i = 0; i < codeindex; i++)
+					 Icode[i]->Load(String::Format("grafika\\{0}.png", codeString[codeindex - i - 1]));
 			 }
+
 private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wczytanie gry
 			 try{
@@ -1334,6 +1362,19 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 				 FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
 				 StreamReader^ sw = gcnew StreamReader(fs);
 				 int boolean;
+				 Phired1->Visible = false;
+				 Phired2->Visible = false;
+				 Phired3->Visible = false;
+				 Phired4->Visible = false;
+				 Lcycle->Visible = false;
+				 Ltest->Visible = false;
+				 Lpremium->Visible = false;
+				 Labsent->Visible = false;
+				 Ltrans->Visible = false;
+				 Llazy->Visible = false;
+				 Ldeterminated->Visible = false;
+				 Lpoor->Visible = false;
+				 reset();
 				 while (sw->Peek() >= 0)
 				 {
 					 Int32::TryParse(sw->ReadLine(), code);
@@ -1364,20 +1405,12 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 					 {
 						 employee1 = true;
 						 Phired1->Visible = true;
-					 }
-					 else{
-						 employee1 = false;
-						 Phired1->Visible = false;
-					 }			 
+					 }		 
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean==1)
 					 {
 						 employee2 = true;
 						 Phired2->Visible = true;
-					 }
-					 else{
-						 employee2 = false;
-						 Phired2->Visible = false;
 					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
@@ -1385,19 +1418,11 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 						 employee3 = true;
 						 Phired3->Visible = true;
 					 }
-					 else{
-						 employee3 = false;
-						 Phired3->Visible = false;
-					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
 					 {
 						 employee4 = true;
 						 Phired4->Visible = true;
-					 }
-					 else{
-						 employee4 = false;
-						 Phired4->Visible = false;
 					 }
 					 Int32::TryParse(sw->ReadLine(), boolean);
 					 if (boolean == 1)
@@ -1409,6 +1434,133 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 						 poor = false;
 						 Lpoor->Visible = false;
 					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_1 = true;
+						 cashfactor += 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_2 = true;
+						 cashfactor += 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_3 = true;
+						 cashfactor += 6;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk1_4 = true;
+						 cashfactor += 10;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_1 = true;
+						 codefactor += 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_2 = true;
+						 codefactor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_3 = true;
+						 codefactor += 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_4 = true;
+						 codefactor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk2_5 = true;
+						 codefactor += 5;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_1 = true;
+						 employee1speed -= 1;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_2 = true;
+						 employee1factor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk3_3 = true;
+						 employee1speed -= 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_1 = true;
+						 employee2factor += 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_2 = true;
+						 employee2factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk4_3 = true;
+						 employee2speed -= 2;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_1 = true;
+						 employee3speed -= 3;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_2 = true;
+						 employee3speed -= 7;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk5_3 = true;
+						 employee3factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_1 = true;
+						 employee4speed -= 15;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_2 = true;
+						 employee4factor += 4;
+					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 perk6_3 = true;
+						 employee4factor += 6;
+					 }
+
 				 }
 				 refresh();
 				 refreshtested();
@@ -1432,80 +1584,54 @@ private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e
 			 if (employee3) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (employee4) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (poor) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk1_4) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_4) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk2_5) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk3_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk4_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk5_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_1) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_2) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (perk6_3) sw->WriteLine(1); else sw->WriteLine(0);
 			 sw->Close();
 }
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
-			 //otwarcie formatki z najemnikami
+			 //otwarcie formatki z pomocnikami
 			 hire^ hiredialog = gcnew hire;
-			 hiredialog->check(cash,employee1, employee2, employee3, employee4);
+			 hiredialog->check(cash, employee1, employee2, employee3, employee4, perk3_1, perk3_2, perk3_3, perk4_1, perk4_2, perk4_3, perk5_1, perk5_2, perk5_3, perk6_1, perk6_2, perk6_3);
 			 hiredialog->ShowDialog();
-			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4());
+			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4(), hiredialog->getperk1_1(), hiredialog->getperk1_2(), hiredialog->getperk1_3(), hiredialog->getperk2_1(), hiredialog->getperk2_2(), hiredialog->getperk2_3(), hiredialog->getperk3_1(), hiredialog->getperk3_2(), hiredialog->getperk3_3(), hiredialog->getperk4_1(), hiredialog->getperk4_2(), hiredialog->getperk4_3());
 			 refresh();
 }
-		 void refreshtested(){
-			 //odœwie¿anie wartoœci przetestowanych linii
-			 int testtab[10];
-			 int testindex, help;
-			 testindex = 1;
-			 help = test;
-			 while (help / 10 != 0){
-				 testindex++;
-				 help /= 10;
-			 }
-			 help = test;
-			 for (int i = 0; i < testindex; i++){
-				 testtab[i] = help % 10;
-				 help /= 10;
-			 }
-			 if (testindex>0)
-				 Itest0->Load("grafika\\" + testtab[0] + ".png");
-			 else Itest0->Visible = false;
-			 if (testindex > 1){
-				 Itest1->Load("grafika\\" + testtab[1] + ".png");
-				 Itest1->Visible = true;
-			 }
-			 else Itest1->Visible = false;
-			 if (testindex > 2){
-				 Itest2->Load("grafika\\" + testtab[2] + ".png");
-				 Itest2->Visible = true;
-			 }
-			 else Itest2->Visible = false;
-			 if (testindex > 3){
-				 Itest3->Load("grafika\\" + testtab[3] + ".png");
-				 Itest3->Visible = true;
-			 }
-			 else Itest3->Visible = false;
-			 if (testindex > 4){
-				 Itest4->Load("grafika\\" + testtab[4] + ".png");
-				 Itest4->Visible = true;
-			 }
-			 else Itest4->Visible = false;
-			 if (testindex > 5){
-				 Itest5->Load("grafika\\" + testtab[5] + ".png");
-				 Itest5->Visible = true;
-			 }
-			 else Itest5->Visible = false;
-			 if (testindex > 6){
-				 Itest6->Load("grafika\\" + testtab[6] + ".png");
-				 Itest6->Visible = true;
-			 }
-			 else Itest6->Visible = false;
-			 if (testindex > 7){
-				 Itest7->Load("grafika\\" + testtab[7] + ".png");
-				 Itest7->Visible = true;
-			 }
-			 else Itest7->Visible = false;
-			 if (testindex > 8){
-				 Itest8->Load("grafika\\" + testtab[8] + ".png");
-				 Itest8->Visible = true;
-			 }
-			 else Itest8->Visible = false;
-			 if (testindex > 9){
-				 Itest9->Load("grafika\\" + testtab[9] + ".png");
-				 Itest9->Visible = true;
-			 }
-			 else Itest9->Visible = false;
-		 }
+
+	private: void refreshtested() {
+		//odœwie¿anie wartoœci przetestowanych linii
+		array<PictureBox^>^ Itest = gcnew array<PictureBox^>{
+			Itest0, Itest1, Itest2, Itest3, Itest4, Itest5, Itest6, Itest7, Itest8, Itest9
+		};
+
+		String^ testString = test.ToString();
+		int testindex = testString->Length;
+
+		for (int i = 0; i < Itest->Length; i++)
+			Itest[i]->Visible = i < testindex;
+
+		for (int i = 0; i < testindex; i++)
+			Itest[i]->Load(String::Format("grafika\\{0}.png", testString[testindex - i - 1]));
+	}
+
 private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs^  e) {
 			 //praca pomocników oraz testowanie i cykl
 			 if (testprogress == 5){				 
@@ -1660,12 +1786,18 @@ private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e
 private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami firmy
 			 upgradefirm^ firmdialog = gcnew upgradefirm;
+			 firmdialog->check(cash,perk1_1,perk1_2,perk1_3,perk1_4);
 			 firmdialog->ShowDialog();
+			 passfirm(firmdialog->getpaid(), firmdialog->getperk1(), firmdialog->getperk2(), firmdialog->getperk3(), firmdialog->getperk4());
+			 refresh();
 }
 private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami g³ównego programisty
 			 upgradeavatar^ avatardialog = gcnew upgradeavatar;
+			 avatardialog->check(cash,perk2_1,perk2_2,perk2_3,perk2_4,perk2_5);
 			 avatardialog->ShowDialog();
+			 passavatar(avatardialog->getpaid(), avatardialog->getperk1(), avatardialog->getperk2(), avatardialog->getperk3(), avatardialog->getperk4(), avatardialog->getperk5());
+			 refresh();
 }
 };
 }
