@@ -278,7 +278,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Btest;
 	private: System::Windows::Forms::Label^  Labsent;
 	private: System::Windows::Forms::Label^  Ltrans;
-	private: System::Windows::Forms::Label^  Ltested;
+
 	private: System::Windows::Forms::PictureBox^  Itest9;
 	private: System::Windows::Forms::PictureBox^  Itest8;
 	private: System::Windows::Forms::PictureBox^  Itest7;
@@ -309,6 +309,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  Llazy;
 	private: System::Windows::Forms::Label^  Lpoor;
 	private: System::Windows::Forms::Button^  Btrain;
+private: System::Windows::Forms::PictureBox^  Ltested;
 	private: System::ComponentModel::IContainer^  components;
 
 		/// </summary>
@@ -364,7 +365,6 @@ namespace CodeClicker {
 			this->Btest = (gcnew System::Windows::Forms::PictureBox());
 			this->Labsent = (gcnew System::Windows::Forms::Label());
 			this->Ltrans = (gcnew System::Windows::Forms::Label());
-			this->Ltested = (gcnew System::Windows::Forms::Label());
 			this->Itest9 = (gcnew System::Windows::Forms::PictureBox());
 			this->Itest8 = (gcnew System::Windows::Forms::PictureBox());
 			this->Itest7 = (gcnew System::Windows::Forms::PictureBox());
@@ -393,6 +393,7 @@ namespace CodeClicker {
 			this->Llazy = (gcnew System::Windows::Forms::Label());
 			this->Lpoor = (gcnew System::Windows::Forms::Label());
 			this->Btrain = (gcnew System::Windows::Forms::Button());
+			this->Ltested = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->BeginInit();
@@ -450,6 +451,7 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle0))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Icode9
@@ -670,9 +672,9 @@ namespace CodeClicker {
 			// 
 			this->Lcode->BackColor = System::Drawing::Color::Transparent;
 			this->Lcode->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Lcode.Image")));
-			this->Lcode->Location = System::Drawing::Point(307, 60);
+			this->Lcode->Location = System::Drawing::Point(339, 60);
 			this->Lcode->Name = L"Lcode";
-			this->Lcode->Size = System::Drawing::Size(131, 30);
+			this->Lcode->Size = System::Drawing::Size(130, 30);
 			this->Lcode->TabIndex = 44;
 			this->Lcode->TabStop = false;
 			// 
@@ -680,7 +682,7 @@ namespace CodeClicker {
 			// 
 			this->Lcash->BackColor = System::Drawing::Color::Transparent;
 			this->Lcash->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Lcash.Image")));
-			this->Lcash->Location = System::Drawing::Point(258, 96);
+			this->Lcash->Location = System::Drawing::Point(289, 96);
 			this->Lcash->Name = L"Lcash";
 			this->Lcash->Size = System::Drawing::Size(180, 26);
 			this->Lcash->TabIndex = 45;
@@ -869,18 +871,6 @@ namespace CodeClicker {
 			this->Ltrans->TabIndex = 64;
 			this->Ltrans->Text = L"wola walki!";
 			this->Ltrans->Visible = false;
-			// 
-			// Ltested
-			// 
-			this->Ltested->AutoSize = true;
-			this->Ltested->BackColor = System::Drawing::Color::Transparent;
-			this->Ltested->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(238)));
-			this->Ltested->Location = System::Drawing::Point(240, 141);
-			this->Ltested->Name = L"Ltested";
-			this->Ltested->Size = System::Drawing::Size(198, 21);
-			this->Ltested->TabIndex = 65;
-			this->Ltested->Text = L"Przetestowane linie kodu:";
 			// 
 			// Itest9
 			// 
@@ -1171,6 +1161,16 @@ namespace CodeClicker {
 			this->Btrain->UseVisualStyleBackColor = true;
 			this->Btrain->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
 			// 
+			// Ltested
+			// 
+			this->Ltested->BackColor = System::Drawing::Color::Transparent;
+			this->Ltested->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Ltested.Image")));
+			this->Ltested->Location = System::Drawing::Point(255, 132);
+			this->Ltested->Name = L"Ltested";
+			this->Ltested->Size = System::Drawing::Size(214, 26);
+			this->Ltested->TabIndex = 101;
+			this->Ltested->TabStop = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 14);
@@ -1180,6 +1180,7 @@ namespace CodeClicker {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(928, 672);
+			this->Controls->Add(this->Ltested);
 			this->Controls->Add(this->Itest1);
 			this->Controls->Add(this->Itest0);
 			this->Controls->Add(this->Btrain);
@@ -1212,7 +1213,6 @@ namespace CodeClicker {
 			this->Controls->Add(this->Itest4);
 			this->Controls->Add(this->Itest3);
 			this->Controls->Add(this->Itest2);
-			this->Controls->Add(this->Ltested);
 			this->Controls->Add(this->Ltrans);
 			this->Controls->Add(this->Labsent);
 			this->Controls->Add(this->Btest);
@@ -1315,6 +1315,7 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle0))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
