@@ -274,11 +274,9 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Panel^  Plogo;
 	private: System::Windows::Forms::PictureBox^  Phired4;
 	private: System::Windows::Forms::PictureBox^  Phired3;
-	private: System::Windows::Forms::Button^  Bupgrade;
 	private: System::Windows::Forms::PictureBox^  Btest;
 	private: System::Windows::Forms::Label^  Labsent;
 	private: System::Windows::Forms::Label^  Ltrans;
-
 	private: System::Windows::Forms::PictureBox^  Itest9;
 	private: System::Windows::Forms::PictureBox^  Itest8;
 	private: System::Windows::Forms::PictureBox^  Itest7;
@@ -308,8 +306,9 @@ namespace CodeClicker {
 	private: System::Windows::Forms::Label^  Ldeterminated;
 	private: System::Windows::Forms::Label^  Llazy;
 	private: System::Windows::Forms::Label^  Lpoor;
-	private: System::Windows::Forms::Button^  Btrain;
-private: System::Windows::Forms::PictureBox^  Ltested;
+	private: System::Windows::Forms::PictureBox^  Ltested;
+	private: System::Windows::Forms::PictureBox^  Btrain;
+	private: System::Windows::Forms::PictureBox^  Bupgrade;
 	private: System::ComponentModel::IContainer^  components;
 
 		/// </summary>
@@ -361,7 +360,6 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Itest0 = (gcnew System::Windows::Forms::PictureBox());
 			this->Phired4 = (gcnew System::Windows::Forms::PictureBox());
 			this->Phired3 = (gcnew System::Windows::Forms::PictureBox());
-			this->Bupgrade = (gcnew System::Windows::Forms::Button());
 			this->Btest = (gcnew System::Windows::Forms::PictureBox());
 			this->Labsent = (gcnew System::Windows::Forms::Label());
 			this->Ltrans = (gcnew System::Windows::Forms::Label());
@@ -392,8 +390,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Ldeterminated = (gcnew System::Windows::Forms::Label());
 			this->Llazy = (gcnew System::Windows::Forms::Label());
 			this->Lpoor = (gcnew System::Windows::Forms::Label());
-			this->Btrain = (gcnew System::Windows::Forms::Button());
 			this->Ltested = (gcnew System::Windows::Forms::PictureBox());
+			this->Btrain = (gcnew System::Windows::Forms::PictureBox());
+			this->Bupgrade = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->BeginInit();
@@ -452,6 +451,8 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle0))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btrain))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Icode9
@@ -661,7 +662,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Bcode->BackColor = System::Drawing::Color::Transparent;
 			this->Bcode->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bcode->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bcode.Image")));
-			this->Bcode->Location = System::Drawing::Point(80, 191);
+			this->Bcode->Location = System::Drawing::Point(62, 191);
 			this->Bcode->Name = L"Bcode";
 			this->Bcode->Size = System::Drawing::Size(145, 125);
 			this->Bcode->TabIndex = 4;
@@ -711,7 +712,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Bsave->BackColor = System::Drawing::Color::Transparent;
 			this->Bsave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bsave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bsave.Image")));
-			this->Bsave->Location = System::Drawing::Point(418, 552);
+			this->Bsave->Location = System::Drawing::Point(360, 552);
 			this->Bsave->Name = L"Bsave";
 			this->Bsave->Size = System::Drawing::Size(143, 67);
 			this->Bsave->TabIndex = 52;
@@ -761,7 +762,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Bload->BackColor = System::Drawing::Color::Transparent;
 			this->Bload->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bload->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bload.Image")));
-			this->Bload->Location = System::Drawing::Point(234, 552);
+			this->Bload->Location = System::Drawing::Point(211, 552);
 			this->Bload->Name = L"Bload";
 			this->Bload->Size = System::Drawing::Size(143, 67);
 			this->Bload->TabIndex = 57;
@@ -772,7 +773,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Plogo->BackColor = System::Drawing::Color::Transparent;
 			this->Plogo->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Plogo.BackgroundImage")));
-			this->Plogo->Location = System::Drawing::Point(580, 331);
+			this->Plogo->Location = System::Drawing::Point(573, 319);
 			this->Plogo->Name = L"Plogo";
 			this->Plogo->Size = System::Drawing::Size(300, 300);
 			this->Plogo->TabIndex = 58;
@@ -821,25 +822,14 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Phired3->TabStop = false;
 			this->Phired3->Visible = false;
 			// 
-			// Bupgrade
-			// 
-			this->Bupgrade->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade->Location = System::Drawing::Point(331, 479);
-			this->Bupgrade->Name = L"Bupgrade";
-			this->Bupgrade->Size = System::Drawing::Size(230, 67);
-			this->Bupgrade->TabIndex = 61;
-			this->Bupgrade->Text = L"Zainwestuj w firmê";
-			this->Bupgrade->UseVisualStyleBackColor = true;
-			this->Bupgrade->Click += gcnew System::EventHandler(this, &MyForm::Bupgrade_Click);
-			// 
 			// Btest
 			// 
 			this->Btest->BackColor = System::Drawing::Color::Transparent;
 			this->Btest->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Btest->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Btest.Image")));
-			this->Btest->Location = System::Drawing::Point(80, 368);
+			this->Btest->Location = System::Drawing::Point(62, 361);
 			this->Btest->Name = L"Btest";
-			this->Btest->Size = System::Drawing::Size(160, 74);
+			this->Btest->Size = System::Drawing::Size(143, 67);
 			this->Btest->TabIndex = 62;
 			this->Btest->TabStop = false;
 			this->Btest->Click += gcnew System::EventHandler(this, &MyForm::Btest_Click);
@@ -946,36 +936,36 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			// Iprogress0
 			// 
-			this->Iprogress0->Location = System::Drawing::Point(82, 448);
+			this->Iprogress0->Location = System::Drawing::Point(62, 443);
 			this->Iprogress0->Name = L"Iprogress0";
-			this->Iprogress0->Size = System::Drawing::Size(35, 10);
+			this->Iprogress0->Size = System::Drawing::Size(30, 10);
 			this->Iprogress0->TabIndex = 76;
 			this->Iprogress0->TabStop = false;
 			this->Iprogress0->Visible = false;
 			// 
 			// Iprogress1
 			// 
-			this->Iprogress1->Location = System::Drawing::Point(123, 448);
+			this->Iprogress1->Location = System::Drawing::Point(98, 443);
 			this->Iprogress1->Name = L"Iprogress1";
-			this->Iprogress1->Size = System::Drawing::Size(35, 10);
+			this->Iprogress1->Size = System::Drawing::Size(30, 10);
 			this->Iprogress1->TabIndex = 77;
 			this->Iprogress1->TabStop = false;
 			this->Iprogress1->Visible = false;
 			// 
 			// Iprogress2
 			// 
-			this->Iprogress2->Location = System::Drawing::Point(164, 448);
+			this->Iprogress2->Location = System::Drawing::Point(134, 443);
 			this->Iprogress2->Name = L"Iprogress2";
-			this->Iprogress2->Size = System::Drawing::Size(35, 10);
+			this->Iprogress2->Size = System::Drawing::Size(30, 10);
 			this->Iprogress2->TabIndex = 78;
 			this->Iprogress2->TabStop = false;
 			this->Iprogress2->Visible = false;
 			// 
 			// Iprogress3
 			// 
-			this->Iprogress3->Location = System::Drawing::Point(205, 448);
+			this->Iprogress3->Location = System::Drawing::Point(170, 443);
 			this->Iprogress3->Name = L"Iprogress3";
-			this->Iprogress3->Size = System::Drawing::Size(35, 10);
+			this->Iprogress3->Size = System::Drawing::Size(30, 10);
 			this->Iprogress3->TabIndex = 79;
 			this->Iprogress3->TabStop = false;
 			this->Iprogress3->Visible = false;
@@ -987,7 +977,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Ltest->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Ltest->ForeColor = System::Drawing::Color::Red;
-			this->Ltest->Location = System::Drawing::Point(97, 351);
+			this->Ltest->Location = System::Drawing::Point(72, 344);
 			this->Ltest->Name = L"Ltest";
 			this->Ltest->Size = System::Drawing::Size(128, 14);
 			this->Ltest->TabIndex = 80;
@@ -1001,7 +991,7 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Lcycle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->Lcycle->ForeColor = System::Drawing::Color::Orange;
-			this->Lcycle->Location = System::Drawing::Point(331, 448);
+			this->Lcycle->Location = System::Drawing::Point(286, 438);
 			this->Lcycle->Name = L"Lcycle";
 			this->Lcycle->Size = System::Drawing::Size(139, 15);
 			this->Lcycle->TabIndex = 81;
@@ -1012,9 +1002,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle9->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle9->Location = System::Drawing::Point(258, 368);
+			this->Icycle9->Location = System::Drawing::Point(211, 361);
 			this->Icycle9->Name = L"Icycle9";
-			this->Icycle9->Size = System::Drawing::Size(25, 74);
+			this->Icycle9->Size = System::Drawing::Size(24, 67);
 			this->Icycle9->TabIndex = 91;
 			this->Icycle9->TabStop = false;
 			// 
@@ -1022,9 +1012,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle8->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle8->Location = System::Drawing::Point(289, 368);
+			this->Icycle8->Location = System::Drawing::Point(241, 361);
 			this->Icycle8->Name = L"Icycle8";
-			this->Icycle8->Size = System::Drawing::Size(25, 74);
+			this->Icycle8->Size = System::Drawing::Size(24, 67);
 			this->Icycle8->TabIndex = 90;
 			this->Icycle8->TabStop = false;
 			// 
@@ -1032,9 +1022,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle7->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle7->Location = System::Drawing::Point(320, 368);
+			this->Icycle7->Location = System::Drawing::Point(271, 361);
 			this->Icycle7->Name = L"Icycle7";
-			this->Icycle7->Size = System::Drawing::Size(25, 74);
+			this->Icycle7->Size = System::Drawing::Size(24, 67);
 			this->Icycle7->TabIndex = 89;
 			this->Icycle7->TabStop = false;
 			// 
@@ -1042,9 +1032,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle6->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle6->Location = System::Drawing::Point(352, 368);
+			this->Icycle6->Location = System::Drawing::Point(301, 361);
 			this->Icycle6->Name = L"Icycle6";
-			this->Icycle6->Size = System::Drawing::Size(25, 74);
+			this->Icycle6->Size = System::Drawing::Size(24, 67);
 			this->Icycle6->TabIndex = 88;
 			this->Icycle6->TabStop = false;
 			// 
@@ -1052,9 +1042,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle5->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle5->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle5->Location = System::Drawing::Point(383, 368);
+			this->Icycle5->Location = System::Drawing::Point(331, 361);
 			this->Icycle5->Name = L"Icycle5";
-			this->Icycle5->Size = System::Drawing::Size(25, 74);
+			this->Icycle5->Size = System::Drawing::Size(24, 67);
 			this->Icycle5->TabIndex = 87;
 			this->Icycle5->TabStop = false;
 			// 
@@ -1062,9 +1052,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle4->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle4->Location = System::Drawing::Point(414, 368);
+			this->Icycle4->Location = System::Drawing::Point(361, 361);
 			this->Icycle4->Name = L"Icycle4";
-			this->Icycle4->Size = System::Drawing::Size(25, 74);
+			this->Icycle4->Size = System::Drawing::Size(24, 67);
 			this->Icycle4->TabIndex = 96;
 			this->Icycle4->TabStop = false;
 			// 
@@ -1072,9 +1062,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle3->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle3->Location = System::Drawing::Point(445, 368);
+			this->Icycle3->Location = System::Drawing::Point(391, 361);
 			this->Icycle3->Name = L"Icycle3";
-			this->Icycle3->Size = System::Drawing::Size(25, 74);
+			this->Icycle3->Size = System::Drawing::Size(24, 67);
 			this->Icycle3->TabIndex = 95;
 			this->Icycle3->TabStop = false;
 			// 
@@ -1082,9 +1072,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle2->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle2->Location = System::Drawing::Point(476, 368);
+			this->Icycle2->Location = System::Drawing::Point(421, 361);
 			this->Icycle2->Name = L"Icycle2";
-			this->Icycle2->Size = System::Drawing::Size(25, 74);
+			this->Icycle2->Size = System::Drawing::Size(24, 67);
 			this->Icycle2->TabIndex = 94;
 			this->Icycle2->TabStop = false;
 			// 
@@ -1092,9 +1082,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle1->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle1->Location = System::Drawing::Point(507, 368);
+			this->Icycle1->Location = System::Drawing::Point(451, 361);
 			this->Icycle1->Name = L"Icycle1";
-			this->Icycle1->Size = System::Drawing::Size(25, 74);
+			this->Icycle1->Size = System::Drawing::Size(24, 67);
 			this->Icycle1->TabIndex = 93;
 			this->Icycle1->TabStop = false;
 			// 
@@ -1102,9 +1092,9 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			// 
 			this->Icycle0->BackColor = System::Drawing::Color::Transparent;
 			this->Icycle0->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->Icycle0->Location = System::Drawing::Point(538, 368);
+			this->Icycle0->Location = System::Drawing::Point(481, 361);
 			this->Icycle0->Name = L"Icycle0";
-			this->Icycle0->Size = System::Drawing::Size(25, 74);
+			this->Icycle0->Size = System::Drawing::Size(24, 67);
 			this->Icycle0->TabIndex = 92;
 			this->Icycle0->TabStop = false;
 			// 
@@ -1150,17 +1140,6 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Lpoor->Text = L"nie dosta³ wyp³aty - nie pracuje!";
 			this->Lpoor->Visible = false;
 			// 
-			// Btrain
-			// 
-			this->Btrain->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Btrain->Location = System::Drawing::Point(60, 479);
-			this->Btrain->Name = L"Btrain";
-			this->Btrain->Size = System::Drawing::Size(230, 67);
-			this->Btrain->TabIndex = 100;
-			this->Btrain->Text = L"Zainwestuj w siebie";
-			this->Btrain->UseVisualStyleBackColor = true;
-			this->Btrain->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
-			// 
 			// Ltested
 			// 
 			this->Ltested->BackColor = System::Drawing::Color::Transparent;
@@ -1171,6 +1150,30 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Ltested->TabIndex = 101;
 			this->Ltested->TabStop = false;
 			// 
+			// Btrain
+			// 
+			this->Btrain->BackColor = System::Drawing::Color::Transparent;
+			this->Btrain->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Btrain->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Btrain.Image")));
+			this->Btrain->Location = System::Drawing::Point(62, 473);
+			this->Btrain->Name = L"Btrain";
+			this->Btrain->Size = System::Drawing::Size(215, 73);
+			this->Btrain->TabIndex = 102;
+			this->Btrain->TabStop = false;
+			this->Btrain->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
+			// 
+			// Bupgrade
+			// 
+			this->Bupgrade->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Bupgrade->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade.Image")));
+			this->Bupgrade->Location = System::Drawing::Point(288, 473);
+			this->Bupgrade->Name = L"Bupgrade";
+			this->Bupgrade->Size = System::Drawing::Size(215, 73);
+			this->Bupgrade->TabIndex = 103;
+			this->Bupgrade->TabStop = false;
+			this->Bupgrade->Click += gcnew System::EventHandler(this, &MyForm::Bupgrade_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 14);
@@ -1180,10 +1183,11 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(928, 672);
+			this->Controls->Add(this->Bupgrade);
+			this->Controls->Add(this->Btrain);
 			this->Controls->Add(this->Ltested);
 			this->Controls->Add(this->Itest1);
 			this->Controls->Add(this->Itest0);
-			this->Controls->Add(this->Btrain);
 			this->Controls->Add(this->Lpoor);
 			this->Controls->Add(this->Ldeterminated);
 			this->Controls->Add(this->Bload);
@@ -1216,7 +1220,6 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Controls->Add(this->Ltrans);
 			this->Controls->Add(this->Labsent);
 			this->Controls->Add(this->Btest);
-			this->Controls->Add(this->Bupgrade);
 			this->Controls->Add(this->Phired4);
 			this->Controls->Add(this->Phired3);
 			this->Controls->Add(this->Plogo);
@@ -1254,10 +1257,12 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			this->Font = (gcnew System::Drawing::Font(L"Times New Roman", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Code-Clicker";
+			this->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->EndInit();
@@ -1316,6 +1321,8 @@ private: System::Windows::Forms::PictureBox^  Ltested;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icycle0))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btrain))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1376,6 +1383,13 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 				 Ldeterminated->Visible = false;
 				 Lpoor->Visible = false;
 				 reset();
+				 testing = false;
+				 testprogress = 0;
+				 Iprogress0->Visible = false;
+				 Iprogress1->Visible = false;
+				 Iprogress2->Visible = false;
+				 Iprogress3->Visible = false;
+				 Btest->Load("grafika/przyciskTestuj (2).png");
 				 while (sw->Peek() >= 0)
 				 {
 					 Int32::TryParse(sw->ReadLine(), code);
@@ -1646,6 +1660,7 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 				 testprogress = 0;
 				 Btest->Enabled = true;
 				 testing = false;
+				 Btest->Load("grafika/przyciskTestuj (2).png");
 			 }
 			 if (testing){
 				 testprogress++;
@@ -1781,6 +1796,7 @@ private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e
 				 Ltest->Visible = false;
 				 testing = true;
 				 Btest->Enabled = false;
+				 Btest->Load("grafika/przyciskTestujWcisniety.png");
 			 }
 			 else Ltest->Visible = true;
 }
