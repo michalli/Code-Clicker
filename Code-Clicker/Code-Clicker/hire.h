@@ -219,10 +219,14 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Bhire4;
 	private: System::Windows::Forms::PictureBox^  pictureBox2;
 	private: System::Windows::Forms::Label^  L4rebel;
-	private: System::Windows::Forms::Button^  Bupgrade1;
-	private: System::Windows::Forms::Button^  Bupgrade2;
-	private: System::Windows::Forms::Button^  Bupgrade3;
-	private: System::Windows::Forms::Button^  Bupgrade4;
+private: System::Windows::Forms::PictureBox^  Bupgrade1;
+private: System::Windows::Forms::PictureBox^  Bupgrade2;
+private: System::Windows::Forms::PictureBox^  Bupgrade4;
+private: System::Windows::Forms::PictureBox^  Bupgrade3;
+
+
+
+
 
 
 			 System::ComponentModel::Container ^components;
@@ -266,10 +270,10 @@ namespace CodeClicker {
 			this->Bhire4 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->L4rebel = (gcnew System::Windows::Forms::Label());
-			this->Bupgrade1 = (gcnew System::Windows::Forms::Button());
-			this->Bupgrade2 = (gcnew System::Windows::Forms::Button());
-			this->Bupgrade3 = (gcnew System::Windows::Forms::Button());
-			this->Bupgrade4 = (gcnew System::Windows::Forms::Button());
+			this->Bupgrade1 = (gcnew System::Windows::Forms::PictureBox());
+			this->Bupgrade2 = (gcnew System::Windows::Forms::PictureBox());
+			this->Bupgrade4 = (gcnew System::Windows::Forms::PictureBox());
+			this->Bupgrade3 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire1))->BeginInit();
@@ -279,6 +283,10 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire4))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// P1
@@ -657,51 +665,51 @@ namespace CodeClicker {
 			// 
 			// Bupgrade1
 			// 
-			this->Bupgrade1->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade1->Location = System::Drawing::Point(573, 59);
+			this->Bupgrade1->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade1.Image")));
+			this->Bupgrade1->Location = System::Drawing::Point(579, 67);
 			this->Bupgrade1->Name = L"Bupgrade1";
-			this->Bupgrade1->Size = System::Drawing::Size(154, 84);
-			this->Bupgrade1->TabIndex = 44;
-			this->Bupgrade1->Text = L"Ulepsz";
-			this->Bupgrade1->UseVisualStyleBackColor = true;
+			this->Bupgrade1->Size = System::Drawing::Size(143, 67);
+			this->Bupgrade1->TabIndex = 48;
+			this->Bupgrade1->TabStop = false;
 			this->Bupgrade1->Visible = false;
 			this->Bupgrade1->Click += gcnew System::EventHandler(this, &hire::Bupgrade1_Click);
 			// 
 			// Bupgrade2
 			// 
-			this->Bupgrade2->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade2->Location = System::Drawing::Point(573, 198);
+			this->Bupgrade2->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade2.Image")));
+			this->Bupgrade2->Location = System::Drawing::Point(579, 206);
 			this->Bupgrade2->Name = L"Bupgrade2";
-			this->Bupgrade2->Size = System::Drawing::Size(154, 84);
-			this->Bupgrade2->TabIndex = 45;
-			this->Bupgrade2->Text = L"Ulepsz";
-			this->Bupgrade2->UseVisualStyleBackColor = true;
+			this->Bupgrade2->Size = System::Drawing::Size(143, 67);
+			this->Bupgrade2->TabIndex = 49;
+			this->Bupgrade2->TabStop = false;
 			this->Bupgrade2->Visible = false;
 			this->Bupgrade2->Click += gcnew System::EventHandler(this, &hire::Bupgrade2_Click);
 			// 
-			// Bupgrade3
-			// 
-			this->Bupgrade3->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade3->Location = System::Drawing::Point(573, 339);
-			this->Bupgrade3->Name = L"Bupgrade3";
-			this->Bupgrade3->Size = System::Drawing::Size(154, 84);
-			this->Bupgrade3->TabIndex = 46;
-			this->Bupgrade3->Text = L"Ulepsz";
-			this->Bupgrade3->UseVisualStyleBackColor = true;
-			this->Bupgrade3->Visible = false;
-			this->Bupgrade3->Click += gcnew System::EventHandler(this, &hire::Bupgrade3_Click);
-			// 
 			// Bupgrade4
 			// 
-			this->Bupgrade4->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->Bupgrade4->Location = System::Drawing::Point(573, 480);
+			this->Bupgrade4->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade4.Image")));
+			this->Bupgrade4->Location = System::Drawing::Point(579, 487);
 			this->Bupgrade4->Name = L"Bupgrade4";
-			this->Bupgrade4->Size = System::Drawing::Size(154, 84);
-			this->Bupgrade4->TabIndex = 47;
-			this->Bupgrade4->Text = L"Ulepsz";
-			this->Bupgrade4->UseVisualStyleBackColor = true;
+			this->Bupgrade4->Size = System::Drawing::Size(143, 67);
+			this->Bupgrade4->TabIndex = 51;
+			this->Bupgrade4->TabStop = false;
 			this->Bupgrade4->Visible = false;
 			this->Bupgrade4->Click += gcnew System::EventHandler(this, &hire::Bupgrade4_Click);
+			// 
+			// Bupgrade3
+			// 
+			this->Bupgrade3->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade3.Image")));
+			this->Bupgrade3->Location = System::Drawing::Point(579, 348);
+			this->Bupgrade3->Name = L"Bupgrade3";
+			this->Bupgrade3->Size = System::Drawing::Size(143, 67);
+			this->Bupgrade3->TabIndex = 50;
+			this->Bupgrade3->TabStop = false;
+			this->Bupgrade3->Visible = false;
+			this->Bupgrade3->Click += gcnew System::EventHandler(this, &hire::Bupgrade3_Click);
 			// 
 			// hire
 			// 
@@ -762,6 +770,10 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bhire4))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
