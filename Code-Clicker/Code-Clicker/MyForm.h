@@ -2,7 +2,7 @@
 #include "hire.h"//po³¹czenie z hire.h
 #include "upgradefirm.h"//po³¹czenie z upgradefirm.h
 #include "upgradeavatar.h"//po³¹czenie z upgradeavatar.h
-#include <cmath>
+#include <cmath>//biblioteka matematyczna
 using namespace System::IO;//biblioteka zwi¹zana z zapisywaniem do plików
 namespace CodeClicker {
 
@@ -71,6 +71,7 @@ namespace CodeClicker {
 			perk6_1 = false;
 			perk6_2 = false;
 			perk6_3 = false;
+			millionaire = false;
 		}
 
 		void reset(){
@@ -115,6 +116,7 @@ namespace CodeClicker {
 			perk6_1 = false;
 			perk6_2 = false;
 			perk6_3 = false;
+			millionaire = false;
 		}
 
 		void passdata(int paid, bool e1, bool e2, bool e3, bool e4, bool e5, bool e6, bool e7, bool e8, bool e9, bool e10, bool e11, bool e12, bool e13, bool e14, bool e15, bool e16){
@@ -238,7 +240,9 @@ namespace CodeClicker {
 
 		bool perk6_1;
 		bool perk6_2;
-		bool perk6_3;
+		bool perk6_3; 
+
+		bool millionaire;//czy zosta³o siê ju¿ milionerem
 
 	private: System::Windows::Forms::PictureBox^  Pzl;
 	private: System::Windows::Forms::PictureBox^  Icode0;
@@ -1262,7 +1266,6 @@ namespace CodeClicker {
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Code-Clicker";
-			this->Click += gcnew System::EventHandler(this, &MyForm::Btrain_Click);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->EndInit();
@@ -1361,6 +1364,11 @@ namespace CodeClicker {
 
 				 for (int i = 0; i < codeindex; i++)
 					 Icode[i]->Load(String::Format("grafika\\{0}.png", codeString[codeindex - i - 1]));
+
+				 if (!millionaire && cash>=1000000){
+					 MessageBox::Show("Uda³o Ci siê zarobiæ pierwszy milion! Gratulacje!");
+					 millionaire = true;
+				 }
 			 }
 
 private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1575,6 +1583,11 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 						 perk6_3 = true;
 						 employee4factor += 6;
 					 }
+					 Int32::TryParse(sw->ReadLine(), boolean);
+					 if (boolean == 1)
+					 {
+						 millionaire = true;
+					 }
 
 				 }
 				 refresh();
@@ -1620,15 +1633,18 @@ private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e
 			 if (perk6_1) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (perk6_2) sw->WriteLine(1); else sw->WriteLine(0);
 			 if (perk6_3) sw->WriteLine(1); else sw->WriteLine(0);
+			 if (millionaire) sw->WriteLine(1); else sw->WriteLine(0);
 			 sw->Close();
 }
 private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z pomocnikami
+			 Bhire->Load("grafika/przyciskWynajmij2Wcisniety.png");
 			 hire^ hiredialog = gcnew hire;
 			 hiredialog->check(cash, employee1, employee2, employee3, employee4, perk3_1, perk3_2, perk3_3, perk4_1, perk4_2, perk4_3, perk5_1, perk5_2, perk5_3, perk6_1, perk6_2, perk6_3);
 			 hiredialog->ShowDialog();
 			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4(), hiredialog->getperk1_1(), hiredialog->getperk1_2(), hiredialog->getperk1_3(), hiredialog->getperk2_1(), hiredialog->getperk2_2(), hiredialog->getperk2_3(), hiredialog->getperk3_1(), hiredialog->getperk3_2(), hiredialog->getperk3_3(), hiredialog->getperk4_1(), hiredialog->getperk4_2(), hiredialog->getperk4_3());
 			 refresh();
+			 Bhire->Load("grafika/przyciskWynajmij2.png");
 }
 
 	private: void refreshtested() {
@@ -1658,7 +1674,6 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 				 Iprogress3->Visible = false;
 				 refreshtested();
 				 testprogress = 0;
-				 Btest->Enabled = true;
 				 testing = false;
 				 Btest->Load("grafika/przyciskTestuj (2).png");
 			 }
@@ -1792,29 +1807,34 @@ private: System::Void Temployees_Tick(System::Object^  sender, System::EventArgs
 }
 private: System::Void Btest_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //klikniêcie przycisku testowania
-			 if (test < code){
+			 if (!testing){
+				 if (test < code){
 				 Ltest->Visible = false;
 				 testing = true;
-				 Btest->Enabled = false;
 				 Btest->Load("grafika/przyciskTestujWcisniety.png");
 			 }
 			 else Ltest->Visible = true;
+			 }
 }
 private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami firmy
+			 Bupgrade->Load("grafika/przyciskZainwestujWFirmêWcisniety.png");
 			 upgradefirm^ firmdialog = gcnew upgradefirm;
 			 firmdialog->check(cash,perk1_1,perk1_2,perk1_3,perk1_4);
 			 firmdialog->ShowDialog();
 			 passfirm(firmdialog->getpaid(), firmdialog->getperk1(), firmdialog->getperk2(), firmdialog->getperk3(), firmdialog->getperk4());
 			 refresh();
+			 Bupgrade->Load("grafika/przyciskZainwestujWFirmê.png");
 }
 private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //otwarcie formatki z ulepszeniami g³ównego programisty
+			 Btrain->Load("grafika/przyciskZainwestujWSiebieWcisniety.png");
 			 upgradeavatar^ avatardialog = gcnew upgradeavatar;
 			 avatardialog->check(cash,perk2_1,perk2_2,perk2_3,perk2_4,perk2_5);
 			 avatardialog->ShowDialog();
 			 passavatar(avatardialog->getpaid(), avatardialog->getperk1(), avatardialog->getperk2(), avatardialog->getperk3(), avatardialog->getperk4(), avatardialog->getperk5());
 			 refresh();
+			 Btrain->Load("grafika/przyciskZainwestujWSiebie.png");
 }
 };
 }

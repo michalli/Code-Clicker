@@ -66,27 +66,27 @@ namespace CodeClicker {
 			}
 		}
 	private: System::Windows::Forms::PictureBox^  Bback;
-	private: System::Windows::Forms::Button^  B4;
+
 	private: System::Windows::Forms::Label^  L4perk;
 	private: System::Windows::Forms::Label^  L4cost;
 
 	private: System::Windows::Forms::Label^  L4;
-	private: System::Windows::Forms::Button^  B3;
+
 	private: System::Windows::Forms::Label^  L3perk;
 	private: System::Windows::Forms::Label^  L3cost;
 
 	private: System::Windows::Forms::Label^  L3;
-	private: System::Windows::Forms::Button^  B2;
+
 	private: System::Windows::Forms::Label^  L2perk;
 	private: System::Windows::Forms::Label^  L2cost;
 
 	private: System::Windows::Forms::Label^  L2;
-	private: System::Windows::Forms::Button^  B1;
+
 	private: System::Windows::Forms::Label^  L1perk;
 	private: System::Windows::Forms::Label^  L1cost;
 
 	private: System::Windows::Forms::Label^  L1;
-	private: System::Windows::Forms::Button^  B5;
+
 	private: System::Windows::Forms::Label^  L5perk;
 	private: System::Windows::Forms::Label^  L5cost;
 	private: System::Windows::Forms::Label^  L5;
@@ -115,6 +115,11 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  P3;
 	private: System::Windows::Forms::PictureBox^  P5;
 	private: System::Windows::Forms::PictureBox^  P4;
+private: System::Windows::Forms::PictureBox^  B1;
+private: System::Windows::Forms::PictureBox^  B2;
+private: System::Windows::Forms::PictureBox^  B3;
+private: System::Windows::Forms::PictureBox^  B4;
+private: System::Windows::Forms::PictureBox^  B5;
 
 
 
@@ -129,23 +134,18 @@ namespace CodeClicker {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(upgradeavatar::typeid));
 			this->Bback = (gcnew System::Windows::Forms::PictureBox());
-			this->B4 = (gcnew System::Windows::Forms::Button());
 			this->L4perk = (gcnew System::Windows::Forms::Label());
 			this->L4cost = (gcnew System::Windows::Forms::Label());
 			this->L4 = (gcnew System::Windows::Forms::Label());
-			this->B3 = (gcnew System::Windows::Forms::Button());
 			this->L3perk = (gcnew System::Windows::Forms::Label());
 			this->L3cost = (gcnew System::Windows::Forms::Label());
 			this->L3 = (gcnew System::Windows::Forms::Label());
-			this->B2 = (gcnew System::Windows::Forms::Button());
 			this->L2perk = (gcnew System::Windows::Forms::Label());
 			this->L2cost = (gcnew System::Windows::Forms::Label());
 			this->L2 = (gcnew System::Windows::Forms::Label());
-			this->B1 = (gcnew System::Windows::Forms::Button());
 			this->L1perk = (gcnew System::Windows::Forms::Label());
 			this->L1cost = (gcnew System::Windows::Forms::Label());
 			this->L1 = (gcnew System::Windows::Forms::Label());
-			this->B5 = (gcnew System::Windows::Forms::Button());
 			this->L5perk = (gcnew System::Windows::Forms::Label());
 			this->L5cost = (gcnew System::Windows::Forms::Label());
 			this->L5 = (gcnew System::Windows::Forms::Label());
@@ -159,12 +159,22 @@ namespace CodeClicker {
 			this->P3 = (gcnew System::Windows::Forms::PictureBox());
 			this->P5 = (gcnew System::Windows::Forms::PictureBox());
 			this->P4 = (gcnew System::Windows::Forms::PictureBox());
+			this->B1 = (gcnew System::Windows::Forms::PictureBox());
+			this->B2 = (gcnew System::Windows::Forms::PictureBox());
+			this->B3 = (gcnew System::Windows::Forms::PictureBox());
+			this->B4 = (gcnew System::Windows::Forms::PictureBox());
+			this->B5 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P5))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B5))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Bback
@@ -179,17 +189,6 @@ namespace CodeClicker {
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
 			this->Bback->Click += gcnew System::EventHandler(this, &upgradeavatar::Bback_Click);
-			// 
-			// B4
-			// 
-			this->B4->Location = System::Drawing::Point(414, 477);
-			this->B4->Name = L"B4";
-			this->B4->Size = System::Drawing::Size(331, 41);
-			this->B4->TabIndex = 67;
-			this->B4->Text = L"Rezerwuj";
-			this->B4->UseVisualStyleBackColor = true;
-			this->B4->Visible = false;
-			this->B4->Click += gcnew System::EventHandler(this, &upgradeavatar::B4_Click);
 			// 
 			// L4perk
 			// 
@@ -229,17 +228,6 @@ namespace CodeClicker {
 			this->L4->TabIndex = 63;
 			this->L4->Text = L"Legendarny programista";
 			// 
-			// B3
-			// 
-			this->B3->Location = System::Drawing::Point(414, 367);
-			this->B3->Name = L"B3";
-			this->B3->Size = System::Drawing::Size(331, 41);
-			this->B3->TabIndex = 62;
-			this->B3->Text = L"Rezerwuj";
-			this->B3->UseVisualStyleBackColor = true;
-			this->B3->Visible = false;
-			this->B3->Click += gcnew System::EventHandler(this, &upgradeavatar::B3_Click);
-			// 
 			// L3perk
 			// 
 			this->L3perk->AutoSize = true;
@@ -277,17 +265,6 @@ namespace CodeClicker {
 			this->L3->Size = System::Drawing::Size(182, 24);
 			this->L3->TabIndex = 58;
 			this->L3->Text = L"Epicki programista";
-			// 
-			// B2
-			// 
-			this->B2->Location = System::Drawing::Point(414, 250);
-			this->B2->Name = L"B2";
-			this->B2->Size = System::Drawing::Size(331, 41);
-			this->B2->TabIndex = 57;
-			this->B2->Text = L"Rezerwuj";
-			this->B2->UseVisualStyleBackColor = true;
-			this->B2->Visible = false;
-			this->B2->Click += gcnew System::EventHandler(this, &upgradeavatar::B2_Click);
 			// 
 			// L2perk
 			// 
@@ -327,17 +304,6 @@ namespace CodeClicker {
 			this->L2->TabIndex = 53;
 			this->L2->Text = L"S³awny programista";
 			// 
-			// B1
-			// 
-			this->B1->Location = System::Drawing::Point(414, 126);
-			this->B1->Name = L"B1";
-			this->B1->Size = System::Drawing::Size(331, 41);
-			this->B1->TabIndex = 52;
-			this->B1->Text = L"Rezerwuj";
-			this->B1->UseVisualStyleBackColor = true;
-			this->B1->Visible = false;
-			this->B1->Click += gcnew System::EventHandler(this, &upgradeavatar::B1_Click);
-			// 
 			// L1perk
 			// 
 			this->L1perk->AutoSize = true;
@@ -375,17 +341,6 @@ namespace CodeClicker {
 			this->L1->Size = System::Drawing::Size(251, 24);
 			this->L1->TabIndex = 48;
 			this->L1->Text = L"Profesjonalny programista";
-			// 
-			// B5
-			// 
-			this->B5->Location = System::Drawing::Point(414, 601);
-			this->B5->Name = L"B5";
-			this->B5->Size = System::Drawing::Size(331, 41);
-			this->B5->TabIndex = 72;
-			this->B5->Text = L"Rezerwuj";
-			this->B5->UseVisualStyleBackColor = true;
-			this->B5->Visible = false;
-			this->B5->Click += gcnew System::EventHandler(this, &upgradeavatar::B5_Click);
 			// 
 			// L5perk
 			// 
@@ -535,6 +490,66 @@ namespace CodeClicker {
 			this->P4->TabIndex = 76;
 			this->P4->TabStop = false;
 			// 
+			// B1
+			// 
+			this->B1->BackColor = System::Drawing::Color::Transparent;
+			this->B1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.Image")));
+			this->B1->Location = System::Drawing::Point(602, 103);
+			this->B1->Name = L"B1";
+			this->B1->Size = System::Drawing::Size(143, 67);
+			this->B1->TabIndex = 78;
+			this->B1->TabStop = false;
+			this->B1->Visible = false;
+			this->B1->Click += gcnew System::EventHandler(this, &upgradeavatar::B1_Click);
+			// 
+			// B2
+			// 
+			this->B2->BackColor = System::Drawing::Color::Transparent;
+			this->B2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.Image")));
+			this->B2->Location = System::Drawing::Point(602, 227);
+			this->B2->Name = L"B2";
+			this->B2->Size = System::Drawing::Size(143, 67);
+			this->B2->TabIndex = 79;
+			this->B2->TabStop = false;
+			this->B2->Visible = false;
+			this->B2->Click += gcnew System::EventHandler(this, &upgradeavatar::B2_Click);
+			// 
+			// B3
+			// 
+			this->B3->BackColor = System::Drawing::Color::Transparent;
+			this->B3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.Image")));
+			this->B3->Location = System::Drawing::Point(602, 344);
+			this->B3->Name = L"B3";
+			this->B3->Size = System::Drawing::Size(143, 67);
+			this->B3->TabIndex = 80;
+			this->B3->TabStop = false;
+			this->B3->Visible = false;
+			this->B3->Click += gcnew System::EventHandler(this, &upgradeavatar::B3_Click);
+			// 
+			// B4
+			// 
+			this->B4->BackColor = System::Drawing::Color::Transparent;
+			this->B4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B4.Image")));
+			this->B4->Location = System::Drawing::Point(602, 454);
+			this->B4->Name = L"B4";
+			this->B4->Size = System::Drawing::Size(143, 67);
+			this->B4->TabIndex = 81;
+			this->B4->TabStop = false;
+			this->B4->Visible = false;
+			this->B4->Click += gcnew System::EventHandler(this, &upgradeavatar::B4_Click);
+			// 
+			// B5
+			// 
+			this->B5->BackColor = System::Drawing::Color::Transparent;
+			this->B5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B5.Image")));
+			this->B5->Location = System::Drawing::Point(602, 578);
+			this->B5->Name = L"B5";
+			this->B5->Size = System::Drawing::Size(143, 67);
+			this->B5->TabIndex = 82;
+			this->B5->TabStop = false;
+			this->B5->Visible = false;
+			this->B5->Click += gcnew System::EventHandler(this, &upgradeavatar::B5_Click);
+			// 
 			// upgradeavatar
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -543,32 +558,32 @@ namespace CodeClicker {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(794, 745);
+			this->Controls->Add(this->B5);
+			this->Controls->Add(this->B4);
+			this->Controls->Add(this->B3);
+			this->Controls->Add(this->B2);
+			this->Controls->Add(this->B1);
 			this->Controls->Add(this->P5);
 			this->Controls->Add(this->P4);
 			this->Controls->Add(this->P3);
 			this->Controls->Add(this->P2);
 			this->Controls->Add(this->P1);
-			this->Controls->Add(this->B5);
 			this->Controls->Add(this->L5perk);
 			this->Controls->Add(this->L5cost);
 			this->Controls->Add(this->L5description);
 			this->Controls->Add(this->L5);
-			this->Controls->Add(this->B4);
 			this->Controls->Add(this->L4perk);
 			this->Controls->Add(this->L4cost);
 			this->Controls->Add(this->L4description);
 			this->Controls->Add(this->L4);
-			this->Controls->Add(this->B3);
 			this->Controls->Add(this->L3perk);
 			this->Controls->Add(this->L3cost);
 			this->Controls->Add(this->L3description);
 			this->Controls->Add(this->L3);
-			this->Controls->Add(this->B2);
 			this->Controls->Add(this->L2perk);
 			this->Controls->Add(this->L2cost);
 			this->Controls->Add(this->L2description);
 			this->Controls->Add(this->L2);
-			this->Controls->Add(this->B1);
 			this->Controls->Add(this->L1perk);
 			this->Controls->Add(this->L1cost);
 			this->Controls->Add(this->L1description);
@@ -586,6 +601,11 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P5))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
