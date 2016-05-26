@@ -2,6 +2,8 @@
 #include "hire.h"//po³¹czenie z hire.h
 #include "upgradefirm.h"//po³¹czenie z upgradefirm.h
 #include "upgradeavatar.h"//po³¹czenie z upgradeavatar.h
+#include "fanfare.h"//po³¹czenie z fanfare.h
+#include <windows.h>//uœpienie w¹tków
 #include <cmath>//biblioteka matematyczna
 using namespace System::IO;//biblioteka zwi¹zana z zapisywaniem do plików
 namespace CodeClicker {
@@ -22,6 +24,7 @@ namespace CodeClicker {
 		MyForm(void)//konstruktor
 		{
 			InitializeComponent();
+			started = false;
 			code = 0;
 			cash = 0;
 			test = 0;
@@ -181,6 +184,8 @@ namespace CodeClicker {
 
 	private:
 
+		bool started;//czy rozpoczêto odtwarzanie?
+
 		int code;//iloœæ kodu
 		int	cash;//iloœæ pieniêdzy
 		int test;//iloœæ przetestowanych linii
@@ -313,6 +318,7 @@ namespace CodeClicker {
 	private: System::Windows::Forms::PictureBox^  Ltested;
 	private: System::Windows::Forms::PictureBox^  Btrain;
 	private: System::Windows::Forms::PictureBox^  Bupgrade;
+	private: AxWMPLib::AxWindowsMediaPlayer^  axWindowsMediaPlayer1;
 	private: System::ComponentModel::IContainer^  components;
 
 		/// </summary>
@@ -397,6 +403,7 @@ namespace CodeClicker {
 			this->Ltested = (gcnew System::Windows::Forms::PictureBox());
 			this->Btrain = (gcnew System::Windows::Forms::PictureBox());
 			this->Bupgrade = (gcnew System::Windows::Forms::PictureBox());
+			this->axWindowsMediaPlayer1 = (gcnew AxWMPLib::AxWindowsMediaPlayer());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->BeginInit();
@@ -457,6 +464,7 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btrain))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// Icode9
@@ -698,7 +706,7 @@ namespace CodeClicker {
 			this->Bhire->BackColor = System::Drawing::Color::Transparent;
 			this->Bhire->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bhire->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bhire.Image")));
-			this->Bhire->Location = System::Drawing::Point(62, 552);
+			this->Bhire->Location = System::Drawing::Point(324, 473);
 			this->Bhire->Name = L"Bhire";
 			this->Bhire->Size = System::Drawing::Size(143, 67);
 			this->Bhire->TabIndex = 51;
@@ -707,7 +715,6 @@ namespace CodeClicker {
 			// 
 			// Temployees
 			// 
-			this->Temployees->Enabled = true;
 			this->Temployees->Interval = 400;
 			this->Temployees->Tick += gcnew System::EventHandler(this, &MyForm::Temployees_Tick);
 			// 
@@ -716,12 +723,13 @@ namespace CodeClicker {
 			this->Bsave->BackColor = System::Drawing::Color::Transparent;
 			this->Bsave->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bsave->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bsave.Image")));
-			this->Bsave->Location = System::Drawing::Point(360, 552);
+			this->Bsave->Location = System::Drawing::Point(403, 552);
 			this->Bsave->Name = L"Bsave";
-			this->Bsave->Size = System::Drawing::Size(143, 67);
+			this->Bsave->Size = System::Drawing::Size(100, 67);
 			this->Bsave->TabIndex = 52;
 			this->Bsave->TabStop = false;
 			this->Bsave->Click += gcnew System::EventHandler(this, &MyForm::Bsave_Click);
+			this->Bsave->MouseLeave += gcnew System::EventHandler(this, &MyForm::Bsave_MouseLeave);
 			// 
 			// Phired1
 			// 
@@ -766,12 +774,13 @@ namespace CodeClicker {
 			this->Bload->BackColor = System::Drawing::Color::Transparent;
 			this->Bload->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bload->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bload.Image")));
-			this->Bload->Location = System::Drawing::Point(211, 552);
+			this->Bload->Location = System::Drawing::Point(288, 552);
 			this->Bload->Name = L"Bload";
-			this->Bload->Size = System::Drawing::Size(143, 67);
+			this->Bload->Size = System::Drawing::Size(100, 67);
 			this->Bload->TabIndex = 57;
 			this->Bload->TabStop = false;
 			this->Bload->Click += gcnew System::EventHandler(this, &MyForm::Bload_Click);
+			this->Bload->MouseLeave += gcnew System::EventHandler(this, &MyForm::Bload_MouseLeave);
 			// 
 			// Plogo
 			// 
@@ -1171,12 +1180,22 @@ namespace CodeClicker {
 			this->Bupgrade->BackColor = System::Drawing::Color::Transparent;
 			this->Bupgrade->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bupgrade->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade.Image")));
-			this->Bupgrade->Location = System::Drawing::Point(288, 473);
+			this->Bupgrade->Location = System::Drawing::Point(62, 546);
 			this->Bupgrade->Name = L"Bupgrade";
 			this->Bupgrade->Size = System::Drawing::Size(215, 73);
 			this->Bupgrade->TabIndex = 103;
 			this->Bupgrade->TabStop = false;
 			this->Bupgrade->Click += gcnew System::EventHandler(this, &MyForm::Bupgrade_Click);
+			// 
+			// axWindowsMediaPlayer1
+			// 
+			this->axWindowsMediaPlayer1->Enabled = true;
+			this->axWindowsMediaPlayer1->Location = System::Drawing::Point(873, 319);
+			this->axWindowsMediaPlayer1->Name = L"axWindowsMediaPlayer1";
+			this->axWindowsMediaPlayer1->OcxState = (cli::safe_cast<System::Windows::Forms::AxHost::State^>(resources->GetObject(L"axWindowsMediaPlayer1.OcxState")));
+			this->axWindowsMediaPlayer1->Size = System::Drawing::Size(0, 0);
+			this->axWindowsMediaPlayer1->TabIndex = 104;
+			this->axWindowsMediaPlayer1->PlayStateChange += gcnew AxWMPLib::_WMPOCXEvents_PlayStateChangeEventHandler(this, &MyForm::axWindowsMediaPlayer1_PlayStateChange);
 			// 
 			// MyForm
 			// 
@@ -1187,6 +1206,8 @@ namespace CodeClicker {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(928, 672);
+			this->Controls->Add(this->axWindowsMediaPlayer1);
+			this->Controls->Add(this->Bhire);
 			this->Controls->Add(this->Bupgrade);
 			this->Controls->Add(this->Btrain);
 			this->Controls->Add(this->Ltested);
@@ -1230,7 +1251,6 @@ namespace CodeClicker {
 			this->Controls->Add(this->Lpremium);
 			this->Controls->Add(this->Phired2);
 			this->Controls->Add(this->Phired1);
-			this->Controls->Add(this->Bhire);
 			this->Controls->Add(this->Lcash);
 			this->Controls->Add(this->Lcode);
 			this->Controls->Add(this->Iavatar);
@@ -1266,6 +1286,7 @@ namespace CodeClicker {
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Code-Clicker";
+			this->WindowState = System::Windows::Forms::FormWindowState::Minimized;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode9))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode8))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Icode7))->EndInit();
@@ -1326,6 +1347,7 @@ namespace CodeClicker {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Ltested))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Btrain))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bupgrade))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->axWindowsMediaPlayer1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1339,7 +1361,6 @@ namespace CodeClicker {
 	}
 			 void refresh() {
 				 //odœwie¿anie wartoœci kasy i kodu
-
 				 array<PictureBox^>^ Icash = gcnew array<PictureBox^>{
 					 Icash0, Icash1, Icash2, Icash3, Icash4, Icash5, Icash6, Icash7, Icash8, Icash9
 				 };
@@ -1366,13 +1387,15 @@ namespace CodeClicker {
 					 Icode[i]->Load(String::Format("grafika\\{0}.png", codeString[codeindex - i - 1]));
 
 				 if (!millionaire && cash>=1000000){
-					 MessageBox::Show("Uda³o Ci siê zarobiæ pierwszy milion! Gratulacje!");
+					 fanfare^ fanfaredialog = gcnew fanfare;
+					 fanfaredialog->ShowDialog();
 					 millionaire = true;
 				 }
 			 }
 
 private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //wczytanie gry
+			 Bload->Load("grafika/przyciskWczytaj3Wcisniety.png");
 			 try{
 				 String^ fileName = "data.ccr";
 				 FileStream^ fs = gcnew FileStream(fileName, FileMode::Open);
@@ -1597,10 +1620,11 @@ private: System::Void Bload_Click(System::Object^  sender, System::EventArgs^  e
 			 }
 			 catch (const FileNotFoundException^ e){
 				 MessageBox::Show("B£¥D: nie mo¿na otworzyæ pliku do odczytu.");
-			 }			 
+			 }
 }
 private: System::Void Bsave_Click(System::Object^  sender, System::EventArgs^  e) {
 			 //zapis gry
+			 Bsave->Load("grafika/przyciskZapisz3Wcisniety.png");
 			 String^ fileName = "data.ccr";
 			 StreamWriter^ sw = gcnew StreamWriter(fileName);
 			 sw->WriteLine(code);
@@ -1644,6 +1668,7 @@ private: System::Void Bhire_Click(System::Object^  sender, System::EventArgs^  e
 			 hiredialog->ShowDialog();
 			 passdata(hiredialog->getpaid(), hiredialog->getemployee1(), hiredialog->getemployee2(), hiredialog->getemployee3(), hiredialog->getemployee4(), hiredialog->getperk1_1(), hiredialog->getperk1_2(), hiredialog->getperk1_3(), hiredialog->getperk2_1(), hiredialog->getperk2_2(), hiredialog->getperk2_3(), hiredialog->getperk3_1(), hiredialog->getperk3_2(), hiredialog->getperk3_3(), hiredialog->getperk4_1(), hiredialog->getperk4_2(), hiredialog->getperk4_3());
 			 refresh();
+			 Sleep(222);
 			 Bhire->Load("grafika/przyciskWynajmij2.png");
 }
 
@@ -1824,6 +1849,7 @@ private: System::Void Bupgrade_Click(System::Object^  sender, System::EventArgs^
 			 firmdialog->ShowDialog();
 			 passfirm(firmdialog->getpaid(), firmdialog->getperk1(), firmdialog->getperk2(), firmdialog->getperk3(), firmdialog->getperk4());
 			 refresh();
+			 Sleep(222);
 			 Bupgrade->Load("grafika/przyciskZainwestujWFirmê.png");
 }
 private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1834,7 +1860,29 @@ private: System::Void Btrain_Click(System::Object^  sender, System::EventArgs^  
 			 avatardialog->ShowDialog();
 			 passavatar(avatardialog->getpaid(), avatardialog->getperk1(), avatardialog->getperk2(), avatardialog->getperk3(), avatardialog->getperk4(), avatardialog->getperk5());
 			 refresh();
+			 Sleep(222);
 			 Btrain->Load("grafika/przyciskZainwestujWSiebie.png");
+}
+
+private: System::Void axWindowsMediaPlayer1_PlayStateChange(System::Object^  sender, AxWMPLib::_WMPOCXEvents_PlayStateChangeEvent^  e) {
+			 //odtwarzanie
+			 if (started){
+				 Temployees->Enabled = true;
+				 axWindowsMediaPlayer1->fullScreen = false;
+				 FormWindowState normal;
+				 this->WindowState = normal;
+			 }
+			 started = !started;
+}
+private: System::Void Bload_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+			 //wczytywanie-zmiana koloru
+			 Sleep(999);
+			 Bload->Load("grafika/przyciskWczytaj3.png");
+}
+private: System::Void Bsave_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+			 //zapisywanie-zmiana koloru
+			 Sleep(999);
+			 Bsave->Load("grafika/przyciskZapisz3.png");
 }
 };
 }

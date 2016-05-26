@@ -32,6 +32,26 @@ namespace CodeClicker {
 			if (passedcash >= 1500 && !e2)B2->Visible = true;
 			if (passedcash >= 5000 && !e3)B3->Visible = true;
 			if (passedcash >= 20000 && !e4)B4->Visible = true;
+			if (e1){
+				B1->Enabled = false;
+				B1->Load("grafika/przyciskZakupWcisniety.png");
+				B1->Visible = true;
+			}
+			if (e2){
+				B2->Enabled = false;
+				B2->Load("grafika/przyciskZakupWcisniety.png");
+				B2->Visible = true;
+			}
+			if (e3){
+				B3->Enabled = false;
+				B3->Load("grafika/przyciskZakupWcisniety.png");
+				B3->Visible = true;
+			}
+			if (e4){
+				B4->Enabled = false;
+				B4->Load("grafika/przyciskZakupWcisniety.png");
+				B4->Visible = true;
+			}
 		}
 
 		bool getperk1(){
@@ -154,9 +174,9 @@ namespace CodeClicker {
 			this->Bback->BackColor = System::Drawing::Color::Transparent;
 			this->Bback->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bback->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bback.Image")));
-			this->Bback->Location = System::Drawing::Point(326, 621);
+			this->Bback->Location = System::Drawing::Point(342, 618);
 			this->Bback->Name = L"Bback";
-			this->Bback->Size = System::Drawing::Size(143, 67);
+			this->Bback->Size = System::Drawing::Size(116, 65);
 			this->Bback->TabIndex = 27;
 			this->Bback->TabStop = false;
 			this->Bback->Click += gcnew System::EventHandler(this, &upgradefirm::Bback_Click);
@@ -167,7 +187,7 @@ namespace CodeClicker {
 			this->L1->BackColor = System::Drawing::Color::Transparent;
 			this->L1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L1->Location = System::Drawing::Point(248, 50);
+			this->L1->Location = System::Drawing::Point(250, 50);
 			this->L1->Name = L"L1";
 			this->L1->Size = System::Drawing::Size(462, 25);
 			this->L1->TabIndex = 28;
@@ -179,7 +199,7 @@ namespace CodeClicker {
 			this->L1description->BackColor = System::Drawing::Color::Transparent;
 			this->L1description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L1description->Location = System::Drawing::Point(251, 75);
+			this->L1description->Location = System::Drawing::Point(255, 75);
 			this->L1description->Name = L"L1description";
 			this->L1description->Size = System::Drawing::Size(488, 16);
 			this->L1description->TabIndex = 29;
@@ -192,7 +212,7 @@ namespace CodeClicker {
 			this->L1cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L1cost->ForeColor = System::Drawing::Color::Red;
-			this->L1cost->Location = System::Drawing::Point(250, 142);
+			this->L1cost->Location = System::Drawing::Point(255, 136);
 			this->L1cost->Name = L"L1cost";
 			this->L1cost->Size = System::Drawing::Size(140, 24);
 			this->L1cost->TabIndex = 30;
@@ -205,7 +225,7 @@ namespace CodeClicker {
 			this->L1perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L1perk->ForeColor = System::Drawing::Color::Lime;
-			this->L1perk->Location = System::Drawing::Point(250, 100);
+			this->L1perk->Location = System::Drawing::Point(255, 91);
 			this->L1perk->Name = L"L1perk";
 			this->L1perk->Size = System::Drawing::Size(414, 24);
 			this->L1perk->TabIndex = 31;
@@ -218,7 +238,7 @@ namespace CodeClicker {
 			this->L2perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L2perk->ForeColor = System::Drawing::Color::Lime;
-			this->L2perk->Location = System::Drawing::Point(251, 241);
+			this->L2perk->Location = System::Drawing::Point(255, 232);
 			this->L2perk->Name = L"L2perk";
 			this->L2perk->Size = System::Drawing::Size(415, 24);
 			this->L2perk->TabIndex = 36;
@@ -231,7 +251,7 @@ namespace CodeClicker {
 			this->L2cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L2cost->ForeColor = System::Drawing::Color::Red;
-			this->L2cost->Location = System::Drawing::Point(250, 283);
+			this->L2cost->Location = System::Drawing::Point(255, 278);
 			this->L2cost->Name = L"L2cost";
 			this->L2cost->Size = System::Drawing::Size(155, 24);
 			this->L2cost->TabIndex = 35;
@@ -243,7 +263,7 @@ namespace CodeClicker {
 			this->L2description->BackColor = System::Drawing::Color::Transparent;
 			this->L2description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L2description->Location = System::Drawing::Point(251, 216);
+			this->L2description->Location = System::Drawing::Point(255, 216);
 			this->L2description->Name = L"L2description";
 			this->L2description->Size = System::Drawing::Size(246, 16);
 			this->L2description->TabIndex = 34;
@@ -255,7 +275,7 @@ namespace CodeClicker {
 			this->L2->BackColor = System::Drawing::Color::Transparent;
 			this->L2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L2->Location = System::Drawing::Point(248, 191);
+			this->L2->Location = System::Drawing::Point(250, 191);
 			this->L2->Name = L"L2";
 			this->L2->Size = System::Drawing::Size(186, 25);
 			this->L2->TabIndex = 33;
@@ -268,7 +288,7 @@ namespace CodeClicker {
 			this->L3perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L3perk->ForeColor = System::Drawing::Color::Lime;
-			this->L3perk->Location = System::Drawing::Point(251, 382);
+			this->L3perk->Location = System::Drawing::Point(255, 373);
 			this->L3perk->Name = L"L3perk";
 			this->L3perk->Size = System::Drawing::Size(454, 24);
 			this->L3perk->TabIndex = 41;
@@ -281,7 +301,7 @@ namespace CodeClicker {
 			this->L3cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L3cost->ForeColor = System::Drawing::Color::Red;
-			this->L3cost->Location = System::Drawing::Point(251, 424);
+			this->L3cost->Location = System::Drawing::Point(255, 418);
 			this->L3cost->Name = L"L3cost";
 			this->L3cost->Size = System::Drawing::Size(155, 24);
 			this->L3cost->TabIndex = 40;
@@ -293,7 +313,7 @@ namespace CodeClicker {
 			this->L3description->BackColor = System::Drawing::Color::Transparent;
 			this->L3description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L3description->Location = System::Drawing::Point(250, 357);
+			this->L3description->Location = System::Drawing::Point(255, 357);
 			this->L3description->Name = L"L3description";
 			this->L3description->Size = System::Drawing::Size(339, 16);
 			this->L3description->TabIndex = 39;
@@ -305,7 +325,7 @@ namespace CodeClicker {
 			this->L3->BackColor = System::Drawing::Color::Transparent;
 			this->L3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L3->Location = System::Drawing::Point(248, 332);
+			this->L3->Location = System::Drawing::Point(250, 332);
 			this->L3->Name = L"L3";
 			this->L3->Size = System::Drawing::Size(103, 25);
 			this->L3->TabIndex = 38;
@@ -318,7 +338,7 @@ namespace CodeClicker {
 			this->L4perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L4perk->ForeColor = System::Drawing::Color::Lime;
-			this->L4perk->Location = System::Drawing::Point(251, 523);
+			this->L4perk->Location = System::Drawing::Point(255, 514);
 			this->L4perk->Name = L"L4perk";
 			this->L4perk->Size = System::Drawing::Size(475, 24);
 			this->L4perk->TabIndex = 46;
@@ -331,7 +351,7 @@ namespace CodeClicker {
 			this->L4cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L4cost->ForeColor = System::Drawing::Color::Red;
-			this->L4cost->Location = System::Drawing::Point(251, 565);
+			this->L4cost->Location = System::Drawing::Point(255, 559);
 			this->L4cost->Name = L"L4cost";
 			this->L4cost->Size = System::Drawing::Size(165, 24);
 			this->L4cost->TabIndex = 45;
@@ -343,7 +363,7 @@ namespace CodeClicker {
 			this->L4description->BackColor = System::Drawing::Color::Transparent;
 			this->L4description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L4description->Location = System::Drawing::Point(250, 498);
+			this->L4description->Location = System::Drawing::Point(255, 498);
 			this->L4description->Name = L"L4description";
 			this->L4description->Size = System::Drawing::Size(305, 16);
 			this->L4description->TabIndex = 44;
@@ -355,7 +375,7 @@ namespace CodeClicker {
 			this->L4->BackColor = System::Drawing::Color::Transparent;
 			this->L4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L4->Location = System::Drawing::Point(248, 473);
+			this->L4->Location = System::Drawing::Point(250, 473);
 			this->L4->Name = L"L4";
 			this->L4->Size = System::Drawing::Size(186, 25);
 			this->L4->TabIndex = 43;
@@ -400,8 +420,9 @@ namespace CodeClicker {
 			// B1
 			// 
 			this->B1->BackColor = System::Drawing::Color::Transparent;
+			this->B1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.Image")));
-			this->B1->Location = System::Drawing::Point(605, 127);
+			this->B1->Location = System::Drawing::Point(605, 118);
 			this->B1->Name = L"B1";
 			this->B1->Size = System::Drawing::Size(143, 67);
 			this->B1->TabIndex = 52;
@@ -412,8 +433,9 @@ namespace CodeClicker {
 			// B2
 			// 
 			this->B2->BackColor = System::Drawing::Color::Transparent;
+			this->B2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.Image")));
-			this->B2->Location = System::Drawing::Point(605, 268);
+			this->B2->Location = System::Drawing::Point(605, 259);
 			this->B2->Name = L"B2";
 			this->B2->Size = System::Drawing::Size(143, 67);
 			this->B2->TabIndex = 53;
@@ -424,8 +446,9 @@ namespace CodeClicker {
 			// B3
 			// 
 			this->B3->BackColor = System::Drawing::Color::Transparent;
+			this->B3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.Image")));
-			this->B3->Location = System::Drawing::Point(605, 409);
+			this->B3->Location = System::Drawing::Point(605, 400);
 			this->B3->Name = L"B3";
 			this->B3->Size = System::Drawing::Size(143, 67);
 			this->B3->TabIndex = 54;
@@ -436,8 +459,9 @@ namespace CodeClicker {
 			// B4
 			// 
 			this->B4->BackColor = System::Drawing::Color::Transparent;
+			this->B4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B4.Image")));
-			this->B4->Location = System::Drawing::Point(605, 550);
+			this->B4->Location = System::Drawing::Point(605, 541);
 			this->B4->Name = L"B4";
 			this->B4->Size = System::Drawing::Size(143, 67);
 			this->B4->TabIndex = 55;
@@ -480,8 +504,10 @@ namespace CodeClicker {
 			this->Controls->Add(this->Bback);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"upgradefirm";
-			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce zarobki firmy";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
@@ -507,7 +533,8 @@ namespace CodeClicker {
 				 paid += 500;
 				 cash -= 500;
 				 perk1 = true;
-				 B1->Visible = false;
+				 B1->Enabled = false;
+				 B1->Load("grafika/przyciskZakupWcisniety.png");
 				 if (cash < 1500)B2->Visible = false;
 				 if (cash < 5000)B3->Visible = false;
 				 if (cash < 20000)B4->Visible = false;
@@ -517,7 +544,8 @@ private: System::Void B2_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 1500;
 			 cash -= 1500;
 			 perk2 = true;
-			 B2->Visible = false;
+			 B2->Enabled = false;
+			 B2->Load("grafika/przyciskZakupWcisniety.png");
 			 if (cash < 500)B1->Visible = false;
 			 if (cash < 5000)B3->Visible = false;
 			 if (cash < 20000)B4->Visible = false;
@@ -527,7 +555,8 @@ private: System::Void B3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 5000;
 			 cash -= 5000;
 			 perk3 = true;
-			 B3->Visible = false;
+			 B3->Enabled = false;
+			 B3->Load("grafika/przyciskZakupWcisniety.png");
 			 if (cash < 500)B1->Visible = false;
 			 if (cash < 1500)B2->Visible = false;
 			 if (cash < 20000)B4->Visible = false;
@@ -537,7 +566,8 @@ private: System::Void B4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 20000;
 			 cash -= 20000;
 			 perk4 = true;
-			 B4->Visible = false;
+			 B4->Enabled = false;
+			 B4->Load("grafika/przyciskZakupWcisniety.png");
 			 if (cash < 500)B1->Visible = false;
 			 if (cash < 5000)B3->Visible = false;
 			 if (cash < 1500)B2->Visible = false;

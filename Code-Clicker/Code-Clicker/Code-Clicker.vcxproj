@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fanfare.cpp" />
     <ClCompile Include="hire.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="upgradeavatar.cpp" />
@@ -91,6 +92,9 @@
     <ClCompile Include="upgradefirm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fanfare.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="hire.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -118,6 +122,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fanfare.resx">
+      <DependentUpon>fanfare.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="hire.resx">
       <DependentUpon>hire.h</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +166,24 @@
     <Image Include="..\..\grafika\9.png" />
     <Image Include="..\..\grafika\kropka.png" />
     <Image Include="..\..\grafika\przecinek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WMPLib.1.0.dll">
+      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="AxWMPLib.1.0.dll">
+      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>aximp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

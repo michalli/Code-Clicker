@@ -666,6 +666,7 @@ private: System::Windows::Forms::PictureBox^  Bupgrade3;
 			// Bupgrade1
 			// 
 			this->Bupgrade1->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bupgrade1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade1.Image")));
 			this->Bupgrade1->Location = System::Drawing::Point(579, 67);
 			this->Bupgrade1->Name = L"Bupgrade1";
@@ -678,6 +679,7 @@ private: System::Windows::Forms::PictureBox^  Bupgrade3;
 			// Bupgrade2
 			// 
 			this->Bupgrade2->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bupgrade2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade2.Image")));
 			this->Bupgrade2->Location = System::Drawing::Point(579, 206);
 			this->Bupgrade2->Name = L"Bupgrade2";
@@ -690,6 +692,7 @@ private: System::Windows::Forms::PictureBox^  Bupgrade3;
 			// Bupgrade4
 			// 
 			this->Bupgrade4->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bupgrade4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade4.Image")));
 			this->Bupgrade4->Location = System::Drawing::Point(579, 487);
 			this->Bupgrade4->Name = L"Bupgrade4";
@@ -702,6 +705,7 @@ private: System::Windows::Forms::PictureBox^  Bupgrade3;
 			// Bupgrade3
 			// 
 			this->Bupgrade3->BackColor = System::Drawing::Color::Transparent;
+			this->Bupgrade3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bupgrade3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bupgrade3.Image")));
 			this->Bupgrade3->Location = System::Drawing::Point(579, 348);
 			this->Bupgrade3->Name = L"Bupgrade3";
@@ -756,9 +760,10 @@ private: System::Windows::Forms::PictureBox^  Bupgrade3;
 			this->Controls->Add(this->P1);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"hire";
-			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Wynajem";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->P1))->EndInit();

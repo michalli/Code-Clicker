@@ -34,6 +34,31 @@ namespace CodeClicker {
 			if (passedcash >= 500 && !e3)B3->Visible = true;
 			if (passedcash >= 1000 && !e4)B4->Visible = true;
 			if (passedcash >= 3000 && !e5)B5->Visible = true;
+			if (e1){
+				B1->Enabled = false;
+				B1->Load("grafika/przyciskRezerwujWcisniety.png");
+				B1->Visible = true;
+			}
+			if (e2){
+				B2->Enabled = false;
+				B2->Load("grafika/przyciskRezerwujWcisniety.png");
+				B2->Visible = true;
+			}
+			if (e3){
+				B3->Enabled = false;
+				B3->Load("grafika/przyciskRezerwujWcisniety.png");
+				B3->Visible = true;
+			}
+			if (e4){
+				B4->Enabled = false;
+				B4->Load("grafika/przyciskRezerwujWcisniety.png");
+				B4->Visible = true;
+			}
+			if (e5){
+				B5->Enabled = false;
+				B5->Load("grafika/przyciskRezerwujWcisniety.png");
+				B5->Visible = true;
+			}
 		}
 
 		bool getperk1(){
@@ -183,9 +208,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->Bback->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->Bback->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Bback->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Bback.Image")));
-			this->Bback->Location = System::Drawing::Point(328, 661);
+			this->Bback->Location = System::Drawing::Point(342, 663);
 			this->Bback->Name = L"Bback";
-			this->Bback->Size = System::Drawing::Size(143, 67);
+			this->Bback->Size = System::Drawing::Size(116, 65);
 			this->Bback->TabIndex = 28;
 			this->Bback->TabStop = false;
 			this->Bback->Click += gcnew System::EventHandler(this, &upgradeavatar::Bback_Click);
@@ -197,7 +222,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L4perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L4perk->ForeColor = System::Drawing::Color::Lime;
-			this->L4perk->Location = System::Drawing::Point(251, 454);
+			this->L4perk->Location = System::Drawing::Point(250, 451);
 			this->L4perk->Name = L"L4perk";
 			this->L4perk->Size = System::Drawing::Size(349, 20);
 			this->L4perk->TabIndex = 66;
@@ -210,7 +235,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L4cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L4cost->ForeColor = System::Drawing::Color::Red;
-			this->L4cost->Location = System::Drawing::Point(251, 486);
+			this->L4cost->Location = System::Drawing::Point(250, 483);
 			this->L4cost->Name = L"L4cost";
 			this->L4cost->Size = System::Drawing::Size(129, 20);
 			this->L4cost->TabIndex = 65;
@@ -222,7 +247,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L4->BackColor = System::Drawing::Color::Transparent;
 			this->L4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L4->Location = System::Drawing::Point(253, 407);
+			this->L4->Location = System::Drawing::Point(250, 407);
 			this->L4->Name = L"L4";
 			this->L4->Size = System::Drawing::Size(236, 24);
 			this->L4->TabIndex = 63;
@@ -235,7 +260,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L3perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L3perk->ForeColor = System::Drawing::Color::Lime;
-			this->L3perk->Location = System::Drawing::Point(253, 344);
+			this->L3perk->Location = System::Drawing::Point(250, 334);
 			this->L3perk->Name = L"L3perk";
 			this->L3perk->Size = System::Drawing::Size(332, 20);
 			this->L3perk->TabIndex = 61;
@@ -248,7 +273,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L3cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L3cost->ForeColor = System::Drawing::Color::Red;
-			this->L3cost->Location = System::Drawing::Point(250, 376);
+			this->L3cost->Location = System::Drawing::Point(250, 366);
 			this->L3cost->Name = L"L3cost";
 			this->L3cost->Size = System::Drawing::Size(116, 20);
 			this->L3cost->TabIndex = 60;
@@ -260,7 +285,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L3->BackColor = System::Drawing::Color::Transparent;
 			this->L3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L3->Location = System::Drawing::Point(249, 290);
+			this->L3->Location = System::Drawing::Point(250, 290);
 			this->L3->Name = L"L3";
 			this->L3->Size = System::Drawing::Size(182, 24);
 			this->L3->TabIndex = 58;
@@ -273,7 +298,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L2perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L2perk->ForeColor = System::Drawing::Color::Lime;
-			this->L2perk->Location = System::Drawing::Point(251, 227);
+			this->L2perk->Location = System::Drawing::Point(250, 217);
 			this->L2perk->Name = L"L2perk";
 			this->L2perk->Size = System::Drawing::Size(339, 20);
 			this->L2perk->TabIndex = 56;
@@ -286,7 +311,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L2cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L2cost->ForeColor = System::Drawing::Color::Red;
-			this->L2cost->Location = System::Drawing::Point(251, 259);
+			this->L2cost->Location = System::Drawing::Point(250, 249);
 			this->L2cost->Name = L"L2cost";
 			this->L2cost->Size = System::Drawing::Size(116, 20);
 			this->L2cost->TabIndex = 55;
@@ -311,7 +336,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L1perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L1perk->ForeColor = System::Drawing::Color::Lime;
-			this->L1perk->Location = System::Drawing::Point(253, 103);
+			this->L1perk->Location = System::Drawing::Point(250, 100);
 			this->L1perk->Name = L"L1perk";
 			this->L1perk->Size = System::Drawing::Size(303, 20);
 			this->L1perk->TabIndex = 51;
@@ -324,7 +349,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L1cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L1cost->ForeColor = System::Drawing::Color::Red;
-			this->L1cost->Location = System::Drawing::Point(253, 135);
+			this->L1cost->Location = System::Drawing::Point(250, 132);
 			this->L1cost->Name = L"L1cost";
 			this->L1cost->Size = System::Drawing::Size(107, 20);
 			this->L1cost->TabIndex = 50;
@@ -349,7 +374,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L5perk->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L5perk->ForeColor = System::Drawing::Color::Lime;
-			this->L5perk->Location = System::Drawing::Point(253, 578);
+			this->L5perk->Location = System::Drawing::Point(250, 568);
 			this->L5perk->Name = L"L5perk";
 			this->L5perk->Size = System::Drawing::Size(330, 20);
 			this->L5perk->TabIndex = 71;
@@ -362,7 +387,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L5cost->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->L5cost->ForeColor = System::Drawing::Color::Red;
-			this->L5cost->Location = System::Drawing::Point(250, 610);
+			this->L5cost->Location = System::Drawing::Point(250, 600);
 			this->L5cost->Name = L"L5cost";
 			this->L5cost->Size = System::Drawing::Size(129, 20);
 			this->L5cost->TabIndex = 70;
@@ -374,7 +399,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L5->BackColor = System::Drawing::Color::Transparent;
 			this->L5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(238)));
-			this->L5->Location = System::Drawing::Point(249, 530);
+			this->L5->Location = System::Drawing::Point(250, 524);
 			this->L5->Name = L"L5";
 			this->L5->Size = System::Drawing::Size(205, 24);
 			this->L5->TabIndex = 68;
@@ -386,7 +411,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L1description->BackColor = System::Drawing::Color::Transparent;
 			this->L1description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L1description->Location = System::Drawing::Point(254, 80);
+			this->L1description->Location = System::Drawing::Point(255, 80);
 			this->L1description->Name = L"L1description";
 			this->L1description->Size = System::Drawing::Size(327, 13);
 			this->L1description->TabIndex = 49;
@@ -418,7 +443,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L2description->BackColor = System::Drawing::Color::Transparent;
 			this->L2description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L2description->Location = System::Drawing::Point(252, 198);
+			this->L2description->Location = System::Drawing::Point(253, 197);
 			this->L2description->Name = L"L2description";
 			this->L2description->Size = System::Drawing::Size(358, 13);
 			this->L2description->TabIndex = 54;
@@ -430,7 +455,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L3description->BackColor = System::Drawing::Color::Transparent;
 			this->L3description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L3description->Location = System::Drawing::Point(252, 315);
+			this->L3description->Location = System::Drawing::Point(255, 314);
 			this->L3description->Name = L"L3description";
 			this->L3description->Size = System::Drawing::Size(230, 13);
 			this->L3description->TabIndex = 59;
@@ -442,7 +467,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L4description->BackColor = System::Drawing::Color::Transparent;
 			this->L4description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L4description->Location = System::Drawing::Point(254, 432);
+			this->L4description->Location = System::Drawing::Point(255, 431);
 			this->L4description->Name = L"L4description";
 			this->L4description->Size = System::Drawing::Size(355, 13);
 			this->L4description->TabIndex = 64;
@@ -454,7 +479,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->L5description->BackColor = System::Drawing::Color::Transparent;
 			this->L5description->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->L5description->Location = System::Drawing::Point(254, 555);
+			this->L5description->Location = System::Drawing::Point(255, 548);
 			this->L5description->Name = L"L5description";
 			this->L5description->Size = System::Drawing::Size(310, 13);
 			this->L5description->TabIndex = 69;
@@ -493,8 +518,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			// B1
 			// 
 			this->B1->BackColor = System::Drawing::Color::Transparent;
+			this->B1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B1.Image")));
-			this->B1->Location = System::Drawing::Point(602, 103);
+			this->B1->Location = System::Drawing::Point(602, 100);
 			this->B1->Name = L"B1";
 			this->B1->Size = System::Drawing::Size(143, 67);
 			this->B1->TabIndex = 78;
@@ -505,8 +531,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			// B2
 			// 
 			this->B2->BackColor = System::Drawing::Color::Transparent;
+			this->B2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B2.Image")));
-			this->B2->Location = System::Drawing::Point(602, 227);
+			this->B2->Location = System::Drawing::Point(602, 217);
 			this->B2->Name = L"B2";
 			this->B2->Size = System::Drawing::Size(143, 67);
 			this->B2->TabIndex = 79;
@@ -517,8 +544,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			// B3
 			// 
 			this->B3->BackColor = System::Drawing::Color::Transparent;
+			this->B3->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B3.Image")));
-			this->B3->Location = System::Drawing::Point(602, 344);
+			this->B3->Location = System::Drawing::Point(602, 334);
 			this->B3->Name = L"B3";
 			this->B3->Size = System::Drawing::Size(143, 67);
 			this->B3->TabIndex = 80;
@@ -529,8 +557,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			// B4
 			// 
 			this->B4->BackColor = System::Drawing::Color::Transparent;
+			this->B4->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B4.Image")));
-			this->B4->Location = System::Drawing::Point(602, 454);
+			this->B4->Location = System::Drawing::Point(602, 451);
 			this->B4->Name = L"B4";
 			this->B4->Size = System::Drawing::Size(143, 67);
 			this->B4->TabIndex = 81;
@@ -541,8 +570,9 @@ private: System::Windows::Forms::PictureBox^  B5;
 			// B5
 			// 
 			this->B5->BackColor = System::Drawing::Color::Transparent;
+			this->B5->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->B5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"B5.Image")));
-			this->B5->Location = System::Drawing::Point(602, 578);
+			this->B5->Location = System::Drawing::Point(602, 568);
 			this->B5->Name = L"B5";
 			this->B5->Size = System::Drawing::Size(143, 67);
 			this->B5->TabIndex = 82;
@@ -557,7 +587,7 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(794, 745);
+			this->ClientSize = System::Drawing::Size(794, 749);
 			this->Controls->Add(this->B5);
 			this->Controls->Add(this->B4);
 			this->Controls->Add(this->B3);
@@ -591,8 +621,10 @@ private: System::Windows::Forms::PictureBox^  B5;
 			this->Controls->Add(this->Bback);
 			this->DoubleBuffered = true;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
+			this->MinimizeBox = false;
 			this->Name = L"upgradeavatar";
-			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Ulepszenia zwiêkszaj¹ce umiejêtnoœci Twojego programisty";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Bback))->EndInit();
@@ -620,7 +652,8 @@ private: System::Void B1_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 50;
 			 cash -= 50;
 			 perk1 = true;
-			 B1->Visible = false;
+			 B1->Enabled = false;
+			 B1->Load("grafika/przyciskRezerwujWcisniety.png");
 			 if (cash < 200)B2->Visible = false;
 			 if (cash < 500)B3->Visible = false;
 			 if (cash < 1000)B4->Visible = false;
@@ -631,7 +664,8 @@ private: System::Void B2_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 200;
 			 cash -= 200;
 			 perk2 = true;
-			 B2->Visible = false;
+			 B2->Enabled = false;
+			 B2->Load("grafika/przyciskRezerwujWcisniety.png");
 			 if (cash < 50)B1->Visible = false;
 			 if (cash < 500)B3->Visible = false;
 			 if (cash < 1000)B4->Visible = false;
@@ -642,7 +676,8 @@ private: System::Void B3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 500;
 			 cash -= 500;
 			 perk3 = true;
-			 B3->Visible = false;
+			 B3->Enabled = false;
+			 B3->Load("grafika/przyciskRezerwujWcisniety.png");
 			 if (cash < 50)B1->Visible = false;
 			 if (cash < 200)B2->Visible = false;
 			 if (cash < 1000)B4->Visible = false;
@@ -653,7 +688,8 @@ private: System::Void B4_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 1000;
 			 cash -= 1000;
 			 perk4 = true;
-			 B4->Visible = false;
+			 B4->Enabled = false;
+			 B4->Load("grafika/przyciskRezerwujWcisniety.png");
 			 if (cash < 50)B1->Visible = false;
 			 if (cash < 200)B2->Visible = false;
 			 if (cash < 500)B3->Visible = false;
@@ -664,7 +700,8 @@ private: System::Void B5_Click(System::Object^  sender, System::EventArgs^  e) {
 			 paid += 3000;
 			 cash -= 3000;
 			 perk5 = true;
-			 B5->Visible = false;
+			 B5->Enabled = false;
+			 B5->Load("grafika/przyciskRezerwujWcisniety.png");
 			 if (cash < 50)B1->Visible = false;
 			 if (cash < 200)B2->Visible = false;
 			 if (cash < 1000)B4->Visible = false;
