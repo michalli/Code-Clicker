@@ -1869,8 +1869,7 @@ private: System::Void axWindowsMediaPlayer1_PlayStateChange(System::Object^  sen
 			 if (started){
 				 Temployees->Enabled = true;
 				 axWindowsMediaPlayer1->fullScreen = false;
-				 FormWindowState normal;
-				 this->WindowState = normal;
+				 WindowState = FormWindowState::Normal;
 			 }
 			 started = !started;
 }
